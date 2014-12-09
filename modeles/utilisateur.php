@@ -148,7 +148,7 @@ class Utilisateur extends Model_Base {
     //les setters
     public function set_pseudo($c) {
         //verifier si le nouveau pseudo est pas déjà prit 
-        if (verif_pseudo($c) == true) {
+        if (Utilisateur::verif_pseudo($c) == true) {
             $this->_pseudo = stripslashes(htmlspecialchars($c));
             $query = "UPDATE Utilisateurs SET pseudoUti=:pseudo where idUti=:id";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.pseudo " . oci_error($conn));
