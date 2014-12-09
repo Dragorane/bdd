@@ -153,7 +153,7 @@ class Utilisateur extends Model_Base {
             $query = "UPDATE Utilisateurs SET pseudoUti=:pseudo where idUti=:id";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.pseudo " . oci_error($conn));
             oci_bind_by_name($stmt, ":id", $this->_id);
-            oci_bind_by_name($stmt, ":pseudo", $c);
+            oci_bind_by_name($stmt, ":pseudo", $this->_pseudo );
             oci_execute($stmt);
         } else {
             echo "<div class='warning'><p>Erreur, le pseudonyme saisie est déjà utilisé ...</p></div>";
@@ -165,27 +165,48 @@ class Utilisateur extends Model_Base {
         $query = "UPDATE Utilisateurs SET nomUti=:nom where idUti=:id";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.nom " . oci_error($conn));
         oci_bind_by_name($stmt, ":id", $this->_id);
-        oci_bind_by_name($stmt, ":nom", $c);
+        oci_bind_by_name($stmt, ":nom", $this->_nom);
         oci_execute($stmt);
     }
 
     public function set_mdp($mdp) {
-        
+        $this->_mdp = stripslashes(htmlspecialchars($mdp));
+        $query = "UPDATE Utilisateurs SET mdpUti=:mdp where idUti=:id";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.nom " . oci_error($conn));
+        oci_bind_by_name($stmt, ":id", $this->_id);
+        oci_bind_by_name($stmt, ":mdp", $this->_mdp);
+        oci_execute($stmt);
     }
 
     public function set_tel($tel) {
-        
+        $this->_tel = stripslashes(htmlspecialchars($tel));
+        $query = "UPDATE Utilisateurs SET telUti=:tel where idUti=:id";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.pnom " . oci_error($conn));
+        oci_bind_by_name($stmt, ":id", $this->_id);
+        oci_bind_by_name($stmt, ":tel", $this->_tel);
+        oci_execute($stmt);
     }
 
     public function set_email($email) {
-        
+        $this->_email = stripslashes(htmlspecialchars($email));
+        $query = "UPDATE Utilisateurs SET emailUti=:email where idUti=:id";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.pnom " . oci_error($conn));
+        oci_bind_by_name($stmt, ":id", $this->_id);
+        oci_bind_by_name($stmt, ":email", $this->_email);
+        oci_execute($stmt);
     }
 
     public function set_avatar($avatar) {
         
     }
+
     public function set_adr($adr) {
-        
+        $this->_adr = stripslashes(htmlspecialchars($adr));
+        $query = "UPDATE Utilisateurs SET adrUti=:adr where idUti=:id";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.pnom " . oci_error($conn));
+        oci_bind_by_name($stmt, ":id", $this->_id);
+        oci_bind_by_name($stmt, ":adr", $this->_adr);
+        oci_execute($stmt);
     }
 
     public function set_pnom($c) {
@@ -193,7 +214,7 @@ class Utilisateur extends Model_Base {
         $query = "UPDATE Utilisateurs SET pnomUti=:pnom where idUti=:id";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.pnom " . oci_error($conn));
         oci_bind_by_name($stmt, ":id", $this->_id);
-        oci_bind_by_name($stmt, ":pnom", $c);
+        oci_bind_by_name($stmt, ":pnom", $this->_pnom);
         oci_execute($stmt);
     }
 
