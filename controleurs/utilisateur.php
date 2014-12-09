@@ -189,7 +189,7 @@ class Controller_Utilisateur {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
                     if ($_POST['mdp'] == $_POST['verif_mdp']) {
-                        $uti->set_nom($_POST['mdp']);
+                        $uti->set_mdp($_POST['mdp']);
                     } else {
                         $content = "<div class='warning'><p>Erreur : les mots de passes saisient ne sont pas similaires...</p></div>";
                     }
