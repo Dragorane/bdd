@@ -117,22 +117,22 @@ table.gestion td{
     margin:auto;
 }
 .gestion_informations{
-    width:500px;
+    width:600px;
     float:left;
 }
 .page_gestion_cpt{
-    min-height: 500px;
+    min-height: 700px;
 }
 .gestion_portemonnaire{
     padding-left:20px;
-    min-height:500px;
+    min-height:600px;
     width:500px;
     float:right;
     border-left:1px solid black;
 }
 .gestion_historique{
     width:100%;
-    margin-top:500px;
+    margin-top:600px;
 }
 /*Message erreur*/
 div.warning{
