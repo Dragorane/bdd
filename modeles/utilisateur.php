@@ -177,6 +177,7 @@ class Utilisateur extends Model_Base {
         oci_bind_by_name($stmt, ":id", $this->_id);
         oci_bind_by_name($stmt, ":mdp", $this->_mdp);
         oci_execute($stmt);
+        $_SESSION['mdp'] = $this->_mdp;
     }
 
     public function set_tel($tel) {
