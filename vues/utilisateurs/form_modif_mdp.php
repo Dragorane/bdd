@@ -2,7 +2,7 @@
 <form action="index.php/valid_mdp" method="POST">
     <label for="mdp">Nouveau mot de passe : </label><br/>
     <input type="text" name="mdp" id="adr"/><br/><br/>
-    <label for="verif_mdp">Vérification nouveau mot de passe : </label>
+    <label for="verif_mdp">Vérification nouveau mot de passe : </label><br/>
     <input type="text" name="verif_mdp" id="adr"/><br/><br/>
     <input type="submit" name="submit"/>
 </form>

@@ -141,7 +141,7 @@ class Utilisateur extends Model_Base {
         return $this->_point_troc;
     }
 
-    public function photo() {
+    public function avatar() {
         return $this->_photo;
     }
 
@@ -149,7 +149,7 @@ class Utilisateur extends Model_Base {
     public function set_pseudo($c) {
         //verifier si le nouveau pseudo est pas déjà prit 
         if (verif_pseudp($c) == true) {
-            $this->_pseudo = $c;
+            $this->_pseudo = stripslashes(htmlspecialchars($c));
             $query = "UPDATE Utilisateurs SET pseudoUti=:pseudo where idUti=:id";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.pseudo " . oci_error($conn));
             oci_bind_by_name($stmt, ":id", $this->_id);
@@ -161,7 +161,7 @@ class Utilisateur extends Model_Base {
     }
 
     public function set_nom($c) {
-        $this->_nom = $c;
+        $this->_nom = stripslashes(htmlspecialchars($c));
         $query = "UPDATE Utilisateurs SET nomUti=:nom where idUti=:id";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.nom " . oci_error($conn));
         oci_bind_by_name($stmt, ":id", $this->_id);
@@ -169,8 +169,27 @@ class Utilisateur extends Model_Base {
         oci_execute($stmt);
     }
 
+    public function set_mdp($mdp) {
+        
+    }
+
+    public function set_tel($tel) {
+        
+    }
+
+    public function set_email($email) {
+        
+    }
+
+    public function set_avatar($avatar) {
+        
+    }
+    public function set_adr($adr) {
+        
+    }
+
     public function set_pnom($c) {
-        $this->_pnom = $c;
+        $this->_pnom = stripslashes(htmlspecialchars($c));
         $query = "UPDATE Utilisateurs SET pnomUti=:pnom where idUti=:id";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.pnom " . oci_error($conn));
         oci_bind_by_name($stmt, ":id", $this->_id);

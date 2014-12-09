@@ -182,49 +182,158 @@ class Controller_Utilisateur {
     /* valide formulaire de modification du mot de passe */
 
     public function gestion_valid_mdp() {
-        
+        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        if (!isset($_SESSION['connect'])) {
+            $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
+        } else {
+            if ($uti != null) {
+                if (isset($_POST['submit'])) {
+                    if ($_POST['mdp'] == $_POST['verif_mdp']) {
+                        $uti->setmdp($_POST['mdp']);
+                    } else {
+                        $content = "<div class='warning'><p>Erreur : les mots de passes saisient ne sont pas similaires...</p></div>";
+                    }
+                } else {
+                    $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
+                }
+            } else {
+                $content = "<div class='warning'><p>Erreur lors de l'identification de votre compte.</p></div>";
+            }
+        }
     }
 
     /* valide formulaire de modification adresse */
 
     public function gestion_valid_adr() {
-        
+        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        if (!isset($_SESSION['connect'])) {
+            $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
+        } else {
+            if ($uti != null) {
+                if (isset($_POST['submit'])) {
+                    
+                } else {
+                    $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
+                }
+            } else {
+                $content = "<div class='warning'><p>Erreur lors de l'identification de votre compte.</p></div>";
+            }
+        }
     }
 
     /* valide de modification avatar */
 
     public function gestion_valid_avatar() {
-        
+        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        if (!isset($_SESSION['connect'])) {
+            $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
+        } else {
+            if ($uti != null) {
+                if (isset($_POST['submit'])) {
+                    
+                } else {
+                    $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
+                }
+            } else {
+                $content = "<div class='warning'><p>Erreur lors de l'identification de votre compte.</p></div>";
+            }
+        }
     }
 
     /* valid de modification email */
 
     public function gestion_valid_email() {
-        
+        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        if (!isset($_SESSION['connect'])) {
+            $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
+        } else {
+            if ($uti != null) {
+                if (isset($_POST['submit'])) {
+                    
+                } else {
+                    $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
+                }
+            } else {
+                $content = "<div class='warning'><p>Erreur lors de l'identification de votre compte.</p></div>";
+            }
+        }
     }
 
     /* valid de modification du nom */
 
     public function gestion_valid_nom() {
-        
+        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        if (!isset($_SESSION['connect'])) {
+            $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
+        } else {
+            if ($uti != null) {
+                if (isset($_POST['submit'])) {
+                    
+                } else {
+                    $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
+                }
+            } else {
+                $content = "<div class='warning'><p>Erreur lors de l'identification de votre compte.</p></div>";
+            }
+        }
     }
 
     /* valid de modification prénom */
 
     public function gestion_valid_pnom() {
-        
+        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        if (!isset($_SESSION['connect'])) {
+            $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
+        } else {
+            if ($uti != null) {
+                if (isset($_POST['submit'])) {
+                    
+                } else {
+                    $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
+                }
+            } else {
+                $content = "<div class='warning'><p>Erreur lors de l'identification de votre compte.</p></div>";
+            }
+        }
     }
 
     /* valid de modification pseudo */
 
     public function gestion_valid_pseudo() {
-        
+        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        if (!isset($_SESSION['connect'])) {
+            $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
+        } else {
+            if ($uti != null) {
+                if (isset($_POST['submit'])) {
+                    
+                } else {
+                    $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
+                }
+            } else {
+                $content = "<div class='warning'><p>Erreur lors de l'identification de votre compte.</p></div>";
+            }
+        }
     }
 
     /* valid de modification telephone */
 
     public function gestion_valid_tel() {
-        
+        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        if (!isset($_SESSION['connect'])) {
+            $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
+        } else {
+            if ($uti != null) {
+                if (isset($_POST['submit'])) {
+                    
+                } else {
+                    $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
+                }
+            } else {
+                $content = "<div class='warning'><p>Erreur lors de l'identification de votre compte.</p></div>";
+            }
+        }
+        include 'vues/utilisateurs/gestion_cpt.php';
     }
 
     /* Accès au formulaire de suppression de compte */

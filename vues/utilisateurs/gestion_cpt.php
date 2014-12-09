@@ -7,8 +7,8 @@ $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
     <div class="gestion_informations">
         <h3 class='center'>Informations du compte : </h3>
         <?php
-        if ($uti->photo() != null) {
-            echo "<img src='" . $uti->photo() . "' alt='Votre avatar' class='avatar_gestion'/>";
+        if ($uti->avatar() != null) {
+            echo "<img src='" . $uti->avatar() . "' alt='Votre avatar' class='avatar_gestion'/>";
         } else {
             echo "<img src='" . BASEURL . "/images/avatar_default.png' alt='Votre avatar' class='avatar_gestion'/>";
         }
