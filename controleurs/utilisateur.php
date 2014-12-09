@@ -211,7 +211,7 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    $uti->set_adr();
+                    $uti->set_adr($_POST['adr']);
                     echo "<div class='success'><p>Votre adresse a été modifié.</p></div>";
                 } else {
                     $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
@@ -231,7 +231,7 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    $uti->set_avatar();
+                    $uti->set_avatar($_POST['avatar']);
                     echo "<div class='success'><p>Votre avatar a été modifié.</p></div>";
                 } else {
                     $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
@@ -251,7 +251,7 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    $uti->set_email();
+                    $uti->set_email($_POST['email']);
                     echo "<div class='success'><p>Votre adresse mail a été modifié.</p></div>";
                 } else {
                     $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
@@ -271,7 +271,7 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    $uti->set_nom();
+                    $uti->set_nom($_POST['nom']);
                     echo "<div class='success'><p>Votre nom a été modifié.</p></div>";
                 } else {
                     $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
@@ -291,7 +291,7 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    $uti->set_pnom();
+                    $uti->set_pnom($_POST['pnom']);
                     echo "<div class='success'><p>Votre prénom a été modifié.</p></div>";
                 } else {
                     $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
@@ -331,7 +331,7 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    $uti->set_tel();
+                    $uti->set_tel($_POST['tel']);
                     echo "<div class='success'><p>Votre téléphone a été modifié.</p></div>";
                 } else {
                     $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
