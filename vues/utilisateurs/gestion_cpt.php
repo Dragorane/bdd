@@ -33,7 +33,7 @@ $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
             <input type="text" name="monnaie" id="monnaie" />
             <input type="submit" name='submit' value="Ajouter">
         </form>
-        
+        <br/><br/>
         <h3 class='center'>Administration :</h3>
         <h4 class="center"><a href='<?= BASEURL ?>/index.php/form_modif_mdp'>Modifier le mot de passe</a></h4>
         <h4 class="center"><a href='<?= BASEURL ?>/index.php/form_sup_cpt'>Supprimer le compte</a></h4>

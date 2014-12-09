@@ -69,6 +69,30 @@ switch ($args[1]) {
     case 'form_modif_tel':
         $cu->gestion_modif_tel();
         break;
+    case 'valid_adr':
+        $cu->gestion_valid_adr();
+        break;
+    case 'valid_avatar':
+        $cu->gestion_valid_avatar();
+        break;
+    case 'valid_email':
+        $cu->gestion_valid_email();
+        break;
+    case 'valid_mdp':
+        $cu->gestion_valid_mdp();
+        break;
+    case 'valid_nom':
+        $cu->gestion_valid_nom();
+        break;
+    case 'valid_pnom':
+        $cu->gestion_valid_pnom();
+        break;
+    case 'valid_pseudo':
+        $cu->gestion_valid_pseudo();
+        break;
+    case 'valid_tel':
+        $cu->gestion_valid_tel();
+        break;
     case 'form_sup_cpt':
         $cu->gestion_sup_cpt();
         break;

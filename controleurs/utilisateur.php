@@ -179,6 +179,54 @@ class Controller_Utilisateur {
         include 'vues/utilisateurs/form_modif_tel.php';
     }
 
+    /* valide formulaire de modification du mot de passe */
+
+    public function gestion_valid_mdp() {
+        
+    }
+
+    /* valide formulaire de modification adresse */
+
+    public function gestion_valid_adr() {
+        
+    }
+
+    /* valide de modification avatar */
+
+    public function gestion_valid_avatar() {
+        
+    }
+
+    /* valid de modification email */
+
+    public function gestion_valid_email() {
+        
+    }
+
+    /* valid de modification du nom */
+
+    public function gestion_valid_nom() {
+        
+    }
+
+    /* valid de modification prénom */
+
+    public function gestion_valid_pnom() {
+        
+    }
+
+    /* valid de modification pseudo */
+
+    public function gestion_valid_pseudo() {
+        
+    }
+
+    /* valid de modification telephone */
+
+    public function gestion_valid_tel() {
+        
+    }
+
     /* Accès au formulaire de suppression de compte */
 
     public function gestion_sup_cpt() {
