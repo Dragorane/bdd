@@ -12,7 +12,7 @@
         if ($uti == null) {
             echo "<span class='messagebonjour'>Erreur lors de l'identification</span>";
             echo "<ul>
-                <li><a href='/deconnexion'>Déconnexion</a></li> 
+                <li><a href='index.php/deconnexion'>Déconnexion</a></li> 
             </ul>";
         } else {
             ?>
