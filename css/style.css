@@ -117,7 +117,7 @@ table.gestion td{
     margin:auto;
 }
 .gestion_informations{
-    width:49%;
+    width:500px;
     float:left;
 }
 .page_gestion_cpt{
@@ -125,8 +125,8 @@ table.gestion td{
 }
 .gestion_portemonnaire{
     padding-left:20px;
-    min-height:400px;
-    width:49%;
+    min-height:500px;
+    width:500px;
     float:right;
     border-left:1px solid black;
 }
