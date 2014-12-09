@@ -9,12 +9,16 @@
         <?php
     } else {
         $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
-        ?>
-        <ul>
-            <li><a href="<?= BASEURL ?>/index.php/gestion_compte">Gestion Compte</a></li> 
-            <li><a href="<?= BASEURL ?>/index.php/deconnexion">Déconnexion</a></li> 
-        </ul>
-        <span class="messagebonjour">Bonjour <?php echo $_SESSION['pseudo']; ?> </span><span class='nb_troc'>Pts : <?php echo $uti->pt_troc(); ?></span>
+        if ($uti == null) {
+            echo "<span class='messagebonjour'>Erreur lors de l'identification</span>";
+        } else {
+            ?>
+            <ul>
+                <li><a href="<?= BASEURL ?>/index.php/gestion_compte">Gestion Compte</a></li> 
+                <li><a href="<?= BASEURL ?>/index.php/deconnexion">Déconnexion</a></li> 
+            </ul>
+            <span class="messagebonjour">Bonjour <?php echo $_SESSION['pseudo']; ?> </span><span class='nb_troc'>Pts : <?php echo $uti->pt_troc(); ?></span>
 
-    <?php } ?>
+        <?php }
+    } ?>
 </div>

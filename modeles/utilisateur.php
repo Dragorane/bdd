@@ -153,8 +153,9 @@ class Utilisateur extends Model_Base {
             $query = "UPDATE Utilisateurs SET pseudoUti=:pseudo where idUti=:id";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.pseudo " . oci_error($conn));
             oci_bind_by_name($stmt, ":id", $this->_id);
-            oci_bind_by_name($stmt, ":pseudo", $this->_pseudo );
+            oci_bind_by_name($stmt, ":pseudo", $this->_pseudo);
             oci_execute($stmt);
+            $_SESSION['pseudo'] = $this->_pseudo;
         } else {
             echo "<div class='warning'><p>Erreur, le pseudonyme saisie est déjà utilisé ...</p></div>";
         }
