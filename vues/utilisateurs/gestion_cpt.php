@@ -24,8 +24,6 @@ $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
             <tr><th>Email</th><td><?php echo $uti->email(); ?></td><td><a href='<?= BASEURL ?>/index.php/form_modif_email'>Modifier</a></td></tr>
             <tr><th>Téléphone</th><td><?php echo $uti->tel(); ?></td><td><a href='<?= BASEURL ?>/index.php/form_modif_tel'>Modifier</a></td></tr>
         </table>
-        <h4 class="center"><a href='<?= BASEURL ?>/index.php/form_modif_mdp'>Modifier le mot de passe</a></h4>
-        <h4 class="center"><a href='<?= BASEURL ?>/index.php/form_sup_cpt'>Supprimer le compte</a></h4>
     </div>
     <div class="gestion_portemonnaire">
         <h3 class='center'>Porte monnaie </h3>
@@ -35,6 +33,10 @@ $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
             <input type="text" name="monnaie" id="monnaie" />
             <input type="submit" name='submit' value="Ajouter">
         </form>
+        
+        <h3 class='center'>Administration :</h3>
+        <h4 class="center"><a href='<?= BASEURL ?>/index.php/form_modif_mdp'>Modifier le mot de passe</a></h4>
+        <h4 class="center"><a href='<?= BASEURL ?>/index.php/form_sup_cpt'>Supprimer le compte</a></h4>
     </div>
     <div class="gestion_historique">
         <hr/>
