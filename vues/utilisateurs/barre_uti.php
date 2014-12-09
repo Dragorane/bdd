@@ -11,6 +11,9 @@
         $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
         if ($uti == null) {
             echo "<span class='messagebonjour'>Erreur lors de l'identification</span>";
+            echo "<ul>
+                <li><a href='/deconnexion'>Déconnexion</a></li> 
+            </ul>";
         } else {
             ?>
             <ul>
