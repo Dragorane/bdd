@@ -265,7 +265,7 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    $photo = $uti->path_img();
+                    $photo = path_img();
                     $uti->set_avatar($photo);
                     echo "<div class='success'><p>Votre avatar a été modifié.</p></div>";
                 } else {
