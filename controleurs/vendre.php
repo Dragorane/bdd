@@ -35,7 +35,7 @@ class Controller_vendre {
                 echo "<h2>Etape 1 :</h2><p class='center'> Merci de selectionner la catégorie de votre bien dans le menu à droite.</p>";
             } else {
                 $tabetat = Etat::lesEtats();
-                include "vues/form_vendrebien.php";
+                include "vues/vendre/form_vendrebien.php";
             }
         }
     }
@@ -45,8 +45,8 @@ class Controller_vendre {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
             $tabcat = categories::list_categ(2);
-            include 'vues/vendre/form_vendreservice.php';
             include "vues/menu_cat.php";
+            include 'vues/vendre/form_vendreservice.php';
         }
     }
 
