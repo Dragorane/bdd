@@ -135,6 +135,34 @@ table.gestion td{
     margin-top:600px;
     min-height: 100px;
 }
+
+/*Menu categorie biens/services*/
+.menu_categorie{
+    float:left;
+    width:300px;
+    border-left:1px solid black;
+}
+.filtre_recherche{
+    float:right;
+    border-bottom: 1px solid black;
+    width:700px;
+}
+.bouton_filtre{
+    width: 100px;
+    height: 30px;
+    padding-top: 7px; /*permet le centrage vertical*/
+    text-align: center;
+    color: black;
+    background: white;
+}
+.bouton_filtre:hover{
+    width: 100px;
+    height: 30px;
+    padding-top: 7px; /*permet le centrage vertical*/
+    text-align: center;
+    color: white;
+    background: black;
+}
 /*Message erreur*/
 div.warning{
     margin:auto;
