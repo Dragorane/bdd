@@ -27,7 +27,8 @@ a { color:#81b436; text-decoration:underline;}
 .content { background-color:white;
            width: 1100px;
            padding:13px;
-           margin: auto;}
+           margin: auto;
+           min-height: 800px;}
 
 header{
     width: 1100px;
@@ -148,15 +149,16 @@ div.filtre_recherche{
     width:650px;
 }
 h3.bouton_filtre{
-    width: 100px;
+    width: 300px;
     height: 30px;
     padding-top: 7px; /*permet le centrage vertical*/
     text-align: center;
     color: black;
     background: white;
+    float:left;
 }
-div.bouton_filtre:hover{
-    width: 100px;
+h3.bouton_filtre:hover{
+    width: 300px;
     height: 30px;
     padding-top: 7px; /*permet le centrage vertical*/
     text-align: center;
