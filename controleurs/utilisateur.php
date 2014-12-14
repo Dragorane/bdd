@@ -79,7 +79,7 @@ class Controller_Utilisateur {
 
     public function path_img() {
         $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION); //recupération de l'extension de la photo
-        $content_dir = 'images/avatar/'; //dossier où la photo sera stocké
+        $content_dir = BASEURL.'/images/avatar/'; //dossier où la photo sera stocké
         $filename = $_FILES['photo']['tmp_name'];
         $filesize = getimagesize($filename);
         if ($ext == 'jpg') { //photo en jpg
@@ -107,7 +107,7 @@ class Controller_Utilisateur {
            // return NULL;
             echo "<h1>Erreur dans la copie ...</h1>";
         } else {
-            $lienimg = "http://turing.u-strasbg.fr/~llaisne/bdd/images/avatar/" . $_FILES['photo']['name'];
+            $lienimg = BASEURL."/images/avatar/" . $_FILES['photo']['name'];
            // return $lienimg;
         echo "<h1>Lien vers l'image : " . $lienimg . "</h1>";
         }

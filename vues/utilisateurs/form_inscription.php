@@ -1,6 +1,6 @@
 <h2 class="center">Formulaire d'inscription</h2>
 <p>Les champs (*) sont à remplir obligatoirement.</p>
-<form action="<?= BASEURL ?>/index.php/valid_inscri" method="post">
+<form action="<?= BASEURL ?>/index.php/valid_inscri" method="post" enctype="multipart/form-data">
     <label for="pseudo">(*) Pseudo  </label><br/>
     <input type="text" name="pseudo" id="pseudo" /><br/><br/>
     <label for="mdp">(*) Password </label><br/>
