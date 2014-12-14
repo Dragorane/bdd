@@ -30,7 +30,7 @@ class categories extends Model_Base {
     }
 
     public static function list_categ($type) {
-        $query = "select idCat, libCat, typeCat, cat_pere from categorie where typeCat=" . $type . " order by cat_pere, idCat";
+        $query = "select idCat, libCat, typeCat, cat_pere from categorie where typeCat=" . $type . " order by cat_pere DESC, idCat";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
         oci_execute($stmt);
         $i = 0;
