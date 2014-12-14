@@ -1,6 +1,12 @@
 <?php
 
-require_once 'modeles/categorie.php';
+require_once 'modeles/categories.php';
+require_once 'modeles/evaluations.php';
+require_once 'modeles/biens.php';
+require_once 'modeles/services.php';
+require_once 'modeles/propositions.php';
+require_once 'modeles/utilisateur.php';
+require_once 'modeles/photos.php';
 
 class Controller_vendre {
 
