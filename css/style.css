@@ -116,6 +116,7 @@ table.gestion td{
 .avatar_gestion{
     display:block;
     margin:auto;
+    width:150px;
 }
 .gestion_informations{
     width:600px;
