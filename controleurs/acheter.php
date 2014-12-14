@@ -21,10 +21,12 @@ class Controller_acheter {
     }
 
     public function acheterbien() {
+        $type_categorie = 1;
         include 'vues/acheter/acheterbien.php';
     }
 
     public function acheterservice() {
+        $type_categorie = 2;
         include 'vues/acheter/acheterservice.php';
     }
 

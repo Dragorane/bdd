@@ -29,6 +29,19 @@ class categories extends Model_Base {
         oci_execute($stmt);
     }
 
+    public static function list_categ($type) {
+        $query = "select idCat, libCat, typeCat, cat_pere from categorie where typeCat=" . $tabcat . " order by cat_pere, idCat";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+        oci_execute($stmt);
+        $i = 0;
+        while ($row = oci_fetch_assoc($stmt) != NULL) {
+            $tabcat[$i][0] = $row['cat_pere'];
+            $tabcat[$i][1] = $row['idCat'];
+            $tabcat[$i][2] = $row['libCat'];
+        }
+        return $tabcat;
+    }
+
     public static function initcat() {
         categories::create("Livres BD", 1, null);
         categories::create("BD, humour et jeunesse", 1, 10);

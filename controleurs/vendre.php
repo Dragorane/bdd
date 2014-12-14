@@ -28,6 +28,7 @@ class Controller_vendre {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
+            $type_categorie = 1;
             include 'vues/vendre/vendrebien.php';
         }
     }
@@ -36,7 +37,16 @@ class Controller_vendre {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
+            $type_categorie = 2;
             include 'vues/vendre/vendreservice.php';
+        }
+    }
+
+    public function form_vendrebien() {
+        if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
+            echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
+        } else {
+            include 'vues/vendre/form_vendreservice.php';
         }
     }
 
