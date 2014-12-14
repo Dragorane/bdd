@@ -78,7 +78,7 @@ class Controller_Utilisateur {
     /* Création du path vers l'avatar de l'utilisateur */
 
     public function path_img($photo) {
-        $content_dir = '/users/info/il3/llaisne/bdd/images/avatar/'; //dossier où la photo sera stocké
+        $content_dir = '/users/info/il3/llaisne/public_html/bdd/images/avatar/'; //dossier où la photo sera stocké
         $tmp_file = $photo['tmp_name'];
 
         if (!is_uploaded_file($tmp_file)) {
