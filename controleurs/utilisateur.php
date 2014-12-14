@@ -78,8 +78,7 @@ class Controller_Utilisateur {
     /* Création du path vers l'avatar de l'utilisateur */
 
     public function path_img($photo) {
-        echo "<p>ça passe ?</p>";
-        $content_dir = BASEURL . '/images/avatar/'; //dossier où la photo sera stocké
+        $content_dir = '/images/avatar/'; //dossier où la photo sera stocké
         $tmp_file = $photo['tmp_name'];
 
         if (!is_uploaded_file($tmp_file)) {
@@ -253,9 +252,7 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    echo "<p> avant ça passe ?</p>";
                     $photo = Controller_Utilisateur::path_img($_FILES['photo']);
-                    echo "<p> après ça passe ?</p>";
                     $uti->set_avatar($photo);
                     echo "<div class='success'><p>Votre avatar a été modifié.</p></div>";
                 } else {
