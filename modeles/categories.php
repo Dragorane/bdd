@@ -30,14 +30,19 @@ class categories extends Model_Base {
     }
 
     public static function initcat() {
-        categories::create("Informatique Logiciels", 1, null);
-        categories::create("PC fixe", 1, 2);
-        categories::create("PC portable", 1, 2);
-        categories::create("Ecrans", 1, 2);
-        categories::create("Claviers", 1, 2);
-        categories::create("Souris", 1, 2);
-        categories::create("Enceintes", 1, 2);
-        categories::create("Mémoires / RAM", 1, 2);
+        categories::create("Livres BD", 1, null);
+        categories::create("BD, humour et jeunesse", 1, 10);
+        categories::create("Culture & société", 1, 10);
+        categories::create("Littérature & fiction", 1, 10);
+        categories::create("Vie pratique & loisirs", 1, 10);
+        categories::create("Scolaire & universitaire", 1, 10);
+        categories::create("Enceintes", 1, 10);
+        categories::create("Mémoires / RAM", 1, 10);
+        categories::create("Musique CD", 1, null);
+        categories::create("CD", 1, 18);
+        categories::create("Instruments de musique", 1, 18);
+        categories::create("Vinyles", 1, 18);
+        categories::create("Partitions et paroles", 1, 18);
     }
 
 }
