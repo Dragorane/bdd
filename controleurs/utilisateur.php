@@ -79,42 +79,25 @@ class Controller_Utilisateur {
 
     public function path_img($photo) {
         echo "<p>ça passe ?</p>";
-        $ext = pathinfo($photo['name'], PATHINFO_EXTENSION); //recupération de l'extension de la photo
-        $content_dir = BASEURL.'/images/avatar/'; //dossier où la photo sera stocké
-        $filename = $photo['tmp_name'];
-        $filesize = getimagesize($filename);
-        if ($ext == 'jpg') { //photo en jpg
-            $source = imagecreatefromjpeg($filename);
+        $content_dir = BASEURL . '/images/avatar/'; //dossier où la photo sera stocké
+        $tmp_file = $photo['tmp_name'];
+
+        if (!is_uploaded_file($tmp_file)) {
+            exit("Le fichier est introuvable");
         }
-        if ($ext == 'gif') {//photo en gif
-            $source = imagecreatefromgif($filename);
+        // on vérifie maintenant l'extension
+        $type_file = $photo['type'];
+
+        if (!strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif')) {
+            exit("Le fichier n'est pas une image");
         }
-        if ($ext == 'png') {//photo en png
-            $source = imagecreatefrompng($filename);
+        // on copie le fichier dans le dossier de destination
+        $name_file = $photo['name'];
+        if (!move_uploaded_file($tmp_file, $content_dir . $name_file)) {
+            return null;
         }
-        echo "<p>ça passe ?2</p>";
-        $nouv_w = 175; //width de redimensionnement
-        $nouv_h = round(($nouv_w / $filesize[0]) * $filesize[1]); //calcul height en fonction de width
-        //$nouv_h = 175;
-        $destination = imagecreatetruecolor($nouv_w, $nouv_h);
-        ImageCopyResampled($destination, $source, 0, 0, 0, 0, $nouv_w, $nouv_h, $filesize[0], $filesize[1]);
-        header('Content-type: image/png');
-        if (imagepng($destination, $content_dir . $photo['name'])) {
-            $etatcopie = 1;
-        } else {
-            $etatcopie = 0;
-        }
-        echo "<p>ça passe ?4</p>";
-        imagedestroy($destination);
-        if ($etatcopie == 0) {
-           // return NULL;
-            echo "<h1>Erreur dans la copie ...</h1>";
-        } else {
-            $lienimg = BASEURL."/images/avatar/" . $photo['name'];
-           // return $lienimg;
-        echo "<h1>Lien vers l'image : " . $lienimg . "</h1>";
-        }
-        return null;
+        $lienimg = BASEURL . "/images/avatar/" . $photo['name'];
+        return $lienimg;
     }
 
     /* Formulaire de connexion d'un utilisateur */
