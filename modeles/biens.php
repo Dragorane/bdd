@@ -76,13 +76,13 @@ class biens extends Model_Base {
     }
 
     public static function tabbiens() {
-        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0";
+        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBiens=0";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
         oci_execute($stmt);
         $i = 0;
         $tabbien = null;
         while ($row = oci_fetch_assoc($stmt)) {
-            $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+            $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUBIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
             $i = $i + 1;
         }
         return $tabbien;
@@ -90,24 +90,24 @@ class biens extends Model_Base {
 
     public static function tabbiens_prix() {
         $tabbien = null;
-        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0 order by prix";
+        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 order by prix";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
         oci_execute($stmt);
         $i = 0;
         while ($row = oci_fetch_assoc($stmt)) {
-            $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+            $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUBIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
             $i = $i + 1;
         }
     }
 
     public static function tabbiens_prixdesc() {
         $tabbien = null;
-        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0 order by prix DESC";
+        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 order by prix DESC";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
         oci_execute($stmt);
         $i = 0;
         while ($row = oci_fetch_assoc($stmt)) {
-            $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+            $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUBIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
             $i = $i + 1;
         }
     }
@@ -115,12 +115,12 @@ class biens extends Model_Base {
     public static function tabbiens_cat($cat) {
         $tabbien = null;
         if (is_int($cat)) {
-            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0 and idCat=" . $cat;
+            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBiens=0 and idCat=" . $cat;
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
             oci_execute($stmt);
             $i = 0;
             while ($row = oci_fetch_assoc($stmt)) {
-                $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+                $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUBIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
                 $i = $i + 1;
             }
         }
@@ -130,12 +130,12 @@ class biens extends Model_Base {
     public static function tabbiens_prixdesc_cat($cat) {
         $tabbien = null;
         if (is_int($cat)) {
-            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0 and idCat=" . $cat . " order by prix DESC";
+            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 and idCat=" . $cat . " order by prix DESC";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
             oci_execute($stmt);
             $i = 0;
             while ($row = oci_fetch_assoc($stmt)) {
-                $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+                $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUBIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
                 $i = $i + 1;
             }
         }
@@ -145,12 +145,12 @@ class biens extends Model_Base {
     public static function tabbiens_prix_cat($cat) {
         $tabbien = null;
         if (is_int($cat)) {
-            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0 and idCat=" . $cat . " order by prix";
+            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 and idCat=" . $cat . " order by prix";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
             oci_execute($stmt);
             $i = 0;
             while ($row = oci_fetch_assoc($stmt)) {
-                $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+                $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUBIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
                 $i = $i + 1;
             }
         }
