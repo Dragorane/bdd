@@ -39,6 +39,7 @@ class Controller_vendre {
         } else {
             $type_categorie = 2;
             include 'vues/vendre/vendreservice.php';
+            include "vues/menu_cat.php";
         }
     }
 
@@ -47,6 +48,7 @@ class Controller_vendre {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
             include 'vues/vendre/form_vendreservice.php';
+            include "vues/menu_cat.php";
         }
     }
 
