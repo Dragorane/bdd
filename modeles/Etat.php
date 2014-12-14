@@ -29,9 +29,9 @@ class Etat extends Model_Base {
     }
 
     public static function init() {
-        create("Neuf");
-        create("Bon état");
-        create("Abimé");
+        Etat::create("Neuf");
+        Etat::create("Bon état");
+        Etat::create("Abimé");
     }
 
     public static function lesEtats() {
