@@ -17,7 +17,6 @@ class Controller_vendre {
     /* Page index */
 
     public function index() {
-        categories::initcat();
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
