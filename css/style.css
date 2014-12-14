@@ -13,7 +13,7 @@ a { color:#81b436; text-decoration:underline;}
 
 /*formatage site*/
 #site{
-    width:1024px;
+    width:1200px;
     min-height: 500px;
     background-color:#D6D6D6;
     border-radius:12px; 
@@ -25,12 +25,12 @@ a { color:#81b436; text-decoration:underline;}
 
 /* content */
 .content { background-color:white;
-           width:90%;
+           width: 1100px;
            padding:13px;
            margin: auto;}
 
 header{
-    width: 92%;
+    width: 1100px;
     height: 131px;
     background-color: grey;
     margin-top: 50px;
@@ -38,7 +38,7 @@ header{
     margin-left: auto;
 }
 footer{
-    width: 92%;
+    width: 1100px;
     height: 50px;
     margin:auto;
     background-color: grey;

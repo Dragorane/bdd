@@ -78,6 +78,7 @@ class Controller_Utilisateur {
     /* Création du path vers l'avatar de l'utilisateur */
 
     public function path_img($photo) {
+        echo "<p>ça passe ?</p>";
         $ext = pathinfo($photo['name'], PATHINFO_EXTENSION); //recupération de l'extension de la photo
         $content_dir = BASEURL.'/images/avatar/'; //dossier où la photo sera stocké
         $filename = $photo['tmp_name'];
@@ -91,6 +92,7 @@ class Controller_Utilisateur {
         if ($ext == 'png') {//photo en png
             $source = imagecreatefrompng($filename);
         }
+        echo "<p>ça passe ?2</p>";
         $nouv_w = 175; //width de redimensionnement
         $nouv_h = round(($nouv_w / $filesize[0]) * $filesize[1]); //calcul height en fonction de width
         //$nouv_h = 175;
@@ -102,6 +104,7 @@ class Controller_Utilisateur {
         } else {
             $etatcopie = 0;
         }
+        echo "<p>ça passe ?4</p>";
         imagedestroy($destination);
         if ($etatcopie == 0) {
            // return NULL;
