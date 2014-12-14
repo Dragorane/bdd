@@ -11,13 +11,13 @@ class Controller_acheter {
     /* Page index */
 
     public function index() {
-        include 'vues/principale.php';
+        include 'vues/acheter/index.php';
     }
     public function acheterbien() {
-        include 'vues/acheterbien.php';
+        include 'vues/acheter/acheterbien.php';
     }
     public function acheterservice() {
-        include 'vues/acheterservice.php';
+        include 'vues/acheter/acheterservice.php';
     }
 
 }
