@@ -56,7 +56,7 @@ class Controller_Utilisateur {
                                             echo "<div class='warning'><p>Erreur, les mots de passes saisient ne correspondent pas.</p></div>";
                                         } else {
                                             //on ajoute l'utilisateur à la base de donnée
-                                            $photo = Controller_Utilisateur::path_img();
+                                            $photo = Controller_Utilisateur::path_img($_FILES['photo']);
                                             $verif = 1;
                                             $uti = Utilisateur::create($_POST['nom'], $_POST['pnom'], $_POST['pseudo'], $_POST['mdp'], $_POST['adr'], $_POST['mail'], $_POST['tel'], 0, 0, $photo);
                                         }
@@ -77,10 +77,10 @@ class Controller_Utilisateur {
 
     /* Création du path vers l'avatar de l'utilisateur */
 
-    public function path_img() {
-        $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION); //recupération de l'extension de la photo
+    public function path_img($photo) {
+        $ext = pathinfo($photo['name'], PATHINFO_EXTENSION); //recupération de l'extension de la photo
         $content_dir = BASEURL.'/images/avatar/'; //dossier où la photo sera stocké
-        $filename = $_FILES['photo']['tmp_name'];
+        $filename = $photo['tmp_name'];
         $filesize = getimagesize($filename);
         if ($ext == 'jpg') { //photo en jpg
             $source = imagecreatefromjpeg($filename);
@@ -97,7 +97,7 @@ class Controller_Utilisateur {
         $destination = imagecreatetruecolor($nouv_w, $nouv_h);
         ImageCopyResampled($destination, $source, 0, 0, 0, 0, $nouv_w, $nouv_h, $filesize[0], $filesize[1]);
         header('Content-type: image/png');
-        if (imagepng($destination, $content_dir . $_FILES['photo']['name'])) {
+        if (imagepng($destination, $content_dir . $photo['name'])) {
             $etatcopie = 1;
         } else {
             $etatcopie = 0;
@@ -107,7 +107,7 @@ class Controller_Utilisateur {
            // return NULL;
             echo "<h1>Erreur dans la copie ...</h1>";
         } else {
-            $lienimg = BASEURL."/images/avatar/" . $_FILES['photo']['name'];
+            $lienimg = BASEURL."/images/avatar/" . $photo['name'];
            // return $lienimg;
         echo "<h1>Lien vers l'image : " . $lienimg . "</h1>";
         }
@@ -267,7 +267,7 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    $photo = Controller_Utilisateur::path_img();
+                    $photo = Controller_Utilisateur::path_img($_FILES['photo']);
                     $uti->set_avatar($photo);
                     echo "<div class='success'><p>Votre avatar a été modifié.</p></div>";
                 } else {
