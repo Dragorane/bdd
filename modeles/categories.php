@@ -34,6 +34,7 @@ class categories extends Model_Base {
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
         oci_execute($stmt);
         $i = 0;
+        $tabcat=null;
         while ($row = oci_fetch_assoc($stmt)) {
             $tabcat[$i][0] = $row['CAT_PERE'];
             $tabcat[$i][1] = $row['IDCAT'];

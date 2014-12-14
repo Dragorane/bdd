@@ -8,41 +8,173 @@ class biens extends Model_Base {
     private $_lib;
     private $_desc;
     private $_prix;
-    private $_nbPlaces;
     private $_vendu;
     private $_iduti;
     private $_idcateg;
+    private $_idetat;
 
-    public function __construct($id, $lib, $desc, $prix, $nbplaces, $vendu, $iduti, $categ) {
+    public function __construct($id, $lib, $desc, $prix, $vendu, $iduti, $categ, $etat) {
         $this->_id = $id;
         $this->_lib = $lib;
         $this->_desc = $desc;
         $this->_prix = $prix;
-        $this->_nbplaces = $nbplaces;
         $this->_vendu = $vendu;
         $this->_iduti = $iduti;
         $this->_idcateg = $categ;
+        $this->_idetat = $etat;
     }
 
-    public static function create($lib, $desc, $prix, $nbplaces, $vendu, $iduti, $categ) {
-        $query = "INSERT INTO Biens VALUES (Utilisateurs_seq.nextval,:pseudo,:mdp,:pnom,:nom,:adr,:email,:posix,:posiy,:tel,:photo,0,1)";
+    public static function create($lib, $desc, $prix, $iduti, $categ, $etat) {
+        $query = "INSERT INTO Biens VALUES (Utilisateurs_seq.nextval,:lib,:desc,:prix,0,:iduti,:categ,:etat)";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion utilisateur" . oci_error($conn));
         //formatage des variables et sécurité
         $lib_verif = stripslashes(htmlspecialchars($lib));
         $desc_verif = stripslashes(htmlspecialchars($desc));
         $prix_verif = stripslashes(htmlspecialchars($prix));
-        $nbplaces_verif = stripslashes(htmlspecialchars($nbplaces));
-        $vendu_verif = stripslashes(htmlspecialchars($vendu));
         $iduti_verif = stripslashes(htmlspecialchars($iduti));
         $categ_verif = stripslashes(htmlspecialchars($categ));
+        $etat_verif = stripslashes(htmlspecialchars($etat));
         oci_bind_by_name($stmt, ":lib", $lib_verif);
         oci_bind_by_name($stmt, ":desc", $desc_verif);
-        oci_bind_by_name($stmt, "prix", $prix_verif);
-        oci_bind_by_name($stmt, ":nblaces", $nbplaces_verif);
-        oci_bind_by_name($stmt, ":vendu", $vendu_verif);
+        oci_bind_by_name($stmt, ":prix", $prix_verif);
         oci_bind_by_name($stmt, ":iduti", $iduti_verif);
         oci_bind_by_name($stmt, ":categ", $categ_verif);
+        oci_bind_by_name($stmt, ":etat", $etat_verif);
         oci_execute($stmt);
+    }
+
+    public function get_titre() {
+        return $this->_lib;
+    }
+
+    public function get_desc() {
+        return $this->_desc;
+    }
+
+    public function get_id() {
+        return $this->_id;
+    }
+
+    public function get_prix() {
+        return $this->_prix;
+    }
+
+    public function get_uti() {
+        return $this->_iduti;
+    }
+
+    public function get_categ() {
+        return $this->_idcateg;
+    }
+
+    public function get_etat() {
+        return $this->_etat;
+    }
+
+    public function get_vendu() {
+        return $this->_vendu;
+    }
+
+    public static function tabbiens() {
+        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+        oci_execute($stmt);
+        $i = 0;
+        $tabbien = null;
+        while ($row = oci_fetch_assoc($stmt)) {
+            $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+            $i = $i + 1;
+        }
+        return $tabbien;
+    }
+
+    public static function tabbiens_prix() {
+        $tabbien = null;
+        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0 order by prix";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+        oci_execute($stmt);
+        $i = 0;
+        while ($row = oci_fetch_assoc($stmt)) {
+            $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+            $i = $i + 1;
+        }
+    }
+
+    public static function tabbiens_prixdesc() {
+        $tabbien = null;
+        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0 order by prix DESC";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+        oci_execute($stmt);
+        $i = 0;
+        while ($row = oci_fetch_assoc($stmt)) {
+            $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+            $i = $i + 1;
+        }
+    }
+
+    public static function tabbiens_cat($cat) {
+        $tabbien = null;
+        if (is_int($cat)) {
+            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0 and idCat=" . $cat;
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            oci_execute($stmt);
+            $i = 0;
+            while ($row = oci_fetch_assoc($stmt)) {
+                $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+                $i = $i + 1;
+            }
+        }
+        return $tabbien;
+    }
+
+    public static function tabbiens_prixdesc_cat($cat) {
+        $tabbien = null;
+        if (is_int($cat)) {
+            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0 and idCat=" . $cat . " order by prix DESC";
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            oci_execute($stmt);
+            $i = 0;
+            while ($row = oci_fetch_assoc($stmt)) {
+                $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+                $i = $i + 1;
+            }
+        }
+        return $tabbien;
+    }
+
+    public static function tabbiens_prix_cat($cat) {
+        $tabbien = null;
+        if (is_int($cat)) {
+            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where vendu=0 and idCat=" . $cat . " order by prix";
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            oci_execute($stmt);
+            $i = 0;
+            while ($row = oci_fetch_assoc($stmt)) {
+                $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+                $i = $i + 1;
+            }
+        }
+        return $tabbien;
+    }
+
+    public static function tabbiens_eval_cat($cat) {
+        $tabbien = null;
+        return $tabbien;
+    }
+
+    public static function tabbiens_eval() {
+        $tabbien = null;
+        return $tabbien;
+    }
+
+    public static function tabbiens_geoloc_cat($cat) {
+        $tabbien = null;
+        return $tabbien;
+    }
+
+    public static function tabbiens_geoloc() {
+        $tabbien = null;
+        return $tabbien;
     }
 
 }

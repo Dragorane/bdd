@@ -91,6 +91,32 @@ class Utilisateur extends Model_Base {
         return $o;
     }
 
+    public static function get_by_id($id) {
+        $o = null;
+        if (is_int($id)) {
+            $query = "SELECT * FROM Utilisateurs WHERE idUti=" . $id . " and desactive != 0";
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur select by id utilisateur " . oci_error($conn));
+            oci_execute($stmt);
+            $row = oci_fetch_assoc($stmt);
+            if ($row != null) {
+                $id = $row['IDUTI'];
+                $pseudo = $row['PSEUDOUTI'];
+                $mdp = $row['MDPUTI'];
+                $pnom = $row['PNOMUTI'];
+                $nom = $row['NOMUTI'];
+                $adr = $row['ADRUTI'];
+                $email = $row['EMAILUTI'];
+                $tel = $row['TELUTI'];
+                $posix = $row['POSIGEOX'];
+                $posiy = $row['POSIGEOY'];
+                $photo = $row['PHOTOUTI'];
+                $pt = $row['POINTTROC'];
+                $o = new Utilisateur($id, $nom, $pnom, $pseudo, $mdp, $adr, $email, $tel, $posix, $posiy, $photo, $pt);
+            }
+        }
+        return $o;
+    }
+
     public static function verif_pseudo($pseudo) {
         $query = "select * from Utilisateurs where pseudoUti=:pseudo";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur select utilisateurs.pseudo " . oci_error($conn));
