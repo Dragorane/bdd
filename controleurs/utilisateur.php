@@ -56,11 +56,7 @@ class Controller_Utilisateur {
                                             echo "<div class='warning'><p>Erreur, les mots de passes saisient ne correspondent pas.</p></div>";
                                         } else {
                                             //on ajoute l'utilisateur à la base de donnée
-                                            if (isset($_POST['photo'])) {
-                                                $photo = $_POST['photo'];
-                                            } else {
-                                                $photo = null;
-                                            }
+                                            $photo = Utilisateur::path_img();
                                             $verif = 1;
                                             $uti = Utilisateur::create($_POST['nom'], $_POST['pnom'], $_POST['pseudo'], $_POST['mdp'], $_POST['adr'], $_POST['mail'], $_POST['tel'], 0, 0, $photo);
                                         }
@@ -76,6 +72,43 @@ class Controller_Utilisateur {
             echo "<a href='javascript:history.back()'><h2 class='center'>Retour au formulaire d'inscription</h2></a>";
         } else {
             echo "<div class='success'><p>L'utilisateur a bien été ajouté, vous pouvez vous conneter.</p></div>";
+        }
+    }
+
+    /* Création du path vers l'avatar de l'utilisateur */
+
+    public function path_img() {
+        $ext = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION); //recupération de l'extension de la photo
+        $content_dir = 'images/avatar/'; //dossier où la photo sera stocké
+        $filename = $_FILES['photo']['tmp_name'];
+        $filesize = getimagesize($filename);
+        if ($ext == 'jpg') { //photo en jpg
+            $source = imagecreatefromjpeg($filename);
+        }
+        if ($ext == 'gif') {//photo en gif
+            $source = imagecreatefromgif($filename);
+        }
+        if ($ext == 'png') {//photo en png
+            $source = imagecreatefrompng($filename);
+        }
+        $nouv_w = 175; //width de redimensionnement
+        $nouv_h = round(($nouv_w / $filesize[0]) * $filesize[1]); //calcul height en fonction de width
+        //$nouv_h = 175;
+        $destination = imagecreatetruecolor($nouv_w, $nouv_h);
+        ImageCopyResampled($destination, $source, 0, 0, 0, 0, $nouv_w, $nouv_h, $filesize[0], $filesize[1]);
+        header('Content-type: image/png');
+        if (imagepng($destination, $content_dir . $_FILES['photo']['name'])) {
+            $etatcopie = 1;
+        } else {
+            $etatcopie = 0;
+        }
+        imagedestroy($destination);
+
+        if ($etatcopie == 0) {
+            return NULL;
+        } else {
+            $lienimg = "http://turing.u-strasbg.fr/~llaisne/bdd/images/avatar/" . $_FILES['photo']['name'];
+            return $lienimg;
         }
     }
 
@@ -232,7 +265,8 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    $uti->set_avatar($_POST['avatar']);
+                    $photo = $uti->path_img();
+                    $uti->set_avatar($photo);
                     echo "<div class='success'><p>Votre avatar a été modifié.</p></div>";
                 } else {
                     $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";

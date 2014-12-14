@@ -199,7 +199,12 @@ class Utilisateur extends Model_Base {
     }
 
     public function set_avatar($avatar) {
-        
+        $this->_photo = $avatar;
+        $query = "UPDATE Utilisateurs SET photoUti=:photo where idUti=:id";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.pnom " . oci_error($conn));
+        oci_bind_by_name($stmt, ":id", $this->_id);
+        oci_bind_by_name($stmt, ":photo", $this->_photo);
+        oci_execute($stmt);
     }
 
     public function set_adr($adr) {
