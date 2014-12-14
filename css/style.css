@@ -141,7 +141,7 @@ table.gestion td{
 .menu_categorie{
     float:left;
     width:250px;
-    border-left:1px solid black;
+    border-right:1px solid black;
 }
 div.filtre_recherche{
     float:right;
