@@ -76,7 +76,7 @@ class biens extends Model_Base {
     }
 
     public static function tabbiens() {
-        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBiens=0";
+        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
         oci_execute($stmt);
         $i = 0;
@@ -115,7 +115,7 @@ class biens extends Model_Base {
     public static function tabbiens_cat($cat) {
         $tabbien = null;
         if (is_int($cat)) {
-            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBiens=0 and idCat=" . $cat;
+            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 and idCat=" . $cat;
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
             oci_execute($stmt);
             $i = 0;
