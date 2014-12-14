@@ -1,6 +1,6 @@
 <?php
 
-//require_once 'modeles/.php';
+require_once 'modeles/categorie.php';
 
 class Controller_vendre {
 
@@ -11,6 +11,7 @@ class Controller_vendre {
     /* Page index */
 
     public function index() {
+        categories::initcat();
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != 0))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {

@@ -28,6 +28,17 @@ class categories extends Model_Base {
         oci_bind_by_name($stmt, ":catpere", $cat_pere_verif);
         oci_execute($stmt);
     }
+    
+    public static function initcat(){
+        create("Informatique Logiciels",1 , null);
+        create("PC fixe",1 , 2);
+        create("PC portable",1 , 2);
+        create("Ecrans",1 , 2);
+        create("Claviers",1 , 2);
+        create("Souris",1 , 2);
+        create("Enceintes",1 , 2);
+        create("Mémoires / RAM",1 , 2);
+    }
 
 }
 
