@@ -32,7 +32,6 @@ class Controller_vendre {
             $tabbiens = Controller_vendre::tab_biens();
             include 'vues/vendre/vendrebien.php';
             include "vues/menu_cat.php";
-            include "vues/lesbiens.php";
         }
     }
 

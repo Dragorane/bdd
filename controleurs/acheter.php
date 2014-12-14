@@ -25,6 +25,7 @@ class Controller_acheter {
         include 'vues/acheter/acheterbien.php';
         include "vues/menu_cat.php";
         include "vues/filtre_recherche.php";
+        include "vues/lesbiens.php";
     }
 
     public function acheterservice() {
