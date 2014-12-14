@@ -7,6 +7,7 @@ require_once 'modeles/services.php';
 require_once 'modeles/propositions.php';
 require_once 'modeles/utilisateur.php';
 require_once 'modeles/photos.php';
+require_once 'modeles/Etat.php';
 
 class Controller_vendre {
 
