@@ -11,6 +11,15 @@ class Controller_vendre {
     /* Page index */
 
     public function index() {
-        include 'vues/principale.php';
+        include 'vues/vendre/index.php';
     }
+
+    public function vendrebien() {
+        include 'vues/vendre/vendrebien.php';
+    }
+
+    public function vendreservice() {
+        include 'vues/vendre/vendreservice.php';
+    }
+
 }

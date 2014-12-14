@@ -8,7 +8,8 @@ define('SQL_PASSWORD', 'secretent1493');
 
 require_once 'modeles/model_base.php';
 require_once 'controleurs/utilisateur.php';
-require_once 'controleurs/object.php';
+require_once 'controleurs/vendre.php';
+require_once 'controleurs/acheter.php';
 
 if (isset($_SERVER['PATH_INFO'])) {
     $args = explode('/', $_SERVER['PATH_INFO']);
@@ -22,7 +23,8 @@ Model_Base::set_db();
 $titre = "";
 ob_start();
 $cu = new Controller_Utilisateur();
-$co = new Controller_Object();
+$cv = new Controller_vendre();
+$ca = new Controller_acheter();
 
 //appel des controller
 switch ($args[1]) {
@@ -102,25 +104,25 @@ switch ($args[1]) {
     case 'valid_connect':
         $cu->connexion_valide();
         break;
-    case 'objet_form':
-        $co->objet_form();
-        break;
-    case 'objet':
-        $co->objet();
-        break;
-    case 'objet_id':
-        if (isset($args[2])) {
-            $co->objet_id($args[2]);
-        }
-        break;
-    case 'all_object' :
-        $co->all_object();
-        break;
     //Troc acheter
     case 'acheter' :
+        $ca->index();
+        break;
+    case 'acheterbien' :
+        $ca->acheterbien();
+        break;
+    case 'acheterservice' :
+        $ca->acheterservice();
         break;
     //troc vendre
     case 'vendre':
+        $cv->index();
+        break;
+    case 'vendrebien':
+        $cv->vendrebien();
+        break;
+    case 'vendreservice':
+        $cv->vendreservice();
         break;
     default :
         echo "<div class='warning'><p>La page demandée n'existe pas.</p></div>";
