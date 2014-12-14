@@ -103,13 +103,15 @@ class Controller_Utilisateur {
             $etatcopie = 0;
         }
         imagedestroy($destination);
-
         if ($etatcopie == 0) {
-            return NULL;
+           // return NULL;
+            echo "<h1>Erreur dans la copie ...</h1>";
         } else {
             $lienimg = "http://turing.u-strasbg.fr/~llaisne/bdd/images/avatar/" . $_FILES['photo']['name'];
-            return $lienimg;
+           // return $lienimg;
+        echo "<h1>Lien vers l'image : " . $lienimg . "</h1>";
         }
+        return null;
     }
 
     /* Formulaire de connexion d'un utilisateur */
@@ -352,7 +354,7 @@ class Controller_Utilisateur {
                     $content = "<div class='warning'><p>Formulaire non validé. Vous ne pouvez pas ajouter de point troc.</p></div>";
                 }
             } else {
-                $content = "<div class='warning'><p>Erreur lors de l'identification de votre compte.</p></div>";
+                $content = "<div class='warning'><p>Erreur lorsh de l'identification de votre compte.</p></div>";
             }
         }
     }
