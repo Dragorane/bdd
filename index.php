@@ -116,6 +116,12 @@ switch ($args[1]) {
     case 'all_object' :
         $co->all_object();
         break;
+    //Troc acheter
+    case 'acheter' :
+        break;
+    //troc vendre
+    case 'vendre':
+        break;
     default :
         echo "<div class='warning'><p>La page demandée n'existe pas.</p></div>";
 }
