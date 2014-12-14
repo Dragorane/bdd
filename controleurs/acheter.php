@@ -24,12 +24,14 @@ class Controller_acheter {
         $tabcat = categories::list_categ(1);
         include 'vues/acheter/acheterbien.php';
         include "vues/menu_cat.php";
+        include "vues/filtre_recherche.php";
     }
 
     public function acheterservice() {
         $tabcat = categories::list_categ(2);
         include 'vues/acheter/acheterservice.php';
         include "vues/menu_cat.php";
+        include "vues/filtre_recherche.php";
     }
 
 }

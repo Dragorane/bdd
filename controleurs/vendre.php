@@ -31,6 +31,7 @@ class Controller_vendre {
             $tabcat = categories::list_categ(1);
             include 'vues/vendre/vendrebien.php';
             include "vues/menu_cat.php";
+            include "vues/filtre_recherche.php";
         }
     }
 
@@ -41,6 +42,7 @@ class Controller_vendre {
             $tabcat = categories::list_categ(2);
             include 'vues/vendre/vendreservice.php';
             include "vues/menu_cat.php";
+            include "vues/filtre_recherche.php";
         }
     }
 
