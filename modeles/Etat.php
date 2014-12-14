@@ -15,10 +15,36 @@ class Etat extends Model_Base {
     public static function create($lib) {
         $query = "INSERT INTO Etat VALUES (Etat_seq.nextval,:lib)";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
-        //formatage des variables et sécurité
         $lib_verif = stripslashes(htmlspecialchars($lib));
         oci_bind_by_name($stmt, ":lib", $lib_verif);
         oci_execute($stmt);
+    }
+
+    public function get_id() {
+        return $this->_id;
+    }
+
+    public function get_lib() {
+        return $this->_lib;
+    }
+
+    public static function init() {
+        create("Neuf");
+        create("Bon état");
+        create("Abimé");
+    }
+
+    public static function lesEtats() {
+        $tab = null;
+        $query = "SELECT idEtat, libEtat from Etat order by idEtat";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+        oci_execute($stmt);
+        $i = 0;
+        while ($row = oci_fetch_assoc($stmt)) {
+            $tab[$i] = new Etat($row['IDETAT'], $row['LIBETAT']);
+            $i = $i + 1;
+        }
+        return $tab;
     }
 
 }

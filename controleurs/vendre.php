@@ -20,6 +20,7 @@ class Controller_vendre {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
+            Etat::init();
             include 'vues/vendre/index.php';
         }
     }
@@ -28,9 +29,14 @@ class Controller_vendre {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
-            $tabcat = categories::list_categ(1);
-            include 'vues/vendre/vendrebien.php';
+            include 'vues/vendre/form_vendreservice.php';
             include "vues/menu_cat.php";
+            if (!isset($_GET['idcat'])) {
+                echo "<h2>Etape 1 :</h2><p class='center'> Merci de selectionner la catégorie de votre bien dans le menu à droite.</p>";
+            } else {
+                $tabetat = Etat::lesEtats();
+                include "vues/form_vendrebien.php";
+            }
         }
     }
 
@@ -44,12 +50,4 @@ class Controller_vendre {
         }
     }
 
-    public function form_vendrebien() {
-        if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
-            echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
-        } else {
-            include 'vues/vendre/form_vendreservice.php';
-            include "vues/menu_cat.php";
-        }
-    }
 }
