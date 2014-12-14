@@ -1,3 +1,5 @@
+<h2 class='center'>Mise en vente d'un Bien</h2>
+
 <div class="form_vendre">
     <form action="<?= BASEURL ?>/index.php/valid_form_vendre" method="post">
         <input type="hidden" name="idcat" value="<?php echo $_GET['idcat'] ?>">
