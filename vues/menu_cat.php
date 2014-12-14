@@ -1,6 +1,4 @@
 <?php
-
-$tabcat = categories::list_categ($type_categorie);
 //le premier est obligatoirement une catégorie père.
 echo "<div class='menu_categorie'>";
 echo "<ul class='categorie'>";

@@ -21,13 +21,13 @@ class Controller_acheter {
     }
 
     public function acheterbien() {
-        $type_categorie = 1;
+        $tabcat = categories::list_categ(1);
         include 'vues/acheter/acheterbien.php';
         include "vues/menu_cat.php";
     }
 
     public function acheterservice() {
-        $type_categorie = 2;
+        $tabcat = categories::list_categ(2);
         include 'vues/acheter/acheterservice.php';
         include "vues/menu_cat.php";
     }

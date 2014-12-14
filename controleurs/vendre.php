@@ -28,8 +28,9 @@ class Controller_vendre {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
-            $type_categorie = 1;
+            $tabcat = categories::list_categ(2);
             include 'vues/vendre/vendrebien.php';
+            include "vues/menu_cat.php";
         }
     }
 
@@ -37,7 +38,7 @@ class Controller_vendre {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
-            $type_categorie = 2;
+            $tabcat = categories::list_categ(2);
             include 'vues/vendre/vendreservice.php';
             include "vues/menu_cat.php";
         }
