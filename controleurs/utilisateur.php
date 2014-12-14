@@ -56,7 +56,7 @@ class Controller_Utilisateur {
                                             echo "<div class='warning'><p>Erreur, les mots de passes saisient ne correspondent pas.</p></div>";
                                         } else {
                                             //on ajoute l'utilisateur à la base de donnée
-                                            $photo = Utilisateur::path_img();
+                                            $photo = Controller_Utilisateur::path_img();
                                             $verif = 1;
                                             $uti = Utilisateur::create($_POST['nom'], $_POST['pnom'], $_POST['pseudo'], $_POST['mdp'], $_POST['adr'], $_POST['mail'], $_POST['tel'], 0, 0, $photo);
                                         }
@@ -265,7 +265,7 @@ class Controller_Utilisateur {
         } else {
             if ($uti != null) {
                 if (isset($_POST['submit'])) {
-                    $photo = path_img();
+                    $photo = Controller_Utilisateur::path_img();
                     $uti->set_avatar($photo);
                     echo "<div class='success'><p>Votre avatar a été modifié.</p></div>";
                 } else {
