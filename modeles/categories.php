@@ -35,7 +35,6 @@ class categories extends Model_Base {
         oci_execute($stmt);
         $i = 0;
         while ($row = oci_fetch_assoc($stmt)) {
-            print_r($row);
             $tabcat[$i][0] = $row['CAT_PERE'];
             $tabcat[$i][1] = $row['IDCAT'];
             $tabcat[$i][2] = $row['LIBCAT'];

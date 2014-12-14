@@ -28,7 +28,7 @@ class Controller_vendre {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
-            $tabcat = categories::list_categ(2);
+            $tabcat = categories::list_categ(1);
             include 'vues/vendre/vendrebien.php';
             include "vues/menu_cat.php";
         }
