@@ -5,7 +5,7 @@
     <tr><th>Acheteur</th><th>prix</th><th>date</th><th>lieux</th></tr>
     <?php
     for ($i = 0; $i < count($prop_vendeur); $i++) {
-        $uti_acheteur = Utilisateur::get_by_id($prop_vendeur[$i]->get_id());
+        $uti_acheteur = Utilisateur::get_by_id($prop_vendeur[$i]->get_iduti());
         if ($uti != null) {
             echo "<tr>";
             echo "<td>" . $uti_acheteur->pseudo() . "</td>";
