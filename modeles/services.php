@@ -32,7 +32,6 @@ class services extends Model_Base {
             $lib_verif = stripslashes(htmlspecialchars($lib));
             $desc_verif = stripslashes(htmlspecialchars($desc));
             $nbplaces_verif = stripslashes(htmlspecialchars($nbplaces));
-            $vendu_verif = stripslashes(htmlspecialchars($vendu));
             oci_bind_by_name($stmt, ":lib", $lib_verif);
             oci_bind_by_name($stmt, ":desc", $desc_verif);
             oci_bind_by_name($stmt, ":prix", $prix);
