@@ -54,10 +54,9 @@ class categories extends Model_Base {
             $query = "select * from Categorie where idCat=:id";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
             //formatage des variables et sécurité
-            oci_bind_by_name($stmt, ":id", $id_verif);
+            oci_bind_by_name($stmt, ":id", $id);
             oci_execute($stmt);
             $row = oci_fetch_assoc($stmt);
-            echo "<p>" . $row['IDCAT'] . $row['LIBCAT'] . $row['TYPE'] . $row['CAT_PERE'] . "</p>";
             $cat = new categories($row['IDCAT'], $row['LIBCAT'], $row['TYPE'], $row['CAT_PERE']);
         } else {
             echo "<div class='warning'><p>Erreur, la catégorie a été mal séléctionnée...</p></div>";
