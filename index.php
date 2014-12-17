@@ -172,6 +172,12 @@ switch ($args[1]) {
     case 'laproposition':
         $cp->laproposition();
         break;
+    case 'valider_prop':
+        $cp->valid_proposition();
+        break;
+    case 'annuler_prop':
+        $cp->annulerproposition();
+        break;
     default :
         echo "<div class='warning'><p>La page demandée n'existe pas.</p></div>";
 }

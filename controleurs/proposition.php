@@ -38,4 +38,16 @@ class Controller_proposition {
         }
     }
 
+    public static function valid_proposition() {
+        if (isset($_POST['valid_prop'])) {
+            propositions::proposition_accepte($_POST['idprop']);
+        }
+    }
+
+    public static function annulerproposition() {
+        if (isset($_POST['sup_prop'])) {
+            propositions::proposition_refuse($_POST['idprop']);
+        }
+    }
+
 }
