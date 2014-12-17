@@ -86,8 +86,8 @@ class categories extends Model_Base {
         categories::create("Partitions et paroles", 1, 18);
 
         categories::create("Aide a domicile", 2, null);
-        categories::create("Femme de ménage - Technicien de surface", 2, 20);
-        categories::create("Aide soignante - Infirmier(e) à domicile", 2, 20);
+        categories::create("Femme de menage - Technicien de surface", 2, 20);
+        categories::create("Aide soignante - Infirmier(e) a domicile", 2, 20);
         categories::create("Nourrice", 2, 20);
         categories::create("Gardiennage de maison", 2, 20);
         categories::create("Garde d'animaux", 2, 20);
