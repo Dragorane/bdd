@@ -138,7 +138,7 @@ class Controller_acheter {
                     echo "<div class='warning'><p>Erreur, vous n'avez pas assez de points trocs pour acheter le bien.</p></div>";
                 } else {
                     $date = explode("/", $_POST['date']);
-                    $verif = verifierDate($date[1], $date[0], $date[2]);
+                    $verif = $this->verifierDate($date[1], $date[0], $date[2]);
                     if ($verif == 0) {
                         echo "<div class='warning'><p>Erreur, la date saisie n'est pas correcte.</p></div>";
                     } else {
