@@ -11,5 +11,5 @@ if ($verif == 0) {
     </form>
     <?php
 }
-include (BASEURL . "/vues/afficher_bien.php");
+include ("../vues/afficher_bien.php");
 ?>
