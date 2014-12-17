@@ -6,17 +6,19 @@
     <?php
     for ($i = 0; $i < count($prop_vendeur); $i++) {
         $uti_acheteur = Utilisateur::get_by_id($prop_vendeur[$i]->get_id());
-        echo "<tr>";
-        echo "<td>" . $uti_acheteur->pseudo() . "</td>";
-        echo "<td>" . $prop_vendeur[$i]->get_prix() . "</td>";
-        echo "<td>" . $prop_vendeur[$i]->get_date() . "</td>";
-        echo "<td>";
-        echo "<form name='voir_prop' method='POST' action='" . BASEURL . "/index.php/laproposition'>"
-        . "<input type='hidden' name='laprop' value='" . $prop_vendeur[$i]->get_id() . "'/>"
-        . "<input type='submit' value='Plus de détail' name='detail_prop'/>"
-        . "</form>";
-        echo "</td>";
-        echo "</tr>";
+        if ($uti != null) {
+            echo "<tr>";
+            echo "<td>" . $uti_acheteur->pseudo() . "</td>";
+            echo "<td>" . $prop_vendeur[$i]->get_prix() . "</td>";
+            echo "<td>" . $prop_vendeur[$i]->get_date() . "</td>";
+            echo "<td>";
+            echo "<form name='voir_prop' method='POST' action='" . BASEURL . "/index.php/laproposition'>"
+            . "<input type='hidden' name='laprop' value='" . $prop_vendeur[$i]->get_id() . "'/>"
+            . "<input type='submit' value='Plus de détail' name='detail_prop'/>"
+            . "</form>";
+            echo "</td>";
+            echo "</tr>";
+        }
     }
     ?>
 </table>
