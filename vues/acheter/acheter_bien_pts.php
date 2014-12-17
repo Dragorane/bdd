@@ -8,7 +8,7 @@ if ($verif == 0) {
 } else {
     ?>
     <form method='POST' name='form_acheter_bien_pts' action='<?= BASEURL ?>/index.php/valid_acheter_bien_pts'>
-        <input type='hidden' name='bien' value='<?php echo $bien->get_id() ?>'>
+        <input type='hidden' name='bien' value='<?php echo $bien->get_id(); ?>'>
         <label for='adr'>Adresse de l'échange</label><br/>
         <input type='text' name='adr' id='adr'/><br/><br/>
         <label for='date'>Date de l'échange (format dd/mm/aaaa)</label><br/>
