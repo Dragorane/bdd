@@ -268,7 +268,7 @@ class Controller_acheter {
                         if ($laprop == null) {
                             echo "<div class='warning'><p>Erreur, la proposition n'a pas été enregistrée</p></div>";
                         } else {
-                            $laprop->ajout_service_proposition($serv, $date);
+                            $laprop->ajout_service_proposition($serv, $_POST['date']);
                             include "vues/acheter/valid_acheter_serv.php";
                         }
                     }
