@@ -9,7 +9,7 @@
     ?>
     <h3>Evaluer l'utilisateur :</h3>
     <form method='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_uti'>
-        <input type='hidden' name='uti_eval' value='<?php echo $_GET['id']; ?>'>
+        <input type='hidden' name='uti_eval' value='<?php echo $_GET['pseudo']; ?>'>
         <label for='titre'>Titre de votre évaluation</label><br/>
         <input type='text' name='titre' id='titre'/><br/><br/>
         <label for='note'>Note d'évaluation /5</label><br/>
