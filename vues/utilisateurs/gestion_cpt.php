@@ -38,6 +38,7 @@
     <div class="gestion_historique">
         <hr/>
         <h2 class='center'>Historique des Echanges</h2>
+        <?php echo count($historique); ?>
         <table>
             <tr><th>Acheteur</th><th>Vendeur</th><th>Prix</th><th>Date</th><th>Etat</th></tr>
             <?php
