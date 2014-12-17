@@ -35,11 +35,11 @@ class biens extends Model_Base {
             oci_bind_by_name($stmt, ":desc", $desc_verif);
             oci_bind_by_name($stmt, ":prix", $prix);
             oci_bind_by_name($stmt, ":iduti", $iduti);
-            oci_bind_by_name($stmt, ":categ", $categ);
             oci_bind_by_name($stmt, ":etat", $etat);
+            oci_bind_by_name($stmt, ":categ", $categ);
             oci_execute($stmt);
         } else {
-            echo "<div class=''warning><p>Erreur, données corrompues.</p></div>";
+            echo "<div class='warning'><p>Erreur, données corrompues.</p></div>";
         }
     }
 

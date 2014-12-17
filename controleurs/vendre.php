@@ -61,6 +61,7 @@ class Controller_vendre {
         } else {
             if (Controller_vendre::validpts($_POST['prix']) != 0) {
                 $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+                echo "<p>" . $_POST['titre'] . $_POST['desc'] . $_POST['prix'] . $uti->id() . $_POST['idcat'] . $_POST['etat'] . "</p>";
                 biens::create($_POST['titre'], $_POST['desc'], $_POST['prix'], $uti->id(), $_POST['idcat'], $_POST['etat']);
                 $verif = 1;
             }
