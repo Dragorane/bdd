@@ -37,7 +37,7 @@ class evaluations extends Model_Base {
     }
 
     public function get_iduti() {
-        return $this->_iduti;
+        return $this->_idCrea;
     }
 
     public static function create($titre, $comm, $note, $idcrea, $iduti, $idserv, $idbien) {
