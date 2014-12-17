@@ -23,7 +23,7 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_bienserv?id=" . $bien
 </form>
 
 <div class="uti_evaluation">
-    <h3 class='center'>Evaluations du bien</h3>
+    <h3 class='center'>Les évaluations du bien (<?php echo $moyeval; ?>/5)</h3>
     <?php
     for ($i = 0; $i < count($tabeval); $i++) {
         $uti = Utilisateur::get_by_id($tabeval[$i]->get_iduti());

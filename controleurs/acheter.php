@@ -297,6 +297,16 @@ class Controller_acheter {
         }
     }
 
+    public function valid_eval_service() {
+        if (isset($_POST['valid_eval'])) {
+            $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+            evaluations::nouvelle_eval_service($_POST['titre'], $_POST['comm'], $_POST['note'], $uti->id(), $_POST['id']);
+            echo "<div class='success'><p>Votre évaliation a bien été ajoutée.</p></div>";
+        } else {
+            echo "<div class='warning'><p>Erreur, vous n'avez pas accès à cette page.</p></div>";
+        }
+    }
+
 //fonction générales
     public function verifpts($uti, $bien) {
         if ($uti->pt_troc() >= $bien->get_prix()) {

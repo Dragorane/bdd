@@ -23,6 +23,16 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_bienserv?id=" . $se
 </form>
 
 <div class="uti_evaluation">
-    <h3 class='center'>Evaluations du service</h3>
+    <h3 class='center'>Les évaluations du service (<?php echo $moyeval; ?>/5)</h3>
+    <?php
+    for ($i = 0; $i < count($tabeval); $i++) {
+        $uti = Utilisateur::get_by_id($tabeval[$i]->get_iduti());
+        echo "<div class='uneeval'>";
+        echo "<h4>" . $tabeval[$i]->get_titre() . " (note : " . $tabeval[$i]->get_note() . "/5)</h4>";
+        echo "<p>" . $tabeval[$i]->get_comm() . "</p>";
+        echo "Evaluation postée par l'utilisateur <a href='" . BASEURL . "/index.php/pageuti?pseudo=" . $uti->pseudo() . "'>'" . $uti->pseudo() . "'</a>";
+        echo "</div>";
+    }
+    ?>
 </div>
 

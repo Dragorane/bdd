@@ -148,7 +148,7 @@ class evaluations extends Model_Base {
         $bien = biens::get_bien_by_id($id);
         $tabeval = null;
         if ($bien != NULL) {
-            $query = "select IdEval, titreEval, commEval, note, idUtiCrea, idUtiEva, idServ, idBien from evaluation where idUtiEva=" . $bien->get_id();
+            $query = "select IdEval, titreEval, commEval, note, idUtiCrea, idUtiEva, idServ, idBien from evaluation where idBien=" . $bien->get_id();
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
             oci_execute($stmt);
             $i = 0;
@@ -164,7 +164,7 @@ class evaluations extends Model_Base {
         $serv = services::get_serv_by_id($id);
         $tabeval = null;
         if ($bien != NULL) {
-            $query = "select IdEval, titreEval, commEval, note, idUtiCrea, idUtiEva, idServ, idBien from evaluation where idUtiEva=" . $serv->get_id();
+            $query = "select IdEval, titreEval, commEval, note, idUtiCrea, idUtiEva, idServ, idBien from evaluation where idServ=" . $serv->get_id();
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
             oci_execute($stmt);
             $i = 0;
