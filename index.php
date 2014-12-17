@@ -146,7 +146,7 @@ switch ($args[1]) {
         break;
     //proposition
     case 'propositions':
-        $cv->index();
+        $cp->index();
         break;
     default :
         echo "<div class='warning'><p>La page demandée n'existe pas.</p></div>";
