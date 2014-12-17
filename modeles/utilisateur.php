@@ -41,7 +41,7 @@ class Utilisateur extends Model_Base {
         $nom_verif = stripslashes(htmlspecialchars($nom));
         $pnom_verif = stripslashes(htmlspecialchars($pnom));
         $pseudo_verif = stripslashes(htmlspecialchars($pseudo));
-        $mdp_verif = stripslashes(htmlspecialchars($mdp));
+        $mdp_verif = sha1(stripslashes(htmlspecialchars($mdp)));
         $adr_verif = stripslashes(htmlspecialchars($adr));
         $email_verif = stripslashes(htmlspecialchars($email));
         $tel_verif = stripslashes(htmlspecialchars($tel));
@@ -91,7 +91,7 @@ class Utilisateur extends Model_Base {
 
     public static function get_by_pseudo_mdp($pseudo, $mdp) {
         $pseudo_verif = stripslashes(htmlspecialchars($pseudo));
-        $mdp_verif = stripslashes(htmlspecialchars($mdp));
+        $mdp_verif = sha1(stripslashes(htmlspecialchars($mdp)));
         $query = "SELECT * FROM Utilisateurs WHERE pseudoUti=:pseudo and mdpUti=:mdp and desactive != 0";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur select by id utilisateur " . oci_error($conn));
         oci_bind_by_name($stmt, ":pseudo", $pseudo_verif);
@@ -228,7 +228,7 @@ class Utilisateur extends Model_Base {
     }
 
     public function set_mdp($mdp) {
-        $this->_mdp = stripslashes(htmlspecialchars($mdp));
+        $this->_mdp = sha1(stripslashes(htmlspecialchars($mdp)));
         $query = "UPDATE Utilisateurs SET mdpUti=:mdp where idUti=:id";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.nom " . oci_error($conn));
         oci_bind_by_name($stmt, ":id", $this->_id);
