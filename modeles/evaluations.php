@@ -41,6 +41,7 @@ class evaluations extends Model_Base {
     }
 
     public static function create($titre, $comm, $note, $idcrea, $iduti, $idserv, $idbien) {
+        echo $idbien;
         if ((is_numeric($idcrea)) && (is_numeric($note))) {
             if ($iduti != NULL) {
                 $query = "INSERT INTO Evaluation (IdEval, titreEval, commEval, note, idUtiCrea, idUtiEva) VALUES (Evaluation_seq.nextval,:titreEval,:commEval,:note,:idUtiCrea,:idUtiEva)";
