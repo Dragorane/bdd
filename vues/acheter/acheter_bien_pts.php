@@ -11,4 +11,5 @@ if ($verif == 0) {
     </form>
     <?php
 }
+include BASEURL . "/vues/afficher_bien.php";
 ?>
