@@ -163,7 +163,7 @@ class Controller_acheter {
         if (($uti == NULL) || ($serv == NULL)) {
             echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";
         } else {
-            include "vues/afficher_bien.php";
+            include "vues/afficher_service.php";
             include 'vues/acheter/page_bien.php';
         }
     }
