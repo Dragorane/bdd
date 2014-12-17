@@ -41,22 +41,25 @@ class evaluations extends Model_Base {
     }
 
     public static function create($titre, $comm, $note, $idcrea, $iduti, $idserv, $idbien) {
-        if ((is_numeric($idcrea)) && ((is_numeric($iduti)) || (is_numeric($idserv)) || (is_numeric($idbien))) && (is_numeric($note))) {
-            $query = "INSERT INTO Evaluation VALUES (Evaluation_seq.nextval,:titreEval,:commEval,:note,:idUtiCrea,:idUtiEva,:idServ,:idBien)";
-            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion utilisateur" . oci_error($conn));
+        if ((is_numeric($idcrea)) && (is_numeric($note))) {
+            if ((is_numeric($iduti)) || (is_numeric($idserv)) || (is_numeric($idbien))) {
+                $query = "INSERT INTO Evaluation VALUES (Evaluation_seq.nextval,:titreEval,:commEval,:note,:idUtiCrea,:idUtiEva,:idServ,:idBien)";
+                $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion utilisateur" . oci_error($conn));
 //formatage des variables et sécurité
-            $titre_verif = stripslashes(htmlspecialchars($titre));
-            $comm_verif = stripslashes(htmlspecialchars($comm));
-            oci_bind_by_name($stmt, ":titreEval", $titre_verif);
-            oci_bind_by_name($stmt, ":commEval", $comm_verif);
-            oci_bind_by_name($stmt, ":note", $note);
-            oci_bind_by_name($stmt, ":idUtiCrea", $idcrea);
-            oci_bind_by_name($stmt, ":idUtiEva", $iduti);
-            oci_bind_by_name($stmt, ":idServ", $idserv);
-            oci_bind_by_name($stmt, ":idBien", $idbien);
-            oci_execute($stmt);
-        } else {
-            echo "<div class='warning'><p>Erreur, données corrompues.</p></div>";
+                $titre_verif = stripslashes(htmlspecialchars($titre));
+                $comm_verif = stripslashes(htmlspecialchars($comm));
+                oci_bind_by_name($stmt, ":titreEval", $titre_verif);
+                oci_bind_by_name($stmt, ":commEval", $comm_verif);
+                oci_bind_by_name($stmt, ":note", $note);
+                oci_bind_by_name($stmt, ":idUtiCrea", $idcrea);
+                oci_bind_by_name($stmt, ":idUtiEva", $iduti);
+                oci_bind_by_name($stmt, ":idServ", $idserv);
+                oci_bind_by_name($stmt, ":idBien", $idbien);
+                oci_execute($stmt);
+            } else {
+                echo "<div class='warning'><p>Erreur, données corrompues.</p></div>";
+            }
+            echo "<div class='warning'><p>Erreur, données corrompues.2</p></div>";
         }
     }
 
