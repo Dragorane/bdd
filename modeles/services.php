@@ -24,6 +24,34 @@ class services extends Model_Base {
         $this->_idcateg = $categ;
     }
 
+    public function get_id() {
+        return $this->_id;
+    }
+
+    public function get_titre() {
+        return $this->_lib;
+    }
+
+    public function get_desc() {
+        return $this->_desc;
+    }
+
+    public function get_prix() {
+        return $this->_prix;
+    }
+
+    public function get_places() {
+        return $this->_nbPlaces;
+    }
+
+    public function get_iduti() {
+        return $this->_iduti;
+    }
+
+    public function get_categ() {
+        return $this->_idcateg;
+    }
+
     public static function create($lib, $desc, $prix, $nbplaces, $iduti, $categ) {
         if ((is_numeric($iduti)) && (is_numeric($categ)) && (is_numeric($nbplaces)) && (is_float(floatval($prix)))) {
             $query = "INSERT INTO services VALUES (Services_seq.nextval,:lib_v,:desc_v,:prix_v,:nblaces_v,1,:iduti_v,:categ_v)";
