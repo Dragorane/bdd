@@ -22,4 +22,8 @@ class Controller_proposition {
         include "vues/proposition/propositions.php";
     }
 
+    public function laproposition() {
+        
+    }
+
 }

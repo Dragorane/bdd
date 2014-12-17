@@ -2,7 +2,7 @@
 <h3>Vous avez sélectionnez la catégorie : <?php echo $cat->getlib(); ?></h3>
 
 <div class="form_vendre">
-    <form action="<?= BASEURL ?>/index.php/valid_form_vendre" method="post">
+    <form action="<?= BASEURL ?>/index.php/valid_form_vendre_bien" method="post">
         <input type="hidden" name="idcat" value="<?php echo $_GET['idcat'] ?>">
         <label for="titre">Titre de votre bien</label><br/>
         <input type="text" name="titre" id="titre"/><br/><br/>

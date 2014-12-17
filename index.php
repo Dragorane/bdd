@@ -141,12 +141,18 @@ switch ($args[1]) {
     case 'vendreservice':
         $cv->vendreservice();
         break;
-    case 'valid_form_vendre':
+    case 'valid_form_vendre_bien':
+        $cv->valide_vendrebien();
+        break;
+    case 'valid_form_vendre_service':
         $cv->valide_vendreservice();
         break;
     //proposition
     case 'propositions':
         $cp->index();
+        break;
+    case 'laproposition':
+        $cp->laproposition();
         break;
     default :
         echo "<div class='warning'><p>La page demandée n'existe pas.</p></div>";

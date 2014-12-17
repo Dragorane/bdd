@@ -56,7 +56,7 @@ class Controller_vendre {
         }
     }
 
-    public function valide_vendreservice() {
+    public function valide_vendrebien() {
         $verif = 0;
         if (!isset($_POST['valid_bien'])) {
             echo "<div class='warning'><p>Erreur, vous n'avez pas l'accès à cette page.</p></div>";
@@ -74,8 +74,26 @@ class Controller_vendre {
         }
     }
 
+    public function valide_vendreservice() {
+        $verif = 0;
+        if (!isset($_POST['valid_serv'])) {
+            echo "<div class='warning'><p>Erreur, vous n'avez pas l'accès à cette page.</p></div>";
+        } else {
+            if (Controller_vendre::validpts($_POST['prix']) != 0) {
+                $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+                services::create($_POST['titre'], $_POST['desc'], $_POST['prix'], $_POST['nbplace'], $uti->id(), $_POST['idcat']);
+                $verif = 1;
+            }
+        }
+        if ($verif == 0) {
+            echo "<a href='javascript:history.back()'><h2 class='center'>Retour au formulaire de vente</h2></a>";
+        } else {
+            echo "<div class='success'><p>Votre service a été mis en vente.</p></div>";
+        }
+    }
+
     public function validpts($pts) {
-        if ((is_float(floatval($pts))) && ($pts > 0)) {
+        if ((is_float(floatval($pts))) && ($pts >= 0)) {
             return 1;
         } else {
             echo "<div class='warning'><p>Erreur, vous avez mal saisi le montant de points troc.</p></div>";

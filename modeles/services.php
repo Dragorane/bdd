@@ -24,25 +24,26 @@ class services extends Model_Base {
         $this->_idcateg = $categ;
     }
 
-    public static function create($lib, $desc, $prix, $nbplaces, $vendu, $iduti, $categ) {
-        $query = "INSERT INTO Biens VALUES (Services_seq.nextval,:lib,:desc,:prix,:nblaces,:vendu,:iduti,:categ)";
-        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion service" . oci_error($conn));
-        //formatage des variables et sécurité
-        $lib_verif = stripslashes(htmlspecialchars($lib));
-        $desc_verif = stripslashes(htmlspecialchars($desc));
-        $prix_verif = stripslashes(htmlspecialchars($prix));
-        $nbplaces_verif = stripslashes(htmlspecialchars($nbplaces));
-        $vendu_verif = stripslashes(htmlspecialchars($vendu));
-        $iduti_verif = stripslashes(htmlspecialchars($iduti));
-        $categ_verif = stripslashes(htmlspecialchars($categ));
-        oci_bind_by_name($stmt, ":lib", $lib_verif);
-        oci_bind_by_name($stmt, ":desc", $desc_verif);
-        oci_bind_by_name($stmt, ":prix", $prix_verif);
-        oci_bind_by_name($stmt, ":nblaces", $nbplaces_verif);
-        oci_bind_by_name($stmt, ":vendu", $vendu_verif);
-        oci_bind_by_name($stmt, ":iduti", $iduti_verif);
-        oci_bind_by_name($stmt, ":categ", $categ_verif);
-        oci_execute($stmt);
+    public static function create($lib, $desc, $prix, $nbplaces, $iduti, $categ) {
+        if ((is_numeric($iduti)) && (is_numeric($categ)) && (is_numeric($nbplaces)) && (is_float(floatval($prix)))) {
+            $query = "INSERT INTO services VALUES (Services_seq.nextval,:lib,:desc,:prix,:nblaces,1,:iduti,:categ)";
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion service" . oci_error($conn));
+            //formatage des variables et sécurité
+            $lib_verif = stripslashes(htmlspecialchars($lib));
+            $desc_verif = stripslashes(htmlspecialchars($desc));
+            $nbplaces_verif = stripslashes(htmlspecialchars($nbplaces));
+            $vendu_verif = stripslashes(htmlspecialchars($vendu));
+            oci_bind_by_name($stmt, ":lib", $lib_verif);
+            oci_bind_by_name($stmt, ":desc", $desc_verif);
+            oci_bind_by_name($stmt, ":prix", $prix);
+            oci_bind_by_name($stmt, ":nblaces", $nbplaces);
+            oci_bind_by_name($stmt, ":vendu", $vendu_verif);
+            oci_bind_by_name($stmt, ":iduti", $iduti);
+            oci_bind_by_name($stmt, ":categ", $categ);
+            oci_execute($stmt);
+        } else {
+            echo "<div class='warning'><p>Erreur, données corrompues.</p></div>";
+        }
     }
 
     public static function get_tabsev_by_uti($pseudo) {
