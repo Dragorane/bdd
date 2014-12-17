@@ -120,7 +120,7 @@ class Utilisateur extends Model_Base {
 
     public static function get_by_id($id) {
         $o = null;
-        if (is_int($id)) {
+        if ((is_int($id)) || (is_numeric($id))) {
             $query = "SELECT * FROM Utilisateurs WHERE idUti=" . $id . " and desactive != 0";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur select by id utilisateur " . oci_error($conn));
             oci_execute($stmt);

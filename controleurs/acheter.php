@@ -32,7 +32,7 @@ class Controller_acheter {
             if ($uti != NULL) {
                 include "vues/lesbiens.php";
             } else {
-                echo "<div class='warning'><p>erreur pas d'utilisateur </p></div>";
+                echo "<div class='warning'><p>erreur pas d'utilisateur " . $tabbiens[$i]->get_uti() . "</p></div>";
             }
         }
         echo "</div>";
