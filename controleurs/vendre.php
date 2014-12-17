@@ -73,7 +73,7 @@ class Controller_vendre {
     }
 
     public function validpts($pts) {
-        if ((is_float(floatval($nb))) && ($pts > 0)) {
+        if ((is_float(floatval($pts))) && ($pts > 0)) {
             return 1;
         } else {
             echo "<div class='warning'><p>Erreur, vous avez mal saisi le montant de points troc.</p></div>";
