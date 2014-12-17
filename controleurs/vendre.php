@@ -22,8 +22,8 @@ class Controller_vendre {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
             $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
-            $tabbien = get_tabbien_by_uti($_SESSION['pseudo']);
-            $tabserv = get_tabsev_by_uti($_SESSION['pseudo']);
+            $tabbien = biens::get_tabbien_by_uti($_SESSION['pseudo']);
+            $tabserv = services::get_tabsev_by_uti($_SESSION['pseudo']);
             include 'vues/vendre/index.php';
         }
     }
