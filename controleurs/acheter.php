@@ -157,6 +157,17 @@ class Controller_acheter {
         }
     }
 
+    public function service() {
+        $serv = services::get_serv_by_id($_GET['id']);
+        $uti = Utilisateur::get_by_id($serv->get_uti());
+        if (($uti == NULL) || ($serv == NULL)) {
+            echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";
+        } else {
+            include "vues/afficher_bien.php";
+            include 'vues/acheter/page_bien.php';
+        }
+    }
+
     public function acheter_biens_pts() {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";

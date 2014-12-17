@@ -113,6 +113,9 @@ switch ($args[1]) {
     case 'pagebien':
         $ca->pagebien();
         break;
+    case 'pageservice':
+        $ca->pageservice();
+        break;
     case 'acheter' :
         $ca->index();
         break;

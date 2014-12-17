@@ -1,9 +1,9 @@
 <?php
-echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_pts?id=" . $bien->get_id() . "'>Acheter ce bien avec vos points trocs</a></h4>";
-echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_bienserv?id=" . $bien->get_id() . "'>Acheter ce bien avec vos biens/services</a></h4>";
+echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_pts?id=" . $serv->get_id() . "'>Acheter ce service avec vos points trocs</a></h4>";
+echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_bienserv?id=" . $serv->get_id() . "'>Acheter ce service avec vos biens/services</a></h4>";
 ?>
-<h3>Evaluer le bien </h3>
-<form methode='POST' name='eval_bien' action='<?= BASEURL ?>/index.php/valid_eval_bien'>
+<h3>Evaluer le service </h3>
+<form methode='POST' name='eval_service' action='<?= BASEURL ?>/index.php/valid_eval_service'>
     <input type='hidden' name='id' value='<?php echo $bien->get_id();
 ?>'>
     <label for='titre'>Titre de votre évaluation</label><br/>
@@ -23,6 +23,6 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_bienserv?id=" . $bien
 </form>
 
 <div class="uti_evaluation">
-    <h3 class='center'>Evaluations du bien</h3>
+    <h3 class='center'>Evaluations du service</h3>
 </div>
 
