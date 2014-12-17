@@ -86,4 +86,14 @@ class Controller_acheter {
         return $tabbien;
     }
 
+    public function pagebien() {
+        $bien = get_bien_by_id($_GET['id']);
+        $uti = Utilisateur::get_by_id($bien->get_uti());
+        if (($uti == NULL) || ($bien == NULL)) {
+            echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";
+        } else {
+            include 'vues/acheter/page_bien.php';
+        }
+    }
+
 }

@@ -28,7 +28,7 @@ class biens extends Model_Base {
         if ((is_numeric($iduti)) && (is_numeric($categ)) && (is_numeric($etat)) && (is_float(floatval($prix)))) {
             $query = "INSERT INTO Biens VALUES (Biens_seq.nextval,:lib_v,:desc_v,:prix_v,0,:iduti_v,:etat_v,:categ_v)";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion bien" . oci_error($conn));
-            //formatage des variables et sécurité
+//formatage des variables et sécurité
             $lib_verif = stripslashes(htmlspecialchars($lib));
             $desc_verif = stripslashes(htmlspecialchars($desc));
             oci_bind_by_name($stmt, ":lib_v", $lib_verif);
@@ -73,6 +73,18 @@ class biens extends Model_Base {
 
     public function get_vendu() {
         return $this->_vendu;
+    }
+
+    public function get_bien_by_id($id) {
+        $bien = null;
+        if ((is_int($id)) || (is_numeric($id))) {
+            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 and idBien=" . $id;
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            oci_execute($stmt);
+            $row = oci_fetch_assoc($stmt);
+            $bien = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUBIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+        }
+        return $bien;
     }
 
     public static function tabbiens() {

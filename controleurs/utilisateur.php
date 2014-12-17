@@ -148,7 +148,12 @@ class Controller_Utilisateur {
     /* Accès à la page principale de gestion de compte */
 
     public function gestion_cpt() {
-        include 'vues/utilisateurs/gestion_cpt.php';
+        $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+        if ($uti == null) {
+            echo "<div class='warning'><p>Erreur, vous n'êtes pas identifié</p></div>";
+        } else {
+            include 'vues/utilisateurs/gestion_cpt.php';
+        }
     }
 
     /* Accès au formulaire de modification du mot de passe */
@@ -389,6 +394,19 @@ class Controller_Utilisateur {
             }
         }
         include 'vues/utilisateurs/gestion_cpt.php';
+    }
+
+    public function page_public_uti() {
+        if (!isset($_GET['id'])) {
+            echo "<div class='warning'><p>Erreur, aucun utilisateur selectionné.</p></div>";
+        } else {
+            $uti = Utilisateur::get_by_id($_GET['id']);
+            if ($uti == null) {
+                echo "<div class='warning'><p>Erreur, vous n'êtes pas identifié</p></div>";
+            } else {
+                include 'vues/utilisateurs/page_uti.php';
+            }
+        }
     }
 
 }

@@ -104,6 +104,12 @@ switch ($args[1]) {
     case 'valid_connect':
         $cu->connexion_valide();
         break;
+    case 'pageuti':
+        $cu->page_public_uti();
+        break;
+    case 'pagebien':
+        $ca->pagebien();
+        break;
     //Troc acheter
     case 'acheter' :
         $ca->index();
