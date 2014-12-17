@@ -37,7 +37,6 @@ class services extends Model_Base {
             oci_bind_by_name($stmt, ":desc", $desc_verif);
             oci_bind_by_name($stmt, ":prix", $prix);
             oci_bind_by_name($stmt, ":nblaces", $nbplaces);
-            oci_bind_by_name($stmt, ":vendu", $vendu_verif);
             oci_bind_by_name($stmt, ":iduti", $iduti);
             oci_bind_by_name($stmt, ":categ", $categ);
             oci_execute($stmt);
