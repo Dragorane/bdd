@@ -28,6 +28,10 @@ class propositions extends Model_Base {
         return $this->_adr;
     }
 
+    public function get_date() {
+        return $this->_date;
+    }
+
     public function get_prix() {
         return $this->_prix;
     }
@@ -78,7 +82,7 @@ class propositions extends Model_Base {
         $tabprop = null;
         $i = 0;
         while ($row = oci_fetch_assoc($stmt)) {
-            $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], $row['']);
+            $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR']);
             $i = $i + 1;
         }
         return $tabprop;
