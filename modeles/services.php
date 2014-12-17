@@ -44,7 +44,7 @@ class services extends Model_Base {
         return $this->_nbPlaces;
     }
 
-    public function get_iduti() {
+    public function get_uti() {
         return $this->_iduti;
     }
 
