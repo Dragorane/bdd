@@ -1,5 +1,6 @@
 <?php
 
+require_once 'modeles/categories.php';
 categories::initcat();
 session_start();
 
