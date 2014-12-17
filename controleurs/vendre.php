@@ -52,7 +52,15 @@ class Controller_vendre {
         } else {
             $tabcat = categories::list_categ(2);
             include "vues/menu_cat.php";
-            include 'vues/vendre/form_vendreservice.php';
+            if (!isset($_GET['idcat'])) {
+                echo "<h3>Etape 1 :</h3><p class='center'> Merci de selectionner la catégorie de votre bien dans le menu à droite.</p>";
+            } else {
+                $cat = categories::recupCat($_GET['idcat']);
+                if ($cat != null) {
+                    $tabetat = Etat::lesEtats();
+                    include 'vues/vendre/form_vendreservice.php';
+                }
+            }
         }
     }
 
