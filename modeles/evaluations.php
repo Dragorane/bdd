@@ -41,7 +41,6 @@ class evaluations extends Model_Base {
     }
 
     public static function create($titre, $comm, $note, $idcrea, $iduti, $idserv, $idbien) {
-        echo $iduti;
         if ((is_numeric($idcrea)) && (is_numeric($note))) {
             if ($iduti != NULL) {
                 $query = "INSERT INTO Evaluation (IdEval, titreEval, commEval, note, idUtiCrea, idUtiEva) VALUES (Evaluation_seq.nextval,:titreEval,:commEval,:note,:idUtiCrea,:idUtiEva)";
@@ -92,6 +91,34 @@ class evaluations extends Model_Base {
         $moy = 2.5;
         if ($uti != NULL) {
             $query = "select avg(note) as moy from evaluation where idUtiEva=" . $uti->id();
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur moyenne evaluation" . oci_error($conn));
+            oci_execute($stmt);
+            while ($row = oci_fetch_assoc($stmt)) {
+                $moy = $row['MOY'];
+            }
+        }
+        return $moy;
+    }
+
+    public static function moy_eval_bien($id) {
+        $bien = biens::get_bien_by_id($id);
+        $moy = 2.5;
+        if ($uti != NULL) {
+            $query = "select avg(note) as moy from evaluation where idBien=" . $bien->get_id();
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur moyenne evaluation" . oci_error($conn));
+            oci_execute($stmt);
+            while ($row = oci_fetch_assoc($stmt)) {
+                $moy = $row['MOY'];
+            }
+        }
+        return $moy;
+    }
+
+    public static function moy_eval_serv($id) {
+        $serv = services::get_serv_by_id($id);
+        $moy = 2.5;
+        if ($uti != NULL) {
+            $query = "select avg(note) as moy from evaluation where idServ=" . $serv->get_id();
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur moyenne evaluation" . oci_error($conn));
             oci_execute($stmt);
             while ($row = oci_fetch_assoc($stmt)) {

@@ -147,13 +147,19 @@ class Controller_acheter {
     }
 
     public function pagebien() {
-        $bien = biens::get_bien_by_id($_GET['id']);
-        $uti = Utilisateur::get_by_id($bien->get_uti());
-        if (($uti == NULL) || ($bien == NULL)) {
-            echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";
+        if (isset($_GET['id'])) {
+            $bien = biens::get_bien_by_id($_GET['id']);
+            $uti = Utilisateur::get_by_id($bien->get_uti());
+            if (($uti == NULL) || ($bien == NULL)) {
+                echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";
+            } else {
+                $tabeval = evaluations::tabeval_bien($bien->get_id());
+                $moyeval = evaluations::moy_eval_bien($bien->get_id());
+                include "vues/afficher_bien.php";
+                include 'vues/acheter/page_bien.php';
+            }
         } else {
-            include "vues/afficher_bien.php";
-            include 'vues/acheter/page_bien.php';
+            echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";
         }
     }
 
@@ -163,6 +169,8 @@ class Controller_acheter {
         if (($uti == NULL) || ($serv == NULL)) {
             echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";
         } else {
+            $tabeval = evaluations::tabeval_service($serv->get_id());
+            $moyeval = evaluations::moy_eval_serv($serv->get_id());
             include "vues/afficher_service.php";
             include 'vues/acheter/page_service.php';
         }
@@ -279,6 +287,17 @@ class Controller_acheter {
         }
     }
 
+    public function valid_eval_bien() {
+        if (isset($_POST['valid_eval'])) {
+            $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+            evaluations::nouvelle_eval_bien($_POST['titre'], $_POST['comm'], $_POST['note'], $uti->id(), $_POST['id']);
+            echo "<div class='success'><p>Votre évaliation a bien été ajoutée.</p></div>";
+        } else {
+            echo "<div class='warning'><p>Erreur, vous n'avez pas accès à cette page.</p></div>";
+        }
+    }
+
+//fonction générales
     public function verifpts($uti, $bien) {
         if ($uti->pt_troc() >= $bien->get_prix()) {
             return 1;
