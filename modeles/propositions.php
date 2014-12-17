@@ -10,14 +10,16 @@ class propositions extends Model_Base {
     private $_prix;
     private $_id_uti;
     private $_id_vendeur;
+    private $_etat;
 
-    public function __construct($id, $adr, $date, $prix, $iduti, $idutiv) {
+    public function __construct($id, $adr, $date, $prix, $iduti, $idutiv, $etat) {
         $this->_id = $id;
         $this->_adr = $adr;
         $this->_date = $date;
         $this->_prix = $prix;
         $this->_id_uti = $iduti;
         $this->_id_vendeur = $idutiv;
+        $this->_id_etat = $etat;
     }
 
     public function get_id() {
@@ -44,6 +46,10 @@ class propositions extends Model_Base {
         return $this->_id_vendeur;
     }
 
+    public function get_etat() {
+        return $this->_etat;
+    }
+
     public static function get_prop_by_id($id) {
         $prop = null;
         if (is_numeric($id)) {
@@ -52,7 +58,7 @@ class propositions extends Model_Base {
             oci_bind_by_name($stmt, ":id", $id);
             oci_execute($stmt);
             while ($row = oci_fetch_assoc($stmt)) {
-                $prop = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR']);
+                $prop = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], 2);
             }
         }
         return $prop;
@@ -74,7 +80,7 @@ class propositions extends Model_Base {
             oci_bind_by_name($stmt, ":idv_v", $idutiv);
             oci_bind_by_name($stmt, ":idprop", $id);
             oci_execute($stmt);
-            return new propositions($id, $adr_verif, $date, $prix, $iduti, $idutiv);
+            return new propositions($id, $adr_verif, $date, $prix, $iduti, $idutiv, 2);
         } else {
             return null;
         }
@@ -105,7 +111,7 @@ class propositions extends Model_Base {
         $tabprop = null;
         $i = 0;
         while ($row = oci_fetch_assoc($stmt)) {
-            $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR']);
+            $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], 2);
             $i = $i + 1;
         }
         return $tabprop;
@@ -119,7 +125,7 @@ class propositions extends Model_Base {
         $tabprop = null;
         $i = 0;
         while ($row = oci_fetch_assoc($stmt)) {
-            $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR']);
+            $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], 2);
             $i = $i + 1;
         }
         return $tabprop;
@@ -130,13 +136,9 @@ class propositions extends Model_Base {
         if ($prop == NULL) {
             echo "<div class='warnign'><p>Erreur, la proposition n'a pas été acceptée.</div>";
         } else {
-            echo "erreur ??";
             $archive = propositions::copie_proposition_archive($prop, 0);
-            echo "pif";
             propositions::copie_prop_bien($prop, $archive);
-            echo "paf";
             propositions::copie_prop_serv($prop, $archive);
-            echo "pouf";
             propositions::suppression_proposition($prop);
         }
     }
@@ -146,13 +148,9 @@ class propositions extends Model_Base {
         if ($prop == NULL) {
             echo "<div class='warnign'><p>Erreur, la proposition n'a pas été acceptée.</div>";
         } else {
-            echo "erreur ??";
             $archive = propositions::copie_proposition_archive($prop, 1);
-            echo "pif";
             propositions::copie_prop_bien($prop, $archive);
-            echo "paf";
             propositions::copie_prop_serv($prop, $archive);
-            echo "pouf";
             propositions::suppression_proposition($prop);
         }
     }
@@ -229,6 +227,20 @@ class propositions extends Model_Base {
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
         oci_bind_by_name($stmt, ":idpro", $prop->get_id());
         oci_execute($stmt);
+    }
+
+    public static function tab_archive($uti) {
+        $query = "select * from Archive where idUti_vendeur_archive=:id or idUti=:id order by date, prix";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_bien" . oci_error($conn));
+        oci_bind_by_name($stmt, ":id", $uti->id());
+        oci_execute($stmt);
+        $tabprop = null;
+        $i = 0;
+        while ($row = oci_fetch_assoc($stmt)) {
+            $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], $row['ETAT']);
+            $i = $i + 1;
+        }
+        return $tabprop;
     }
 
 }

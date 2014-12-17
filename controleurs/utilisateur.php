@@ -151,6 +151,7 @@ class Controller_Utilisateur {
         if ($uti == null) {
             echo "<div class='warning'><p>Erreur, vous n'êtes pas identifié</p></div>";
         } else {
+            $historique = propositions::tab_archive($uti);
             include 'vues/utilisateurs/gestion_cpt.php';
         }
     }

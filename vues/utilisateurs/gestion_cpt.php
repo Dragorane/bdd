@@ -38,5 +38,26 @@
     <div class="gestion_historique">
         <hr/>
         <h2 class='center'>Historique des Echanges</h2>
+        <table>
+            <tr><th>Acheteur</th><th>Vendeur</th><th>Prix</th><th>Date</th><th>Etat</th></tr>
+            <?php
+            for ($i = 0; $i < count($historique); $i++) {
+                $utivendeur = Utilisateur::get_by_id($historique[$i]->get_idv());
+                $utiacheteur = Utilisateur::get_by_id($historique[$i]->get_iduti());
+                if ($historique[$i]->get_etat() == 1) {
+                    $etat = "Acceptée";
+                } else {
+                    $etat = "Refusée";
+                }
+                echo "<tr>";
+                echo "<td>" . $utiacheteur->pseudo() . "</td>";
+                echo "<td>" . $utivendeur->pseudo() . "</td>";
+                echo "<td>" . $historique[$i]->get_prix() . "</td>";
+                echo "<td>" . $historique[$i]->get_date() . "</td>";
+                echo "<td>" . $etat . "</td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
     </div>
 </div>
