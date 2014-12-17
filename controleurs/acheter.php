@@ -258,6 +258,7 @@ class Controller_acheter {
                         echo "type 0 : " . $type[0] . "type 1 :" . $type[1];
                         if ($type[0] == "bien") {
                             $bien = biens::get_bien_by_id($type[1]);
+                            echo "id du bien : " . $bien->get_id();
                             $laprop->ajout_bien_proposition($bien);
                         } else {
                             $serv = services::get_serv_by_id($type[1]);
