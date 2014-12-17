@@ -74,11 +74,12 @@ class propositions extends Model_Base {
         oci_execute($stmt);
     }
 
-    public function ajout_service_proposition($serv) {
-        $query = "INSERT INTO proposition_services VALUES (:idprop_v,:idbserv_v)";
+    public function ajout_service_proposition($serv, $date) {
+        $query = "INSERT INTO proposition_services VALUES (:idserv_v,:idprop_v,TO_DATE(:date_v, 'dd/mm/yyyy'))";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_service" . oci_error($conn));
         oci_bind_by_name($stmt, ":idprop_v", $this->_id);
-        oci_bind_by_name($stmt, ":idbserv_v", $serv->get_id());
+        oci_bind_by_name($stmt, ":idserv_v", $serv->get_id());
+        oci_bind_by_name($stmt, ":date_v", $date);
         oci_execute($stmt);
     }
 

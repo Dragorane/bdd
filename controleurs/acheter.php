@@ -183,6 +183,7 @@ class Controller_acheter {
             }
         }
     }
+
     public function acheter_service_pts() {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
@@ -242,6 +243,7 @@ class Controller_acheter {
             echo "<div class='warning'><p>Erreur, l'achat n'a pas été effectué.</p></div>";
         }
     }
+
     public function valid_acheter_service_pts() {
         if ((is_numeric($_POST['serv'])) && (isset($_POST['valid_acheter_serv_pts']))) {
             $serv = services::get_serv_by_id($_POST['serv']);
@@ -266,7 +268,7 @@ class Controller_acheter {
                         if ($laprop == null) {
                             echo "<div class='warning'><p>Erreur, la proposition n'a pas été enregistrée</p></div>";
                         } else {
-                            $laprop->ajout_service_proposition($serv);
+                            $laprop->ajout_service_proposition($serv, $date);
                             include "vues/acheter/valid_acheter_serv.php";
                         }
                     }
