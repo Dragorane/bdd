@@ -1,5 +1,5 @@
 <?php
-include "../afficher_bien.php";
+include BASEURL . "vues/afficher_bien.php";
 echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_pts?id=" . $bien->get_id() . "'>Acheter ce bien avec vos points trocs</a></h4>";
 echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_bienserv?id=" . $bien->get_id() . "'>Acheter ce bien avec vos biens/services</a></h4>";
 ?>

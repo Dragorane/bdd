@@ -136,7 +136,6 @@ class Controller_Utilisateur {
                 echo "<div class='success'><p>Vous êtes connecté.</p></div>";
                 $_SESSION['connect'] = true;
                 $_SESSION['pseudo'] = $uti->pseudo();
-                $_SESSION['mdp'] = $uti->mdp();
             } else {
                 echo "<div class='warning'><p>Login ou mot de passe incorrect.</p></div>";
             }
@@ -207,7 +206,7 @@ class Controller_Utilisateur {
     /* valide formulaire de modification du mot de passe */
 
     public function gestion_valid_mdp() {
-        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo']);
         if (!isset($_SESSION['connect'])) {
             $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
         } else {
@@ -231,7 +230,7 @@ class Controller_Utilisateur {
     /* valide formulaire de modification adresse */
 
     public function gestion_valid_adr() {
-        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
         if (!isset($_SESSION['connect'])) {
             $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
         } else {
@@ -251,7 +250,7 @@ class Controller_Utilisateur {
     /* valide de modification avatar */
 
     public function gestion_valid_avatar() {
-        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
         if (!isset($_SESSION['connect'])) {
             $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
         } else {
@@ -272,7 +271,7 @@ class Controller_Utilisateur {
     /* valid de modification email */
 
     public function gestion_valid_email() {
-        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
         if (!isset($_SESSION['connect'])) {
             $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
         } else {
@@ -292,7 +291,7 @@ class Controller_Utilisateur {
     /* valid de modification du nom */
 
     public function gestion_valid_nom() {
-        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
         if (!isset($_SESSION['connect'])) {
             $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
         } else {
@@ -312,7 +311,7 @@ class Controller_Utilisateur {
     /* valid de modification prénom */
 
     public function gestion_valid_pnom() {
-        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
         if (!isset($_SESSION['connect'])) {
             $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
         } else {
@@ -332,7 +331,7 @@ class Controller_Utilisateur {
     /* valid de modification pseudo */
 
     public function gestion_valid_pseudo() {
-        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
         if (!isset($_SESSION['connect'])) {
             $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
         } else {
@@ -352,7 +351,7 @@ class Controller_Utilisateur {
     /* valid de modification telephone */
 
     public function gestion_valid_tel() {
-        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
         if (!isset($_SESSION['connect'])) {
             $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
         } else {
@@ -379,7 +378,7 @@ class Controller_Utilisateur {
     /* Accès au formulaire de modification */
 
     public function gestion_valid_ajout_monnaie() {
-        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
         if (!isset($_SESSION['connect'])) {
             $content = "<div class='warning'><p>Vous n'êtes pas connecté.</p></div>";
         } else {
