@@ -25,19 +25,15 @@ class biens extends Model_Base {
     }
 
     public static function create($lib, $desc, $prix, $iduti, $categ, $etat) {
-        if ((is_numeric($iduti)) && (is_numeric($categ)) && (is_numeric($etat))) {
-            $query = "INSERT INTO Biens VALUES (Utilisateurs_seq.nextval,:lib,:desc,:prix,0,:iduti,:categ,:etat)";
-            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion utilisateur" . oci_error($conn));
+        if ((is_numeric($iduti)) && (is_numeric($categ)) && (is_numeric($etat)) && (is_float(floatval($prix)))) {
+            $query = "INSERT INTO Biens VALUES (Biens_seq.nextval,:lib,:desc,:prix,0,:iduti,:etat,:categ)";
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion bien" . oci_error($conn));
             //formatage des variables et sécurité
             $lib_verif = stripslashes(htmlspecialchars($lib));
             $desc_verif = stripslashes(htmlspecialchars($desc));
-            $prix_verif = stripslashes(htmlspecialchars($prix));
-            $iduti_verif = stripslashes(htmlspecialchars($iduti));
-            $categ_verif = stripslashes(htmlspecialchars($categ));
-            $etat_verif = stripslashes(htmlspecialchars($etat));
             oci_bind_by_name($stmt, ":lib", $lib_verif);
             oci_bind_by_name($stmt, ":desc", $desc_verif);
-            oci_bind_by_name($stmt, ":prix", $prix_verif);
+            oci_bind_by_name($stmt, ":prix", $prix);
             oci_bind_by_name($stmt, ":iduti", $iduti);
             oci_bind_by_name($stmt, ":categ", $categ);
             oci_bind_by_name($stmt, ":etat", $etat);
