@@ -164,7 +164,7 @@ class Controller_acheter {
             echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";
         } else {
             include "vues/afficher_service.php";
-            include 'vues/acheter/page_bien.php';
+            include 'vues/acheter/page_service.php';
         }
     }
 
