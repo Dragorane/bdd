@@ -128,6 +128,9 @@ switch ($args[1]) {
     case 'acheter_biens_pts' :
         $ca->acheter_biens_pts();
         break;
+    case 'acheter_service_pts' :
+        $ca->acheter_service_pts();
+        break;
     case 'acheter_biens_bienserv' :
         $ca->acheter_biens_bienserv();
         break;

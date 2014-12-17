@@ -183,6 +183,21 @@ class Controller_acheter {
             }
         }
     }
+    public function acheter_service_pts() {
+        if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
+            echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
+        } else {
+            $serv = services::get_serv_by_id($_GET['id']);
+            $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+            if (($serv == null) || ($uti == null)) {
+                echo "<div class='warning'><p>Erreur, aucun bien de selectionné</p></div>";
+            } else {
+                $verif = $this->verifpts($uti, $serv);
+                include 'vues/acheter/acheter_service_pts.php';
+                include "vues/afficher_service.php";
+            }
+        }
+    }
 
     public function acheter_biens_bienserv() {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
