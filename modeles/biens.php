@@ -75,6 +75,26 @@ class biens extends Model_Base {
         return $this->_vendu;
     }
 
+    public function bien_vendu() {
+        
+    }
+
+    public static function get_tabbien_by_uti($pseudo) {
+        $uti = Utilisateur::get_by_pseudo($pseudo);
+        $tabbien = null;
+        if ($uti != NULL) {
+            $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 and idUti=" . $uti->id();
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            oci_execute($stmt);
+            $i = 0;
+            while ($row = oci_fetch_assoc($stmt)) {
+                $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUBIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
+                $i = $i + 1;
+            }
+            return $tabbien;
+        }
+    }
+
     public static function get_bien_by_id($id) {
         $bien = null;
         if ((is_int($id)) || (is_numeric($id))) {
