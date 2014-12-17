@@ -8,7 +8,7 @@ echo "<p>Date de la proposition : " . $prop->get_date() . "</p>";
 ?>
 <center>
     <form method='POST' action='<?= BASEURL ?>/index.php/annuler_prop'>
-        <input type='hidden' name='idprop' value=''>
+        <input type='hidden' name='idprop' value='<?php echo $prop->get_id(); ?>'>
         <input type='submit' name='sup_prop' value='Refuser/Annuler la proposition'>
     </form>
 </center>
