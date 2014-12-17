@@ -53,9 +53,9 @@ class Controller_acheter {
             $uti = Utilisateur::get_by_id($tabserv[$i]->get_uti());
             $serv = $tabserv[$i];
             if ($uti != NULL) {
-                echo "<div class='unbien'>";
-                include "vues/afficher_bien.php";
-                echo "<h4 class='center'><a href='pagebien?id=" . $serv->get_id() . "'>Acheter / En savoir plus ...</h4>";
+                echo "<div class='unservice'>";
+                include "vues/afficher_service.php";
+                echo "<h4 class='center'><a href='pageservice?id=" . $serv->get_id() . "'>Acheter / En savoir plus ...</h4>";
                 echo "</div>";
             } else {
                 echo "<div class='warning'><p>erreur pas d'utilisateur " . $serv->get_uti() . "</p></div>";
