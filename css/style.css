@@ -127,14 +127,14 @@ table.gestion td{
 }
 .gestion_portemonnaire{
     padding-left:20px;
-    min-height:600px;
+    min-height:450px;
     width:500px;
     float:right;
     border-left:1px solid black;
 }
 .gestion_historique{
     width:100%;
-    margin-top:650px;
+    margin-top:500px;
     min-height: 100px;
 }
 

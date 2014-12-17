@@ -238,7 +238,9 @@ class propositions extends Model_Base {
         $tabprop = null;
         $i = 0;
         $nb = oci_num_rows($stmt);
+        echo "ça passe ?1";
         if ($nb != 0) {
+            echo "ça passe ?";
             while ($row = oci_fetch_assoc($stmt)) {
                 $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], $row['ETAT']);
                 $i = $i + 1;
