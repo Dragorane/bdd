@@ -23,6 +23,7 @@
         </select><br/><br/>
         <label for='comm'>Commentaire</label><br/>
         <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
+        <input type='submit' name='valid_eval' value='Envoyer Evaluation'/>
     </form>
 
     <div class="uti_evaluation">

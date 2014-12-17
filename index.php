@@ -120,6 +120,12 @@ switch ($args[1]) {
     case 'acheterservice' :
         $ca->acheterservice();
         break;
+    case 'acheter_biens_pts' :
+        $ca->acheter_biens_pts();
+        break;
+    case 'acheter_biens_bienserv' :
+        $ca->acheter_biens_bienserv();
+        break;
     //troc vendre
     case 'vendre':
         $cv->index();

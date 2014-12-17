@@ -29,6 +29,7 @@ class Controller_acheter {
         echo "<div class='lesbiens'>";
         for ($i = 0; $i < count($tabbiens); $i++) {
             $uti = Utilisateur::get_by_id($tabbiens[$i]->get_uti());
+            $bien = $tabbiens[$i];
             if ($uti != NULL) {
                 include "vues/lesbiens.php";
             } else {
@@ -93,6 +94,38 @@ class Controller_acheter {
             echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";
         } else {
             include 'vues/acheter/page_bien.php';
+        }
+    }
+
+    public function acheter_biens_pts() {
+        if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
+            echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
+        } else {
+            $bien = biens::get_bien_by_id($_GET['id']);
+            $uti = Utilisateur::get_by_id($bien->get_uti());
+            if (($bien == null) || ($uti == null)) {
+                echo "<div class='warning'><p>Erreur, aucun bien de selectionné</p></div>";
+            } else {
+                $verif = $this->verifpts($uti, $bien);
+                include 'vues/acheter/acheter_bien_pts.php';
+            }
+        }
+    }
+
+    public function acheter_biens_bienserv() {
+        if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
+            echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
+        } else {
+            $bien = biens::get_bien_by_id($_GET['id']);
+            $uti = Utilisateur::get_by_id($bien->get_uti());
+        }
+    }
+
+    public function verifpts($uti, $bien) {
+        if ($uti->pt_troc() >= $bien->get_prix()) {
+            return 1;
+        } else {
+            return 0;
         }
     }
 
