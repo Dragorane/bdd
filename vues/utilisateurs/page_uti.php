@@ -12,8 +12,8 @@
         <input type='hidden' name='uti_eval' value='<?php echo $_GET['id']; ?>'>
         <label for='titre'>Titre de votre évaluation</label><br/>
         <input type='text' name='titre' id='titre'/><br/><br/>
-        <label for='num_eval'>Note d'évaluation /5</label><br/>
-        <select name='num_eval'>
+        <label for='note'>Note d'évaluation /5</label><br/>
+        <select name='note'>
             <option value='0'>0</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
