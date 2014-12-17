@@ -230,18 +230,27 @@ class propositions extends Model_Base {
     }
 
     public static function tab_archive($uti) {
-        echo "id de l'uti : " . $uti->id();
-        $query = "select * from Archive where iduti=:id or iduti_vendeur_archive=:idv order by dateArch, prixArch";
+        $query = "select * from Archive where iduti=:id order by dateArch, prixArch";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_bien" . oci_error($conn));
-        oci_bind_by_name($stmt, ":idv", $uti->id());
         oci_bind_by_name($stmt, ":id", $uti->id());
         oci_execute($stmt);
         $tabprop = null;
         $i = 0;
         $nb = oci_num_rows($stmt);
-        echo "ça passe ?1";
         if ($nb != 0) {
-            echo "ça passe ?";
+            echo "ça passe 1?";
+            while ($row = oci_fetch_assoc($stmt)) {
+                $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], $row['ETAT']);
+                $i = $i + 1;
+            }
+        }
+        $query = "select * from Archive where iduti_vendeur_archive=:id order by dateArch, prixArch";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_bien" . oci_error($conn));
+        oci_bind_by_name($stmt, ":id", $uti->id());
+        oci_execute($stmt);
+        $nb = oci_num_rows($stmt);
+        if ($nb != 0) {
+            echo "ça passe 2?";
             while ($row = oci_fetch_assoc($stmt)) {
                 $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], $row['ETAT']);
                 $i = $i + 1;
