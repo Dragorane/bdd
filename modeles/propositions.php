@@ -19,7 +19,7 @@ class propositions extends Model_Base {
         $this->_prix = $prix;
         $this->_id_uti = $iduti;
         $this->_id_vendeur = $idutiv;
-        $this->_id_etat = $etat;
+        $this->_etat = $etat;
     }
 
     public function get_id() {
