@@ -42,34 +42,38 @@ class evaluations extends Model_Base {
 
     public static function create($titre, $comm, $note, $idcrea, $iduti, $idserv, $idbien) {
         if ((is_numeric($idcrea)) && (is_numeric($note))) {
-            $query = "INSERT INTO Evaluation VALUES (Evaluation_seq.nextval,:titreEval,:commEval,:note,:idUtiCrea,:idUtiEva,:idServ,:idBien)";
-            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion utilisateur" . oci_error($conn));
+            if ((is_numeric($iduti)) || (is_numeric($idserv)) || (is_numeric($idbien))) {
+                $query = "INSERT INTO Evaluation VALUES (Evaluation_seq.nextval,:titreEval,:commEval,:note,:idUtiCrea,:idUtiEva,:idServ,:idBien)";
+                $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion utilisateur" . oci_error($conn));
 //formatage des variables et sécurité
-            $titre_verif = stripslashes(htmlspecialchars($titre));
-            $comm_verif = stripslashes(htmlspecialchars($comm));
-            oci_bind_by_name($stmt, ":titreEval", $titre_verif);
-            oci_bind_by_name($stmt, ":commEval", $comm_verif);
-            oci_bind_by_name($stmt, ":note", $note);
-            oci_bind_by_name($stmt, ":idUtiCrea", $idcrea);
-            oci_bind_by_name($stmt, ":idUtiEva", $iduti);
-            oci_bind_by_name($stmt, ":idServ", $idserv);
-            oci_bind_by_name($stmt, ":idBien", $idbien);
-            oci_execute($stmt);
+                $titre_verif = stripslashes(htmlspecialchars($titre));
+                $comm_verif = stripslashes(htmlspecialchars($comm));
+                oci_bind_by_name($stmt, ":titreEval", $titre_verif);
+                oci_bind_by_name($stmt, ":commEval", $comm_verif);
+                oci_bind_by_name($stmt, ":note", $note);
+                oci_bind_by_name($stmt, ":idUtiCrea", $idcrea);
+                oci_bind_by_name($stmt, ":idUtiEva", $iduti);
+                oci_bind_by_name($stmt, ":idServ", $idserv);
+                oci_bind_by_name($stmt, ":idBien", $idbien);
+                oci_execute($stmt);
+            } else {
+                echo "<div class='warning'><p>Erreur, données corrompues.</p></div>";
+            }
         } else {
             echo "<div class='warning'><p>Erreur, données corrompues.</p></div>";
         }
     }
 
     public static function nouvelle_eval_uti($titre, $comm, $note, $idcrea, $iduti) {
-        $eval = evaluations::create($titre, $comm, $note, $idcrea, $iduti, null, null);
+        $eval = evaluations::create($titre, $comm, $note, $idcrea, $iduti, NULL, NULL);
     }
 
     public static function nouvelle_eval_bien($titre, $comm, $note, $idcrea, $idserv) {
-        $eval = evaluations::create($titre, $comm, $note, $idcrea, null, $idserv, null);
+        $eval = evaluations::create($titre, $comm, $note, $idcrea, NULL, $idserv, NULL);
     }
 
     public static function nouvelle_eval_service($titre, $comm, $note, $idcrea, $idbien) {
-        $eval = evaluations::create($titre, $comm, $note, $idcrea, null, null, $idbien);
+        $eval = evaluations::create($titre, $comm, $note, $idcrea, NULL, NULL, $idbien);
     }
 
     public static function moy_eval_uti($pseudo) {
