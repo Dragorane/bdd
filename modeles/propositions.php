@@ -230,16 +230,19 @@ class propositions extends Model_Base {
     }
 
     public static function tab_archive($uti) {
-        $query = "select * from Archive where idUti_vendeur_archive=:idv or idUti=:id order by date, prix";
+        $query = "select * from Archive where idUti_vendeur_archive=:idv or idUti=:id order by dateArch, prixArch";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_bien" . oci_error($conn));
         oci_bind_by_name($stmt, ":idv", $uti->id());
         oci_bind_by_name($stmt, ":id", $uti->id());
         oci_execute($stmt);
         $tabprop = null;
         $i = 0;
-        while ($row = oci_fetch_assoc($stmt)) {
-            $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], $row['ETAT']);
-            $i = $i + 1;
+        $nb = oci_num_rows($stmt);
+        if ($nb != 0) {
+            while ($row = oci_fetch_assoc($stmt)) {
+                $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], $row['ETAT']);
+                $i = $i + 1;
+            }
         }
         return $tabprop;
     }
