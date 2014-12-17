@@ -21,7 +21,7 @@ class propositions extends Model_Base {
     }
 
     public static function create($adr, $date, $prix, $iduti, $idutiv) {
-        if ((is_numeric($iduti)) && (is_numeric($idutiv)) && (is_numeric($etat)) && (is_float(floatval($prix)))) {
+        if ((is_numeric($iduti)) && (is_numeric($idutiv)) && (is_float(floatval($prix)))) {
             $query = "INSERT INTO Proposition VALUES (Proposition_seq.nextval,:adr,TO_DATE(:date, 'dd/mm/yyyy'),:prix,:id,:idv) RETURNING id INTO :idprop";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
             //formatage des variables et sécurité
