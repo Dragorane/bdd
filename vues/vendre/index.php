@@ -32,7 +32,7 @@
 
 <h3 class='center'>Liste de vos Services en vente</h3>
 <table class='biens'>
-    <tr><th>titre service</th><th>categorie service</th><th>service</th></tr>
+    <tr><th>titre service</th><th>categorie service</th><th>prix</th><th></th></tr>
     <?php
     for ($i = 0; $i < count($tabserv); $i++) {
         $cat = categories::recupCat($tabserv[$i]->get_categ());

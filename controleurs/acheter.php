@@ -36,7 +36,7 @@ class Controller_acheter {
                 echo "<h4 class='center'><a href='pagebien?id=" . $bien->get_id() . "'>Acheter / En savoir plus ...</h4>";
                 echo "</div>";
             } else {
-                echo "<div class='warning'><p>erreur pas d'utilisateur " . $tabbiens[$i]->get_uti() . "</p></div>";
+                echo "<div class='warning'><p>erreur pas d'utilisateur " . $tabbiens->get_uti() . "</p></div>";
             }
         }
         echo "</div>";
@@ -44,9 +44,24 @@ class Controller_acheter {
 
     public function acheterservice() {
         $tabcat = categories::list_categ(2);
+        $tabserv = Controller_acheter::tab_services();
         echo "<h2 class='center'>Acheter un service</h2>";
         include "vues/menu_cat.php";
         include "vues/filtre_recherche.php";
+        echo "<div class='lesbiens'>";
+        for ($i = 0; $i < count($tabserv); $i++) {
+            $uti = Utilisateur::get_by_id($tabserv[$i]->get_uti());
+            $serv = $tabserv[$i];
+            if ($uti != NULL) {
+                echo "<div class='unbien'>";
+                include "vues/afficher_bien.php";
+                echo "<h4 class='center'><a href='pagebien?id=" . $serv->get_id() . "'>Acheter / En savoir plus ...</h4>";
+                echo "</div>";
+            } else {
+                echo "<div class='warning'><p>erreur pas d'utilisateur " . $serv->get_uti() . "</p></div>";
+            }
+        }
+        echo "</div>";
     }
 
     public static function tab_biens() {
@@ -88,6 +103,47 @@ class Controller_acheter {
             }
         }
         return $tabbien;
+    }
+
+    public static function tab_services() {
+        if (isset($_GET['idcat'])) {
+            if (isset($_GET['prixcroiss'])) {
+                $tabserv = services::tabbiens_prix_cat($_GET['idcat']);
+            } else {
+                if (isset($_GET['prixdecroiss'])) {
+                    $tabserv = services::tabbiens_prixdesc_cat($_GET['idcat']);
+                } else {
+                    if (isset($_GET['evaluation'])) {
+                        $tabserv = services::tabbiens_eval_cat($_GET['idcat']);
+                    } else {
+                        if (isset($_GET['geoloc'])) {
+                            $tabserv = services::tabbiens_geoloc_cat($_GET['idcat']);
+                        } else {
+                            $tabserv = services::tabbiens_cat($_GET['idcat']);
+                        }
+                    }
+                }
+            }
+        } else {
+            if (isset($_GET['prixcroiss'])) {
+                $tabserv = services::tabbiens_prix();
+            } else {
+                if (isset($_GET['prixdecroiss'])) {
+                    $tabserv = services::tabbiens_prixdesc();
+                } else {
+                    if (isset($_GET['evaluation'])) {
+                        $tabserv = services::tabbiens_eval();
+                    } else {
+                        if (isset($_GET['geoloc'])) {
+                            $tabserv = services::tabbiens_geoloc();
+                        } else {
+                            $tabserv = services::tabbiens();
+                        }
+                    }
+                }
+            }
+        }
+        return $tabserv;
     }
 
     public function pagebien() {

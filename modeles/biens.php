@@ -75,10 +75,6 @@ class biens extends Model_Base {
         return $this->_vendu;
     }
 
-    public function bien_vendu() {
-        
-    }
-
     public static function get_tabbien_by_uti($pseudo) {
         $uti = Utilisateur::get_by_pseudo($pseudo);
         $tabbien = null;
@@ -130,6 +126,7 @@ class biens extends Model_Base {
             $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUBIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
             $i = $i + 1;
         }
+        return $tabbien;
     }
 
     public static function tabbiens_prixdesc() {
@@ -142,6 +139,7 @@ class biens extends Model_Base {
             $tabbien[$i] = new biens($row['IDBIEN'], $row['LIBBIEN'], $row['DESCBIEN'], $row['PRIXBIENS'], $row['VENDUBIEN'], $row['IDUTI'], $row['IDCAT'], $row['IDETAT']);
             $i = $i + 1;
         }
+        return $tabbien;
     }
 
     public static function tabbiens_cat($cat) {

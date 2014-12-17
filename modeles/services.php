@@ -88,6 +88,122 @@ class services extends Model_Base {
         }
     }
 
+    public static function get_serv_by_id($id) {
+        $serv = null;
+        if ((is_int($id)) || (is_numeric($id))) {
+            $query = "select idServ, libServ, descServ, prixServ, nbplaces, venduServ, idUti, idCat from Services where venduServ=1 and idServ=" . $id;
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion service" . oci_error($conn));
+            oci_execute($stmt);
+            $row = oci_fetch_assoc($stmt);
+            $serv = new services($row['IDSERV'], $row['LIBSERV'], $row['DESCSERV'], $row['PRIXSERV'], $row['NBPLACES'], $row['VENDUSERV'], $row['IDUTI'], $row['IDCAT']);
+        }
+        return $serv;
+    }
+
+    public static function tabservices() {
+        $query = "select idServ, libServ, descServ, prixServ, nbplaces, venduServ, idUti, idCat from Services where venduServ=1";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+        oci_execute($stmt);
+        $i = 0;
+        $tabserv = null;
+        while ($row = oci_fetch_assoc($stmt)) {
+            $tabserv[$i] = new services($row['IDSERV'], $row['LIBSERV'], $row['DESCSERV'], $row['PRIXSERV'], $row['NBPLACES'], $row['VENDUSERV'], $row['IDUTI'], $row['IDCAT']);
+            $i = $i + 1;
+        }
+        return $tabserv;
+    }
+
+    public static function tabservices_prix() {
+        $tabserv = null;
+        $query = "select idServ, libServ, descServ, prixServ, nbplaces, venduServ, idUti, idCat from Services where venduServ=1 order by prix";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+        oci_execute($stmt);
+        $i = 0;
+        while ($row = oci_fetch_assoc($stmt)) {
+            $tabserv[$i] = new services($row['IDSERV'], $row['LIBSERV'], $row['DESCSERV'], $row['PRIXSERV'], $row['NBPLACES'], $row['VENDUSERV'], $row['IDUTI'], $row['IDCAT']);
+            $i = $i + 1;
+        }
+        return $tabserv;
+    }
+
+    public static function tabservices_prixdesc() {
+        $tabserv = null;
+        $query = "select idServ, libServ, descServ, prixServ, nbplaces, venduServ, idUti, idCat from Services where venduServ=1 order by prixServ DESC";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+        oci_execute($stmt);
+        $i = 0;
+        while ($row = oci_fetch_assoc($stmt)) {
+            $tabserv[$i] = new services($row['IDSERV'], $row['LIBSERV'], $row['DESCSERV'], $row['PRIXSERV'], $row['NBPLACES'], $row['VENDUSERV'], $row['IDUTI'], $row['IDCAT']);
+            $i = $i + 1;
+        }
+        return $tabserv;
+    }
+
+    public static function tabservices_cat($cat) {
+        $tabserv = null;
+        if (is_int($cat)) {
+            $query = "select idServ, libServ, descServ, prixServ, nbplaces, venduServ, idUti, idCat from Services where venduServ=1  and idCat=" . $cat;
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            oci_execute($stmt);
+            $i = 0;
+            while ($row = oci_fetch_assoc($stmt)) {
+                $tabserv[$i] = new services($row['IDSERV'], $row['LIBSERV'], $row['DESCSERV'], $row['PRIXSERV'], $row['NBPLACES'], $row['VENDUSERV'], $row['IDUTI'], $row['IDCAT']);
+                $i = $i + 1;
+            }
+        }
+        return $tabserv;
+    }
+
+    public static function tabservices_prixdesc_cat($cat) {
+        $tabserv = null;
+        if (is_int($cat)) {
+            $query = "select idServ, libServ, descServ, prixServ, nbplaces, venduServ, idUti, idCat from Services where venduServ=1 and idCat=" . $cat . " order by prix DESC";
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            oci_execute($stmt);
+            $i = 0;
+            while ($row = oci_fetch_assoc($stmt)) {
+                $tabserv[$i] = new services($row['IDSERV'], $row['LIBSERV'], $row['DESCSERV'], $row['PRIXSERV'], $row['NBPLACES'], $row['VENDUSERV'], $row['IDUTI'], $row['IDCAT']);
+                $i = $i + 1;
+            }
+        }
+        return $tabserv;
+    }
+
+    public static function tabservices_prix_cat($cat) {
+        $tabserv = null;
+        if (is_int($cat)) {
+            $query = "select idServ, libServ, descServ, prixServ, nbplaces, venduServ, idUti, idCat from Services where venduServ=1 and idCat=" . $cat . " order by prix";
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            oci_execute($stmt);
+            $i = 0;
+            while ($row = oci_fetch_assoc($stmt)) {
+                $tabserv[$i] = new services($row['IDSERV'], $row['LIBSERV'], $row['DESCSERV'], $row['PRIXSERV'], $row['NBPLACES'], $row['VENDUSERV'], $row['IDUTI'], $row['IDCAT']);
+                $i = $i + 1;
+            }
+        }
+        return $tabserv;
+    }
+
+    public static function tabservices_eval_cat($cat) {
+        $tabserv = null;
+        return $tabserv;
+    }
+
+    public static function tabservices_eval() {
+        $tabserv = null;
+        return $tabserv;
+    }
+
+    public static function tabservices_geoloc_cat($cat) {
+        $tabserv = null;
+        return $tabserv;
+    }
+
+    public static function tabservices_geoloc() {
+        $tabserv = null;
+        return $tabserv;
+    }
+
 }
 
 ?>
