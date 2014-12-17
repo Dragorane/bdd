@@ -26,6 +26,7 @@ class Controller_vendre {
     }
 
     public function vendrebien() {
+        Etat::init();
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
@@ -36,7 +37,6 @@ class Controller_vendre {
             } else {
                 $cat = categories::recupCat($_GET['idcat']);
                 if ($cat != null) {
-                    echo "<h3>Vous avez sélectionnez la catégorie : " . $cat->getlib() . "</h3>";
                     $tabetat = Etat::lesEtats();
                     include "vues/vendre/form_vendrebien.php";
                 }

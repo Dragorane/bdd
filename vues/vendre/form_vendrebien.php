@@ -1,4 +1,5 @@
 <h2 class='center'>Mise en vente d'un Bien</h2>
+<h3>Vous avez sélectionnez la catégorie : <?php echo $cat->getlib(); ?></h3>
 
 <div class="form_vendre">
     <form action="<?= BASEURL ?>/index.php/valid_form_vendre" method="post">
