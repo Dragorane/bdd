@@ -8,7 +8,7 @@
     }
     ?>
     <h3>Evaluer l'utilisateur :</h3>
-    <form methode='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_uti'>
+    <form method='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_uti'>
         <input type='hidden' name='uti_eval' value='<?php echo $_GET['id']; ?>'>
         <label for='titre'>Titre de votre évaluation</label><br/>
         <input type='text' name='titre' id='titre'/><br/><br/>
