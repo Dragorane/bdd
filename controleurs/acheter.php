@@ -31,6 +31,8 @@ class Controller_acheter {
             $uti = Utilisateur::get_by_id($tabbiens[$i]->get_uti());
             if ($uti != NULL) {
                 include "vues/lesbiens.php";
+            } else {
+                echo "<div class='warning'><p>erreur pas d'utilisateur </p></div>";
             }
         }
         echo "</div>";
