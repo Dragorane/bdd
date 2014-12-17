@@ -65,19 +65,37 @@ class categories extends Model_Base {
     }
 
     public static function initcat() {
+        categories::create("Informatique Logiciels", 1, null);
+        categories::create("PC fixe", 1, 2);
+        categories::create("PC portable", 1, 2);
+        categories::create("Ecrans", 1, 2);
+        categories::create("Claviers", 1, 2);
+        categories::create("Souris", 1, 2);
+        categories::create("Enceintes", 1, 2);
+        categories::create("Memoires / RAM", 1, 2);
         categories::create("Livres BD", 1, null);
         categories::create("BD, humour et jeunesse", 1, 10);
-        categories::create("Culture & société", 1, 10);
-        categories::create("Littérature & fiction", 1, 10);
+        categories::create("Culture & societe", 1, 10);
+        categories::create("Litterature & fiction", 1, 10);
         categories::create("Vie pratique & loisirs", 1, 10);
         categories::create("Scolaire & universitaire", 1, 10);
-        categories::create("Enceintes", 1, 10);
-        categories::create("Mémoires / RAM", 1, 10);
         categories::create("Musique CD", 1, null);
         categories::create("CD", 1, 18);
         categories::create("Instruments de musique", 1, 18);
         categories::create("Vinyles", 1, 18);
         categories::create("Partitions et paroles", 1, 18);
+
+        categories::create("Aide a domicile", 2, null);
+        categories::create("Femme de ménage - Technicien de surface", 2, 20);
+        categories::create("Aide soignante - Infirmier(e) à domicile", 2, 20);
+        categories::create("Nourrice", 2, 20);
+        categories::create("Gardiennage de maison", 2, 20);
+        categories::create("Garde d'animaux", 2, 20);
+        categories::create("Techniciens", 2, null);
+        categories::create("Electriciens", 2, 25);
+        categories::create("Plombiers", 2, 25);
+        categories::create("Couvreurs", 2, 25);
+        categories::create("Petits boulots", 2, null);
     }
 
 }

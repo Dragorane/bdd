@@ -1,5 +1,6 @@
 <?php
 
+categories::initcat();
 session_start();
 
 define('SQL_DSN', 'codd.u-strasbg.fr:1521/ROSA');
