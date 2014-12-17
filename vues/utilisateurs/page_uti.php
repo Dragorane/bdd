@@ -8,8 +8,8 @@
     }
     ?>
     <h3>Evaluer l'utilisateur :</h3>
-    <form methode='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_produit'>
-        <input type='hidden' name='id' value='<?php echo $_GET['id']; ?>'>
+    <form methode='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_uti'>
+        <input type='hidden' name='uti_eval' value='<?php echo $_GET['id']; ?>'>
         <label for='titre'>Titre de votre évaluation</label><br/>
         <input type='text' name='titre' id='titre'/><br/><br/>
         <label for='num_eval'>Note d'évaluation /5</label><br/>
@@ -27,6 +27,16 @@
     </form>
 
     <div class="uti_evaluation">
-        <h3 class='center'>Evaluations de l'utilisateur</h3>
+        <h3 class='center'>Les évaluations de l'utilisateur (<?php echo $moyeval; ?>/5)</h3>
+        <?php
+        for ($i = 0; $i < count($tabeval); $i++) {
+            $uti = Utilisateur::get_by_id($tabeval->get_iduti());
+            echo "<div class='uneeval'>";
+            echo "<h4>" . $tabeval[$i]->get_titre() . " (note : " . $tabeval[$i]->get_note() . "/5)</h4>";
+            echo "<p>" . $tabeval[$i]->get_comm() . "</p>";
+            echo "Evaluation postée par l'utilisateur <a href='" . BASEURL . "/index.php/pageuti?pseudo=" . $uti->pseudo() . "'>'" . $uti->pseudo() . "'</a>";
+            echo "</div>";
+        }
+        ?>
     </div>
 </div>

@@ -403,8 +403,20 @@ class Controller_Utilisateur {
             if ($uti == null) {
                 echo "<div class='warning'><p>Erreur, vous n'êtes pas identifié</p></div>";
             } else {
+                $tabeval = evaluations::tabeval_uti($uti->pseudo());
+                $moyeval = evaluations::moy_eval_uti($uti->pseudo());
                 include 'vues/utilisateurs/page_uti.php';
             }
+        }
+    }
+
+    public function ajout_eval() {
+        if (isset($_POST['valid_eval'])) {
+            $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+            evaluations::nouvelle_eval_uti($_POST['titre'], $_POST['comm'], $_POST['note'], $uti->id(), $_POST['uti_eval']);
+            echo "<div class='success'><p>Votre évaliation a bien été ajoutée.</p></div>";
+        } else {
+            echo "<div class='warning'><p>Erreur, vous n'avez pas accès à cette page.</p></div>";
         }
     }
 

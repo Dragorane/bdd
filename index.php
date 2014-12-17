@@ -109,6 +109,9 @@ switch ($args[1]) {
     case 'pageuti':
         $cu->page_public_uti();
         break;
+    case 'valid_eval_uti':
+        $cu->ajout_eval();
+        break;
     //Troc acheter
     case 'pagebien':
         $ca->pagebien();
