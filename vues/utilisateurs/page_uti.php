@@ -30,7 +30,7 @@
         <h3 class='center'>Les évaluations de l'utilisateur (<?php echo $moyeval; ?>/5)</h3>
         <?php
         for ($i = 0; $i < count($tabeval); $i++) {
-            $uti = Utilisateur::get_by_id($tabeval->get_iduti());
+            $uti = Utilisateur::get_by_id($tabeval[$i]->get_iduti());
             echo "<div class='uneeval'>";
             echo "<h4>" . $tabeval[$i]->get_titre() . " (note : " . $tabeval[$i]->get_note() . "/5)</h4>";
             echo "<p>" . $tabeval[$i]->get_comm() . "</p>";
