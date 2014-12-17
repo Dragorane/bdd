@@ -127,8 +127,8 @@ class Controller_acheter {
     }
 
     public function valid_acheter_bien_pts() {
-        if ((is_numeric($_POST['id'])) && (isset($_POST['valid_acheter_bien_pts']))) {
-            $bien = biens::get_bien_by_id($_GET['id']);
+        if ((is_numeric($_POST['bien'])) && (isset($_POST['valid_acheter_bien_pts']))) {
+            $bien = biens::get_bien_by_id($_POST['bien']);
             $utiacheter = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
             if (($bien == null) || ($utiacheter == null)) {
                 echo "<div class='warning'><p>Erreur, aucun bien de selectionné</p></div>";
