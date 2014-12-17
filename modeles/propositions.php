@@ -130,13 +130,14 @@ class propositions extends Model_Base {
         if ($prop == NULL) {
             echo "<div class='warnign'><p>Erreur, la proposition n'a pas été acceptée.</div>";
         } else {
+            echo "erreur ??";
             $archive = propositions::copie_proposition_archive($prop, 0);
-            propositions::copie_prop_bien($prop, $archive);
             echo "pif";
-            propositions::copie_prop_serv($prop, $archive);
+            propositions::copie_prop_bien($prop, $archive);
             echo "paf";
-            propositions::suppression_proposition($prop);
+            propositions::copie_prop_serv($prop, $archive);
             echo "pouf";
+            propositions::suppression_proposition($prop);
         }
     }
 
@@ -145,6 +146,7 @@ class propositions extends Model_Base {
         if ($prop == NULL) {
             echo "<div class='warnign'><p>Erreur, la proposition n'a pas été acceptée.</div>";
         } else {
+            echo "erreur ??";
             $archive = propositions::copie_proposition_archive($prop, 1);
             echo "pif";
             propositions::copie_prop_bien($prop, $archive);
