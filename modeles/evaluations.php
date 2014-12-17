@@ -59,9 +59,15 @@ class evaluations extends Model_Base {
             oci_bind_by_name($stmt, ":commEval", $comm_verif);
             oci_bind_by_name($stmt, ":note", $note);
             oci_bind_by_name($stmt, ":idUtiCrea", $idcrea);
-            oci_bind_by_name($stmt, ":idUtiEva", $iduti);
-            oci_bind_by_name($stmt, ":idServ", $idserv);
-            oci_bind_by_name($stmt, ":idBien", $idbien);
+            if ($iduti != NULL) {
+                oci_bind_by_name($stmt, ":idUtiEva", $iduti);
+            } else {
+                if ($idbien != NULL) {
+                    oci_bind_by_name($stmt, ":idBien", $idbien);
+                } else {
+                    oci_bind_by_name($stmt, ":idServ", $idserv);
+                }
+            }
             oci_execute($stmt);
         } else {
             echo "<div class='warning'><p>Erreur, données corrompues.</p></div>";
