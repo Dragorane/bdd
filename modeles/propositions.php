@@ -20,6 +20,26 @@ class propositions extends Model_Base {
         $this->_id_vendeur = $idutiv;
     }
 
+    public function get_id() {
+        return $this->_id;
+    }
+
+    public function get_adr() {
+        return $this->_adr;
+    }
+
+    public function get_prix() {
+        return $this->_prix;
+    }
+
+    public function get_iduti() {
+        return $this->_id_uti;
+    }
+
+    public function get_idv() {
+        return $this->_id_vendeur;
+    }
+
     public static function create($adr, $date, $prix, $iduti, $idutiv) {
         if ((is_numeric($iduti)) && (is_numeric($idutiv)) && (is_float(floatval($prix)))) {
             $query = "INSERT INTO Proposition VALUES (Proposition_seq.nextval,:adr_v,TO_DATE(:date_v, 'dd/mm/yyyy'),:prix_v,:id_v,:idv_v) RETURNING idPro INTO :idprop";
@@ -48,6 +68,34 @@ class propositions extends Model_Base {
         oci_bind_by_name($stmt, ":idprop_v", $this->_id);
         oci_bind_by_name($stmt, ":idbien_v", $bien->get_id());
         oci_execute($stmt);
+    }
+
+    public static function propostion_vendeur($uti) {
+        $query = "select * from proposition where idUti_vendeur=:idv";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_bien" . oci_error($conn));
+        oci_bind_by_name($stmt, ":idv", $uti->id());
+        oci_execute($stmt);
+        $tabprop = null;
+        $i = 0;
+        while ($row = oci_fetch_assoc($stmt)) {
+            $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], $row['']);
+            $i = $i + 1;
+        }
+        return $tabprop;
+    }
+
+    public static function propostion_acheteur($uti) {
+        $query = "select * from proposition where idUti=:id";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_bien" . oci_error($conn));
+        oci_bind_by_name($stmt, ":id", $uti->id());
+        oci_execute($stmt);
+        $tabprop = null;
+        $i = 0;
+        while ($row = oci_fetch_assoc($stmt)) {
+            $tabprop[$i] = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR'], $row['']);
+            $i = $i + 1;
+        }
+        return $tabprop;
     }
 
 }

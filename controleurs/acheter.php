@@ -23,7 +23,7 @@ class Controller_acheter {
     public function acheterbien() {
         $tabcat = categories::list_categ(1);
         $tabbiens = Controller_acheter::tab_biens();
-        include 'vues/acheter/acheterbien.php';
+        echo "<h2 class='center'>Acheter un bien</h2>";
         include "vues/menu_cat.php";
         include "vues/filtre_recherche.php";
         echo "<div class='lesbiens'>";
@@ -44,7 +44,7 @@ class Controller_acheter {
 
     public function acheterservice() {
         $tabcat = categories::list_categ(2);
-        include 'vues/acheter/acheterservice.php';
+        echo "<h2 class='center'>Acheter un service</h2>";
         include "vues/menu_cat.php";
         include "vues/filtre_recherche.php";
     }

@@ -10,6 +10,7 @@ require_once 'modeles/model_base.php';
 require_once 'controleurs/utilisateur.php';
 require_once 'controleurs/vendre.php';
 require_once 'controleurs/acheter.php';
+require_once 'controleurs/proposition.php';
 
 if (isset($_SERVER['PATH_INFO'])) {
     $args = explode('/', $_SERVER['PATH_INFO']);
@@ -25,6 +26,7 @@ ob_start();
 $cu = new Controller_Utilisateur();
 $cv = new Controller_vendre();
 $ca = new Controller_acheter();
+$cp = new Controller_proposition();
 
 //appel des controller
 switch ($args[1]) {
@@ -144,7 +146,7 @@ switch ($args[1]) {
         break;
     //proposition
     case 'propositions':
-        $cv->valide_vendreservice();
+        $cv->index();
         break;
     default :
         echo "<div class='warning'><p>La page demandée n'existe pas.</p></div>";
