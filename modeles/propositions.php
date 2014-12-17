@@ -74,6 +74,14 @@ class propositions extends Model_Base {
         oci_execute($stmt);
     }
 
+    public function ajout_service_proposition($serv) {
+        $query = "INSERT INTO proposition_services VALUES (:idprop_v,:idbserv_v)";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_service" . oci_error($conn));
+        oci_bind_by_name($stmt, ":idprop_v", $this->_id);
+        oci_bind_by_name($stmt, ":idbserv_v", $serv->get_id());
+        oci_execute($stmt);
+    }
+
     public static function propostion_vendeur($uti) {
         $query = "select * from proposition where idUti_vendeur=:idv";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_bien" . oci_error($conn));

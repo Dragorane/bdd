@@ -137,6 +137,9 @@ switch ($args[1]) {
     case 'valid_acheter_bien_pts' :
         $ca->valid_acheter_bien_pts();
         break;
+    case 'valid_acheter_service_pts' :
+        $ca->valid_acheter_service_pts();
+        break;
     //troc vendre
     case 'vendre':
         $cv->index();

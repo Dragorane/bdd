@@ -242,6 +242,40 @@ class Controller_acheter {
             echo "<div class='warning'><p>Erreur, l'achat n'a pas été effectué.</p></div>";
         }
     }
+    public function valid_acheter_service_pts() {
+        if ((is_numeric($_POST['serv'])) && (isset($_POST['valid_acheter_serv_pts']))) {
+            $serv = services::get_serv_by_id($_POST['serv']);
+            $utiacheter = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+            if (($serv == null) || ($utiacheter == null)) {
+                echo "<div class='warning'><p>Erreur, aucun bien de selectionné</p></div>";
+            } else {
+                $verif = $this->verifpts($utiacheter, $serv);
+                if ($verif == 0) {
+                    echo "<div class='warning'><p>Erreur, vous n'avez pas assez de points trocs pour acheter le bien.</p></div>";
+                } else {
+                    $date = explode("/", $_POST['date']);
+                    if ((isset($date[0])) && (isset($date[1])) && (isset($date[2]))) {
+                        $verif = $this->verifierDate($date[1], $date[0], $date[2]);
+                    } else {
+                        $verif = 0;
+                    }
+                    if ($verif == 0) {
+                        echo "<div class='warning'><p>Erreur, la date saisie n'est pas correcte.</p></div>";
+                    } else {
+                        $laprop = propositions::create($_POST['adr'], $_POST['date'], $serv->get_prix(), $utiacheter->id(), $serv->get_uti());
+                        if ($laprop == null) {
+                            echo "<div class='warning'><p>Erreur, la proposition n'a pas été enregistrée</p></div>";
+                        } else {
+                            $laprop->ajout_service_proposition($serv);
+                            include "vues/acheter/valid_acheter_serv.php";
+                        }
+                    }
+                }
+            }
+        } else {
+            echo "<div class='warning'><p>Erreur, l'achat n'a pas été effectué.</p></div>";
+        }
+    }
 
     public function verifpts($uti, $bien) {
         if ($uti->pt_troc() >= $bien->get_prix()) {
