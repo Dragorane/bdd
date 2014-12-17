@@ -1,7 +1,5 @@
 <?php
 
-require_once 'modeles/categories.php';
-categories::initcat();
 session_start();
 
 define('SQL_DSN', 'codd.u-strasbg.fr:1521/ROSA');
@@ -12,7 +10,8 @@ require_once 'modeles/model_base.php';
 require_once 'controleurs/utilisateur.php';
 require_once 'controleurs/vendre.php';
 require_once 'controleurs/acheter.php';
-
+require_once 'modeles/categories.php';
+categories::initcat();
 if (isset($_SERVER['PATH_INFO'])) {
     $args = explode('/', $_SERVER['PATH_INFO']);
 } else {
