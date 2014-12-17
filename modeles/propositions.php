@@ -230,6 +230,7 @@ class propositions extends Model_Base {
     }
 
     public static function tab_archive($uti) {
+        echo "id de l'uti : " . $uti->id;
         $query = "select * from Archive where iduti=:id or iduti_vendeur_archive=:idv order by dateArch, prixArch";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_bien" . oci_error($conn));
         oci_bind_by_name($stmt, ":idv", $uti->id());
