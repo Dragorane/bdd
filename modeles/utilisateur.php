@@ -62,6 +62,33 @@ class Utilisateur extends Model_Base {
         //return new Utilisateur($nom, $pnom, $pseudo, $mdp, $adr, $email, $tel, $posix, $posiy, $photo, 0);
     }
 
+    public static function get_by_pseudo($pseudo) {
+        $pseudo_verif = stripslashes(htmlspecialchars($pseudo));
+        $query = "SELECT * FROM Utilisateurs WHERE pseudoUti=:pseudo and desactive != 0";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur select by id utilisateur " . oci_error($conn));
+        oci_bind_by_name($stmt, ":pseudo", $pseudo_verif);
+        oci_execute($stmt);
+        $row = oci_fetch_assoc($stmt);
+        if ($row != null) {
+            $id = $row['IDUTI'];
+            $pseudo = $row['PSEUDOUTI'];
+            $mdp = $row['MDPUTI'];
+            $pnom = $row['PNOMUTI'];
+            $nom = $row['NOMUTI'];
+            $adr = $row['ADRUTI'];
+            $email = $row['EMAILUTI'];
+            $tel = $row['TELUTI'];
+            $posix = $row['POSIGEOX'];
+            $posiy = $row['POSIGEOY'];
+            $photo = $row['PHOTOUTI'];
+            $pt = $row['POINTTROC'];
+            $o = new Utilisateur($id, $nom, $pnom, $pseudo, $mdp, $adr, $email, $tel, $posix, $posiy, $photo, $pt);
+        } else {
+            $o = null;
+        }
+        return $o;
+    }
+
     public static function get_by_pseudo_mdp($pseudo, $mdp) {
         $pseudo_verif = stripslashes(htmlspecialchars($pseudo));
         $mdp_verif = stripslashes(htmlspecialchars($mdp));

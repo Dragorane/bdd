@@ -8,7 +8,7 @@
         </ul>
         <?php
     } else {
-        $uti = Utilisateur::get_by_pseudo_mdp($_SESSION['pseudo'], $_SESSION['mdp']);
+        $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
         if ($uti == null) {
             echo "<span class='messagebonjour'>Erreur lors de l'identification</span>";
             echo "<ul>
@@ -22,6 +22,8 @@
             </ul>
             <span class="messagebonjour">Bonjour <?php echo $_SESSION['pseudo']; ?> </span><span class='nb_troc'>Pts : <?php echo $uti->pt_troc(); ?></span>
 
-        <?php }
-    } ?>
+        <?php
+        }
+    }
+    ?>
 </div>

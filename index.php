@@ -124,6 +124,9 @@ switch ($args[1]) {
     case 'vendreservice':
         $cv->vendreservice();
         break;
+    case 'valid_form_vendre':
+        $cv->valide_vendreservice();
+        break;
     default :
         echo "<div class='warning'><p>La page demandée n'existe pas.</p></div>";
 }

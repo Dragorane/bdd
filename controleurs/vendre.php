@@ -34,7 +34,7 @@ class Controller_vendre {
             if (!isset($_GET['idcat'])) {
                 echo "<h3>Etape 1 :</h3><p class='center'> Merci de selectionner la catégorie de votre bien dans le menu à droite.</p>";
             } else {
-                $cat = recupCat($_GET['idcat']);
+                $cat = categories::recupCat($_GET['idcat']);
                 echo "<h3>Vous avez sélectionnez la catégorie : " . $cat->getlib() . "</h3>";
                 $tabetat = Etat::lesEtats();
                 include "vues/vendre/form_vendrebien.php";
@@ -49,6 +49,32 @@ class Controller_vendre {
             $tabcat = categories::list_categ(2);
             include "vues/menu_cat.php";
             include 'vues/vendre/form_vendreservice.php';
+        }
+    }
+
+    public function valide_vendreservice() {
+        $verif = 0;
+        if (!isset($_POST['valid_bien'])) {
+            echo "<div class='warning'><p>Erreur, vous n'avez pas l'accès à cette page.</p></div>";
+        } else {
+            if (validpts($_POST['prix']) != 0) {
+                biens::create($_POST['titre'], $_POST['desc'], $_POST['prix'], $iduti, $_POST['idcat'], $_POST['etat']);
+                $verif = 1;
+            }
+        }
+        if ($verif == 0) {
+            echo "<a href='javascript:history.back()'><h2 class='center'>Retour au formulaire de vente</h2></a>";
+        } else {
+            echo "<div class='success'><p>Votre bien a été mis en vente.</p></div>";
+        }
+    }
+
+    public function validpts($pts) {
+        if ((is_float(floatval($nb))) && ($pts > 0)) {
+            return 1;
+        } else {
+            echo "<div class='warning'><p>Erreur, vous avez mal saisi le montant de points troc.</p></div>";
+            return 0;
         }
     }
 
