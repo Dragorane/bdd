@@ -44,11 +44,11 @@ class services extends Model_Base {
         }
     }
 
-    public static function get_tabsev_by_uti($pseudo) {
+    public static function get_tabserv_by_uti($pseudo) {
         $uti = Utilisateur::get_by_pseudo($pseudo);
         $tabserv = null;
         if ($uti != NULL) {
-            $query = "select idServ, libServ, descServ, prixServ, nbplaces, venduServ, idUti, idCat from Services where venduServ=0 and idUti=" . $uti->id();
+            $query = "select idServ, libServ, descServ, prixServ, nbplaces, venduServ, idUti, idCat from Services where venduServ=1 and idUti=" . $uti->id();
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur select serv" . oci_error($conn));
             oci_execute($stmt);
             $i = 0;
