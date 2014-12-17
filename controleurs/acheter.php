@@ -255,6 +255,7 @@ class Controller_acheter {
                     } else {
                         $laprop->ajout_bien_proposition($bien);
                         $type = explode(':', $_POST['obj']);
+                        echo "type 0 : " . $type[0] . "type 1 :" . $type[1];
                         if ($type[0] == "bien") {
                             $bien = biens::get_bien_by_id($type[1]);
                             $laprop->ajout_bien_proposition($bien);
