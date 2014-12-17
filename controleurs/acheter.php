@@ -224,8 +224,8 @@ class Controller_acheter {
                 if (($bien == null) || ($uti == null)) {
                     echo "<div class='warning'><p>Erreur, aucun bien de selectionné</p></div>";
                 } else {
-                    $tabbien = biens::get_tabbien_by_uti($SESSION['pseudo']);
-                    $tabserv = services::get_tabserv_by_uti($SESSION['pseudo']);
+                    $tabbien = biens::get_tabbien_by_uti($_SESSION['pseudo']);
+                    $tabserv = services::get_tabserv_by_uti($_SESSION['pseudo']);
                     include 'vues/acheter/acheter_bien_obj.php';
                     include "vues/afficher_bien.php";
                 }
