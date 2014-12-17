@@ -237,6 +237,7 @@ class propositions extends Model_Base {
         $tabprop = null;
         $i = 0;
         $nb = oci_num_rows($stmt);
+        echo "ça passe ?";
         if ($nb != 0) {
             echo "ça passe 1?";
             while ($row = oci_fetch_assoc($stmt)) {
