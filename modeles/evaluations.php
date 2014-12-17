@@ -37,7 +37,7 @@ class evaluations extends Model_Base {
         return $this->_iduti;
     }
     public static function create($titre, $comm, $note, $idcrea, $iduti, $idserv, $idbien) {
-        if ((is_numeric($idcrea)) && (is_numeric($iduti)) && (is_numeric($idserv)) && (is_float(floatval($idbien))) && (is_int($note))) {
+        if ((is_numeric($idcrea)) && (is_int($iduti)) && (is_numeric($idserv)) && (is_float(floatval($idbien))) && (is_numeric($note))) {
             $query = "INSERT INTO Evaluation VALUES (Evaluation_seq.nextval,:titreEval,:commEval,:note,:idUtiCrea,:idUtiEva,:idServ,:idBien)";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion utilisateur" . oci_error($conn));
 //formatage des variables et sécurité
