@@ -60,7 +60,8 @@ class Controller_vendre {
             echo "<div class='warning'><p>Erreur, vous n'avez pas l'accès à cette page.</p></div>";
         } else {
             if (validpts($_POST['prix']) != 0) {
-                biens::create($_POST['titre'], $_POST['desc'], $_POST['prix'], $iduti, $_POST['idcat'], $_POST['etat']);
+                $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+                biens::create($_POST['titre'], $_POST['desc'], $_POST['prix'], $uti->id(), $_POST['idcat'], $_POST['etat']);
                 $verif = 1;
             }
         }

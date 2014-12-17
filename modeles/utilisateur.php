@@ -158,6 +158,10 @@ class Utilisateur extends Model_Base {
     }
 
     //les getters
+    public function id() {
+        return $this->_id;
+    }
+
     public function pseudo() {
         return $this->_pseudo;
     }
