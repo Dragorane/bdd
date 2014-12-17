@@ -80,21 +80,20 @@ class categories extends Model_Base {
         categories::create("Vie pratique & loisirs", 1, 10);
         categories::create("Scolaire & universitaire", 1, 10);
         categories::create("Musique CD", 1, null);
-        categories::create("CD", 1, 18);
-        categories::create("Instruments de musique", 1, 18);
-        categories::create("Vinyles", 1, 18);
-        categories::create("Partitions et paroles", 1, 18);
-
+        categories::create("CD", 1, 16);
+        categories::create("Instruments de musique", 1, 16);
+        categories::create("Vinyles", 1, 16);
+        categories::create("Partitions et paroles", 1, 16);
         categories::create("Aide a domicile", 2, null);
-        categories::create("Femme de menage - Technicien de surface", 2, 20);
-        categories::create("Aide soignante - Infirmier(e) a domicile", 2, 20);
-        categories::create("Nourrice", 2, 20);
-        categories::create("Gardiennage de maison", 2, 20);
-        categories::create("Garde d'animaux", 2, 20);
+        categories::create("Femme de menage - Technicien de surface", 2, 21);
+        categories::create("Aide soignante - Infirmier(e) a domicile", 2, 21);
+        categories::create("Nourrice", 2, 21);
+        categories::create("Gardiennage de maison", 2, 21);
+        categories::create("Garde d'animaux", 2, 21);
         categories::create("Techniciens", 2, null);
-        categories::create("Electriciens", 2, 25);
-        categories::create("Plombiers", 2, 25);
-        categories::create("Couvreurs", 2, 25);
+        categories::create("Electriciens", 2, 27);
+        categories::create("Plombiers", 2, 27);
+        categories::create("Couvreurs", 2, 27);
         categories::create("Petits boulots", 2, null);
     }
 
