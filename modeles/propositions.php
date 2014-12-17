@@ -21,19 +21,32 @@ class propositions extends Model_Base {
     }
 
     public static function create($adr, $date, $prix, $iduti, $idutiv) {
-        $query = "INSERT INTO Proposition VALUES (Categorie_seq.nextval,:adr,:date,:prix,:id,:idv)";
-        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
-        //formatage des variables et sécurité
-        $adr_verif = stripslashes(htmlspecialchars($adr));
-        $date_verif = stripslashes(htmlspecialchars($date));
-        $prix_verif = stripslashes(htmlspecialchars($prix));
-        $iduti_verif = stripslashes(htmlspecialchars($iduti));
-        $idutiv_verif = stripslashes(htmlspecialchars($idutiv));
-        oci_bind_by_name($stmt, ":adr", $adr_verif);
-        oci_bind_by_name($stmt, ":date", $date_verif);
-        oci_bind_by_name($stmt, ":prix", $prix_verif);
-        oci_bind_by_name($stmt, ":id", $iduti_verif);
-        oci_bind_by_name($stmt, ":idv", $idutiv_verif);
+        if ((is_numeric($iduti)) && (is_numeric($idutiv)) && (is_numeric($etat)) && (is_float(floatval($prix)))) {
+            $query = "INSERT INTO Proposition VALUES (Proposition_seq.nextval,:adr,TO_DATE(:date, 'dd/mm/yyyy'),:prix,:id,:idv) RETURNING id INTO :idprop";
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
+            //formatage des variables et sécurité
+            $adr_verif = stripslashes(htmlspecialchars($adr));
+            $prix_verif = stripslashes(htmlspecialchars($prix));
+            $iduti_verif = stripslashes(htmlspecialchars($iduti));
+            $idutiv_verif = stripslashes(htmlspecialchars($idutiv));
+            oci_bind_by_name($stmt, ":adr", $adr_verif);
+            oci_bind_by_name($stmt, ":date", $date);
+            oci_bind_by_name($stmt, ":prix", $prix);
+            oci_bind_by_name($stmt, ":id", $iduti);
+            oci_bind_by_name($stmt, ":idv", $idutiv);
+            oci_bind_by_name($stmt, ":idprop", $id);
+            oci_execute($stmt);
+            return new propositions($id, $adr_verif, $date, $prix, $iduti, $idutiv);
+        } else {
+            return null;
+        }
+    }
+
+    public function ajout_bien_proposition($bien) {
+        $query = "INSERT INTO proposition_biens VALUES (:idprop,:idbien)";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition_bien" . oci_error($conn));
+        oci_bind_by_name($stmt, ":idprop", $this->_id);
+        oci_bind_by_name($stmt, ":idbien", $bien->get_id());
         oci_execute($stmt);
     }
 

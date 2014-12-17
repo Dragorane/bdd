@@ -106,7 +106,7 @@ class Controller_acheter {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
         } else {
             $bien = biens::get_bien_by_id($_GET['id']);
-            $uti = Utilisateur::get_by_id($bien->get_uti());
+            $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
             if (($bien == null) || ($uti == null)) {
                 echo "<div class='warning'><p>Erreur, aucun bien de selectionné</p></div>";
             } else {
@@ -119,15 +119,54 @@ class Controller_acheter {
 
     public function acheter_biens_bienserv() {
         if ((!isset($_SESSION['connect']) || ($_SESSION['connect'] != true))) {
-            echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir vendre un produit</p></div>";
+            echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir acheter un produit</p></div>";
         } else {
             $bien = biens::get_bien_by_id($_GET['id']);
-            $uti = Utilisateur::get_by_id($bien->get_uti());
+            $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+        }
+    }
+
+    public function valid_acheter_bien_pts() {
+        if ((is_numeric($_POST['id'])) && (isset($_POST['valid_acheter_bien_pts']))) {
+            $bien = biens::get_bien_by_id($_GET['id']);
+            $utiacheter = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+            if (($bien == null) || ($utiacheter == null)) {
+                echo "<div class='warning'><p>Erreur, aucun bien de selectionné</p></div>";
+            } else {
+                $verif = $this->verifpts($utiacheter, $bien);
+                if ($verif == 0) {
+                    echo "<div class='warning'><p>Erreur, vous n'avez pas assez de points trocs pour acheter le bien.</p></div>";
+                } else {
+                    $date = explode("/", $_POST['date']);
+                    $verif = verifierDate($date[1], $date[0], $date[2]);
+                    if ($verif == 0) {
+                        echo "<div class='warning'><p>Erreur, la date saisie n'est pas correcte.</p></div>";
+                    } else {
+                        $laprop = propositions::create($_POST['adr'], $_POST['date'], $bien->get_prix(), $utiacheter->id(), $bien->get_uti());
+                        if ($laprop == null) {
+                            echo "<div class='warning'><p>Erreur, la proposition n'a pas été enregistrée</p></div>";
+                        } else {
+                            $laprop->ajout_bien_proposition($bien);
+                            include "vues/acheter/valid_acheter_bien.php";
+                        }
+                    }
+                }
+            }
+        } else {
+            echo "<div class='warning'><p>Erreur, l'achat n'a pas été effectué.</p></div>";
         }
     }
 
     public function verifpts($uti, $bien) {
         if ($uti->pt_troc() >= $bien->get_prix()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    public function verifierDate($month, $day, $year) {
+        if (checkdate($month, $day, $year) == true) {
             return 1;
         } else {
             return 0;

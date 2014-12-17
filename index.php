@@ -126,6 +126,9 @@ switch ($args[1]) {
     case 'acheter_biens_bienserv' :
         $ca->acheter_biens_bienserv();
         break;
+    case 'valid_acheter_bien_pts' :
+        $ca->valid_acheter_bien_pts();
+        break;
     //troc vendre
     case 'vendre':
         $cv->index();
