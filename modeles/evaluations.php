@@ -23,21 +23,25 @@ class evaluations extends Model_Base {
         $this->_idserv = $idserv;
         $this->_idbien = $idbien;
     }
-    
-    public function get_titre(){
+
+    public function get_titre() {
         return $this->_titre;
     }
-    public function get_comm(){
+
+    public function get_comm() {
         return $this->_comm;
     }
-    public function get_note(){
+
+    public function get_note() {
         return $this->_note;
     }
-    public function get_iduti(){
+
+    public function get_iduti() {
         return $this->_iduti;
     }
+
     public static function create($titre, $comm, $note, $idcrea, $iduti, $idserv, $idbien) {
-        if ((is_numeric($idcrea)) && (is_numeric($iduti)) && (is_numeric($idserv)) && (is_numeric($idbien)) && (is_numeric($note))) {
+        if ((is_numeric($idcrea)) && ((is_numeric($iduti)) || (is_numeric($idserv)) || (is_numeric($idbien))) && (is_numeric($note))) {
             $query = "INSERT INTO Evaluation VALUES (Evaluation_seq.nextval,:titreEval,:commEval,:note,:idUtiCrea,:idUtiEva,:idServ,:idBien)";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion utilisateur" . oci_error($conn));
 //formatage des variables et sécurité
