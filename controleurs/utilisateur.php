@@ -400,7 +400,7 @@ class Controller_Utilisateur {
         if (!isset($_GET['id'])) {
             echo "<div class='warning'><p>Erreur, aucun utilisateur selectionné.</p></div>";
         } else {
-            $uti = Utilisateur::get_by_id($_GET['id']);
+            $uti = Utilisateur::get_by_pseudo($_GET['pseudo']);
             if ($uti == null) {
                 echo "<div class='warning'><p>Erreur, vous n'êtes pas identifié</p></div>";
             } else {

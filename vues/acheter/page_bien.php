@@ -1,7 +1,7 @@
 <?php
 echo "<h3>" . $bien->get_titre() . "</h3>";
 echo "<p>" . $bien->get_desc() . "</p>";
-echo "<p> Vendu au prix de : " . $bien->get_prix() . " Pts par l'utilisateur <a href='index.php/pageuti?pseudo=" . $uti->pseudo() . "'>'" . $uti->pseudo() . "'</a> </p>";
+echo "<p> Vendu au prix de : " . $bien->get_prix() . " Pts par l'utilisateur <a href='" . BASEURL . "/index.php/pageuti?pseudo=" . $uti->pseudo() . "'>'" . $uti->pseudo() . "'</a> </p>";
 echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_pts?id=" . $bien->get_id() . "'>Acheter ce bien avec vos points trocs</a></h4>";
 echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_bienserv?id=" . $bien->get_id() . "'>Acheter ce bien avec vos biens/services</a></h4>";
 ?>
