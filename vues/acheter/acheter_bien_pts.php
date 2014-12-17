@@ -11,5 +11,4 @@ if ($verif == 0) {
     </form>
     <?php
 }
-include ("../vues/afficher_bien.php");
 ?>

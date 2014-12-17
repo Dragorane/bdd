@@ -31,7 +31,10 @@ class Controller_acheter {
             $uti = Utilisateur::get_by_id($tabbiens[$i]->get_uti());
             $bien = $tabbiens[$i];
             if ($uti != NULL) {
-                include "vues/lesbiens.php";
+                echo "<div class='unbien'>";
+                include "vues/afficher_bien.php";
+                echo "<h4 class='center'><a href='pagebien?id=" . $bien->get_id() . "'>Acheter / En savoir plus ...</h4>";
+                echo "</div>";
             } else {
                 echo "<div class='warning'><p>erreur pas d'utilisateur " . $tabbiens[$i]->get_uti() . "</p></div>";
             }
@@ -93,6 +96,7 @@ class Controller_acheter {
         if (($uti == NULL) || ($bien == NULL)) {
             echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";
         } else {
+            include "vues/afficher_bien.php";
             include 'vues/acheter/page_bien.php';
         }
     }
@@ -108,6 +112,7 @@ class Controller_acheter {
             } else {
                 $verif = $this->verifpts($uti, $bien);
                 include 'vues/acheter/acheter_bien_pts.php';
+                include "vues/afficher_bien.php";
             }
         }
     }
