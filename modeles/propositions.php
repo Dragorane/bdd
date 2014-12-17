@@ -47,7 +47,7 @@ class propositions extends Model_Base {
     public static function get_prop_by_id($id) {
         $prop = null;
         if (is_numeric($id)) {
-            $query = "select * from proposition where idProp=:id";
+            $query = "select * from proposition where idPro=:id";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur select proposition" . oci_error($conn));
             oci_bind_by_name($stmt, ":id", $id);
             oci_execute($stmt);
