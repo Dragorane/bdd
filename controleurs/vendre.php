@@ -32,8 +32,10 @@ class Controller_vendre {
             $tabcat = categories::list_categ(1);
             include "vues/menu_cat.php";
             if (!isset($_GET['idcat'])) {
-                echo "<h2>Etape 1 :</h2><p class='center'> Merci de selectionner la catégorie de votre bien dans le menu à droite.</p>";
+                echo "<h3>Etape 1 :</h3><p class='center'> Merci de selectionner la catégorie de votre bien dans le menu à droite.</p>";
             } else {
+                $cat = recupCat($_GET['idcat']);
+                echo "<h3>Vous avez sélectionnez la catégorie : " . $cat->getlib() . "</h3>";
                 $tabetat = Etat::lesEtats();
                 include "vues/vendre/form_vendrebien.php";
             }

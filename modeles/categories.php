@@ -9,6 +9,10 @@ class categories extends Model_Base {
     private $_type;
     private $_cat_pere;
 
+    public function getlib() {
+        return $this->_lib;
+    }
+
     public function __construct($id, $lib, $type, $cat_pere) {
         $this->_id = $id;
         $this->_lib = $lib;
@@ -34,7 +38,7 @@ class categories extends Model_Base {
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
         oci_execute($stmt);
         $i = 0;
-        $tabcat=null;
+        $tabcat = null;
         while ($row = oci_fetch_assoc($stmt)) {
             $tabcat[$i][0] = $row['CAT_PERE'];
             $tabcat[$i][1] = $row['IDCAT'];
@@ -42,6 +46,22 @@ class categories extends Model_Base {
             $i = $i + 1;
         }
         return $tabcat;
+    }
+
+    public static function recupCat($id) {
+        $cat = null;
+        if (is_int($id)) {
+            $query = "select * from Categorie where idCat=:id";
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            //formatage des variables et sécurité
+            oci_bind_by_name($stmt, ":id", $id_verif);
+            oci_execute($stmt);
+            $row = oci_fetch_assoc($stmt);
+            $cat = new categories($row['IDCAT'], $row['LIBCAT'], $row['TYPE'], $row['CAT_PERE']);
+        } else {
+            echo "<div class='warning'><p>Erreur, la catégorie a été mal séléctionnée...</p></div>";
+        }
+        return $cat;
     }
 
     public static function initcat() {
