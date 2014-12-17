@@ -219,7 +219,7 @@ class Controller_acheter {
             echo "<div class='warning'><p>Erreur, vous devez être connecté pour pouvoir acheter un produit</p></div>";
         } else {
             if (isset($_GET['id'])) {
-                $bien_acheter = biens::get_bien_by_id($_GET['id']);
+                $bien = biens::get_bien_by_id($_GET['id']);
                 $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
                 if (($bien == null) || ($uti == null)) {
                     echo "<div class='warning'><p>Erreur, aucun bien de selectionné</p></div>";
