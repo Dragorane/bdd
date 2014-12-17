@@ -41,12 +41,14 @@ class Controller_proposition {
     public static function valid_proposition() {
         if (isset($_POST['valid_prop'])) {
             propositions::proposition_accepte($_POST['idprop']);
+            echo "<div class='success'><p>La proposition a été validée avec succès</p></div>";
         }
     }
 
     public static function annulerproposition() {
         if (isset($_POST['sup_prop'])) {
             propositions::proposition_refuse($_POST['idprop']);
+            echo "<div class='success'><p>La proposition a été supprimée avec succès</p></div>";
         }
     }
 
