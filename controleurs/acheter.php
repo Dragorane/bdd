@@ -28,7 +28,7 @@ class Controller_acheter {
         include "vues/filtre_recherche.php";
         echo "<div class='lesbiens'>";
         for ($i = 0; $i < count($tabbiens); $i++) {
-            $uti = Utilisateur::get_by_id($tabbiens[$i]->id());
+            $uti = Utilisateur::get_by_id($tabbiens[$i]->get_uti());
             if ($uti != NULL) {
                 include "vues/lesbiens.php";
             }
