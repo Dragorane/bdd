@@ -42,7 +42,7 @@ class evaluations extends Model_Base {
 
     public static function create($titre, $comm, $note, $idcrea, $iduti, $idserv, $idbien) {
         if ((is_numeric($idcrea)) && (is_numeric($note))) {
-            if ((is_numeric($iduti)) || (is_numeric($idserv)) || (is_numeric($idbien))) {
+            if ((is_int($iduti)) || (is_int($idserv)) || (is_int($idbien))) {
                 $query = "INSERT INTO Evaluation VALUES (Evaluation_seq.nextval,:titreEval,:commEval,:note,:idUtiCrea,:idUtiEva,:idServ,:idBien)";
                 $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion utilisateur" . oci_error($conn));
 //formatage des variables et sécurité
@@ -59,7 +59,6 @@ class evaluations extends Model_Base {
             } else {
                 echo "<div class='warning'><p>Erreur, données corrompues.</p></div>";
             }
-            echo "<div class='warning'><p>Erreur, données corrompues.2</p></div>";
         }
     }
 
