@@ -26,18 +26,18 @@ class services extends Model_Base {
 
     public static function create($lib, $desc, $prix, $nbplaces, $iduti, $categ) {
         if ((is_numeric($iduti)) && (is_numeric($categ)) && (is_numeric($nbplaces)) && (is_float(floatval($prix)))) {
-            $query = "INSERT INTO services VALUES (Services_seq.nextval,:lib,:desc,:prix,:nblaces,1,:iduti,:categ)";
+            $query = "INSERT INTO services VALUES (Services_seq.nextval,:lib_v,:desc_v,:prix_v,:nblaces_v,1,:iduti_v,:categ_v)";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion service" . oci_error($conn));
             //formatage des variables et sécurité
             $lib_verif = stripslashes(htmlspecialchars($lib));
             $desc_verif = stripslashes(htmlspecialchars($desc));
             $nbplaces_verif = stripslashes(htmlspecialchars($nbplaces));
-            oci_bind_by_name($stmt, ":lib", $lib_verif);
-            oci_bind_by_name($stmt, ":desc", $desc_verif);
-            oci_bind_by_name($stmt, ":prix", $prix);
-            oci_bind_by_name($stmt, ":nblaces", $nbplaces);
-            oci_bind_by_name($stmt, ":iduti", $iduti);
-            oci_bind_by_name($stmt, ":categ", $categ);
+            oci_bind_by_name($stmt, ":lib_v", $lib_verif);
+            oci_bind_by_name($stmt, ":desc_v", $desc_verif);
+            oci_bind_by_name($stmt, ":prix_v", $prix);
+            oci_bind_by_name($stmt, ":nblaces_v", $nbplaces);
+            oci_bind_by_name($stmt, ":iduti_v", $iduti);
+            oci_bind_by_name($stmt, ":categ_v", $categ);
             oci_execute($stmt);
         } else {
             echo "<div class='warning'><p>Erreur, données corrompues.</p></div>";
