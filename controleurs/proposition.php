@@ -24,7 +24,18 @@ class Controller_proposition {
     }
 
     public function laproposition() {
-        
+        if ((isset($_POST['detail_prop']))) {
+            $prop = propositions::get_prop_by_id($_POST['laprop']);
+            $utivendeur = Utilisateur::get_by_id($prop->get_idv());
+            $utiacheteur = Utilisateur::get_by_id($prop->get_iduti());
+            if (isset($_POST['vendeur'])) {
+                include "vues/proposition/proposition_vendeur.php";
+            } else {
+                include "vues/proposition/proposition_acheteur.php";
+            }
+        } else {
+            echo "<div class='warning'><p>Erreur, vous n'avez pas l'accès à cette page</p></div>";
+        }
     }
 
 }

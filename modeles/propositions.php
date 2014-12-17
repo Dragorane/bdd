@@ -44,6 +44,20 @@ class propositions extends Model_Base {
         return $this->_id_vendeur;
     }
 
+    public static function get_prop_by_id($id) {
+        $prop = null;
+        if (is_numeric($id)) {
+            $query = "select * from proposition where idProp=:id";
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur select proposition" . oci_error($conn));
+            oci_bind_by_name($stmt, ":id", $id);
+            oci_execute($stmt);
+            while ($row = oci_fetch_assoc($stmt)) {
+                $prop = new propositions($row['IDPRO'], $row['ADRPROP'], $row['DATEPROP'], $row['PRIXPROP'], $row['IDUTI'], $row['IDUTI_VENDEUR']);
+            }
+        }
+        return $prop;
+    }
+
     public static function create($adr, $date, $prix, $iduti, $idutiv) {
         if ((is_numeric($iduti)) && (is_numeric($idutiv)) && (is_float(floatval($prix)))) {
             $query = "INSERT INTO Proposition VALUES (Proposition_seq.nextval,:adr_v,TO_DATE(:date_v, 'dd/mm/yyyy'),:prix_v,:id_v,:idv_v) RETURNING idPro INTO :idprop";

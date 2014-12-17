@@ -14,6 +14,7 @@
             echo "<td>";
             echo "<form name='voir_prop' method='POST' action='" . BASEURL . "/index.php/laproposition'>"
             . "<input type='hidden' name='laprop' value='" . $prop_vendeur[$i]->get_id() . "'/>"
+            . "<input type='hidden' name='vendeur'/>"
             . "<input type='submit' value='Plus de détail' name='detail_prop'/>"
             . "</form>";
             echo "</td>";
@@ -36,6 +37,7 @@
         echo "<td>";
         echo "<form name='voir_prop' method='POST' action='" . BASEURL . "/index.php/laproposition'>"
         . "<input type='hidden' name='laprop' value='" . $prop_vendeur[$i]->get_id() . "'/>"
+        . "<input type='hidden' name='acheteur' value='" . $prop_vendeur[$i]->get_id() . "'/>"
         . "<input type='submit' value='Plus de détail' name='detail_prop'/>"
         . "</form>";
         echo "</td>";
