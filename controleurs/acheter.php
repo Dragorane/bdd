@@ -26,7 +26,14 @@ class Controller_acheter {
         include 'vues/acheter/acheterbien.php';
         include "vues/menu_cat.php";
         include "vues/filtre_recherche.php";
-        include "vues/lesbiens.php";
+        echo "<div class='lesbiens'>";
+        if ($uti != NULL) {
+            for ($i = 0; $i < count($tabbiens); $i++) {
+                $uti = Utilisateur::get_by_id($tabbiens[$i]->id());
+                include "vues/lesbiens.php";
+            }
+        }
+        echo "</div>";
     }
 
     public function acheterservice() {
