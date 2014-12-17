@@ -103,7 +103,7 @@ class evaluations extends Model_Base {
     public static function moy_eval_bien($id) {
         $bien = biens::get_bien_by_id($id);
         $moy = 2.5;
-        if ($uti != NULL) {
+        if ($bien != NULL) {
             $query = "select avg(note) as moy from evaluation where idBien=" . $bien->get_id();
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur moyenne evaluation" . oci_error($conn));
             oci_execute($stmt);
@@ -117,7 +117,7 @@ class evaluations extends Model_Base {
     public static function moy_eval_serv($id) {
         $serv = services::get_serv_by_id($id);
         $moy = 2.5;
-        if ($uti != NULL) {
+        if ($serv != NULL) {
             $query = "select avg(note) as moy from evaluation where idServ=" . $serv->get_id();
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur moyenne evaluation" . oci_error($conn));
             oci_execute($stmt);
@@ -163,7 +163,7 @@ class evaluations extends Model_Base {
     public static function tabeval_service($id) {
         $serv = services::get_serv_by_id($id);
         $tabeval = null;
-        if ($bien != NULL) {
+        if ($serv != NULL) {
             $query = "select IdEval, titreEval, commEval, note, idUtiCrea, idUtiEva, idServ, idBien from evaluation where idServ=" . $serv->get_id();
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
             oci_execute($stmt);
