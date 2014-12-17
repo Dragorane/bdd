@@ -87,7 +87,7 @@ class Controller_acheter {
     }
 
     public function pagebien() {
-        $bien = get_bien_by_id($_GET['id']);
+        $bien = biens::get_bien_by_id($_GET['id']);
         $uti = Utilisateur::get_by_id($bien->get_uti());
         if (($uti == NULL) || ($bien == NULL)) {
             echo "<div class='warning'><p>Erreur, aucun bien n'est selectionnés</p></div>";

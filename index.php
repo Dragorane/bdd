@@ -107,10 +107,10 @@ switch ($args[1]) {
     case 'pageuti':
         $cu->page_public_uti();
         break;
+    //Troc acheter
     case 'pagebien':
         $ca->pagebien();
         break;
-    //Troc acheter
     case 'acheter' :
         $ca->index();
         break;

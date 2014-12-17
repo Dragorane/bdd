@@ -75,7 +75,7 @@ class biens extends Model_Base {
         return $this->_vendu;
     }
 
-    public function get_bien_by_id($id) {
+    public static function get_bien_by_id($id) {
         $bien = null;
         if ((is_int($id)) || (is_numeric($id))) {
             $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 and idBien=" . $id;
