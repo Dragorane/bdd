@@ -50,7 +50,7 @@ class categories extends Model_Base {
 
     public static function recupCat($id) {
         $cat = null;
-        echo "l'id de la cat : ".$_GET['id'];
+        echo "l'id de la cat : " . $id;
         if (is_integer($id)) {
             $query = "select * from Categorie where idCat=:id";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
