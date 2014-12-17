@@ -3,7 +3,7 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_pts?id=" . $bien->get
 echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_bienserv?id=" . $bien->get_id() . "'>Acheter ce bien avec vos biens/services</a></h4>";
 ?>
 <h3>Evaluer le bien </h3>
-<form methode='POST' name='eval_bien' action='<?= BASEURL ?>/index.php/valid_eval_bien'>
+<form method='POST' name='eval_bien' action='<?= BASEURL ?>/index.php/valid_eval_bien'>
     <input type='hidden' name='id' value='<?php echo $bien->get_id();
 ?>'>
     <label for='titre'>Titre de votre évaluation</label><br/>

@@ -3,9 +3,8 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_pts?id=" . $serv->g
 echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_bienserv?id=" . $serv->get_id() . "'>Acheter ce service avec vos biens/services</a></h4>";
 ?>
 <h3>Evaluer le service </h3>
-<form methode='POST' name='eval_service' action='<?= BASEURL ?>/index.php/valid_eval_service'>
-    <input type='hidden' name='id' value='<?php echo $serv->get_id();
-?>'>
+<form method='POST' name='eval_service' action='<?= BASEURL ?>/index.php/valid_eval_service'>
+    <input type='hidden' name='id' value='<?php echo $serv->get_id();?>'>
     <label for='titre'>Titre de votre évaluation</label><br/>
     <input type='text' name='titre' id='titre'/><br/><br/><br/>
     <label for='num_eval'>Note d'évaluation /5</label><br/>
