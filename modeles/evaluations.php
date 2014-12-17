@@ -80,11 +80,11 @@ class evaluations extends Model_Base {
     }
 
     public static function nouvelle_eval_bien($titre, $comm, $note, $idcrea, $idbien) {
-        $eval = evaluations::create($titre, $comm, $note, $idcrea, NULL, $idbien, NULL);
+        $eval = evaluations::create($titre, $comm, $note, $idcrea, NULL, NULL, $idbien);
     }
 
     public static function nouvelle_eval_service($titre, $comm, $note, $idcrea, $idserv) {
-        $eval = evaluations::create($titre, $comm, $note, $idcrea, NULL, NULL, $idserv);
+        $eval = evaluations::create($titre, $comm, $note, $idcrea, NULL, $idserv, NULL);
     }
 
     public static function moy_eval_uti($pseudo) {
