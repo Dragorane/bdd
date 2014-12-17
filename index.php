@@ -11,7 +11,6 @@ require_once 'controleurs/utilisateur.php';
 require_once 'controleurs/vendre.php';
 require_once 'controleurs/acheter.php';
 require_once 'modeles/categories.php';
-categories::initcat();
 if (isset($_SERVER['PATH_INFO'])) {
     $args = explode('/', $_SERVER['PATH_INFO']);
 } else {
@@ -21,6 +20,7 @@ if (isset($_SERVER['PATH_INFO'])) {
 define('BASEURL', dirname($_SERVER['SCRIPT_NAME']));
 
 Model_Base::set_db();
+categories::initcat();
 $titre = "";
 ob_start();
 $cu = new Controller_Utilisateur();
