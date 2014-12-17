@@ -108,36 +108,36 @@ class Controller_acheter {
     public static function tab_services() {
         if (isset($_GET['idcat'])) {
             if (isset($_GET['prixcroiss'])) {
-                $tabserv = services::tabbiens_prix_cat($_GET['idcat']);
+                $tabserv = services::tabservices_prix_cat($_GET['idcat']);
             } else {
                 if (isset($_GET['prixdecroiss'])) {
-                    $tabserv = services::tabbiens_prixdesc_cat($_GET['idcat']);
+                    $tabserv = services::tabservices_prixdesc_cat($_GET['idcat']);
                 } else {
                     if (isset($_GET['evaluation'])) {
-                        $tabserv = services::tabbiens_eval_cat($_GET['idcat']);
+                        $tabserv = services::tabservices_eval_cat($_GET['idcat']);
                     } else {
                         if (isset($_GET['geoloc'])) {
-                            $tabserv = services::tabbiens_geoloc_cat($_GET['idcat']);
+                            $tabserv = services::tabservices_geoloc_cat($_GET['idcat']);
                         } else {
-                            $tabserv = services::tabbiens_cat($_GET['idcat']);
+                            $tabserv = services::tabservices_cat($_GET['idcat']);
                         }
                     }
                 }
             }
         } else {
             if (isset($_GET['prixcroiss'])) {
-                $tabserv = services::tabbiens_prix();
+                $tabserv = services::tabservices_prix();
             } else {
                 if (isset($_GET['prixdecroiss'])) {
-                    $tabserv = services::tabbiens_prixdesc();
+                    $tabserv = services::tabservices_prixdesc();
                 } else {
                     if (isset($_GET['evaluation'])) {
-                        $tabserv = services::tabbiens_eval();
+                        $tabserv = services::tabservices_eval();
                     } else {
                         if (isset($_GET['geoloc'])) {
-                            $tabserv = services::tabbiens_geoloc();
+                            $tabserv = services::tabservices_geoloc();
                         } else {
-                            $tabserv = services::tabbiens();
+                            $tabserv = services::tabservices();
                         }
                     }
                 }
