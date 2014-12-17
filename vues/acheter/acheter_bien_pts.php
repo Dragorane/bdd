@@ -6,10 +6,10 @@ if ($verif == 0) {
 } else {
     ?>
     <form method='POST' name='form_acheter_bien_pts' action='<?= BASEURL ?>/index.php/acheter_bien_pts'>
-        <input type='bien' value='<?php echo $bien->get_id() ?>'>
+        <input type='hidden' name='bien' value='<?php echo $bien->get_id() ?>'>
         <input type='submit' name='valid_acheter_bien_pts' value='Acheter le bien'>
     </form>
     <?php
 }
-include BASEURL . "/vues/afficher_bien.php";
+include (BASEURL . "/vues/afficher_bien.php");
 ?>
