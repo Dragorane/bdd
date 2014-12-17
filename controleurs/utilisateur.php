@@ -397,7 +397,7 @@ class Controller_Utilisateur {
     }
 
     public function page_public_uti() {
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['pseudo'])) {
             echo "<div class='warning'><p>Erreur, aucun utilisateur selectionné.</p></div>";
         } else {
             $uti = Utilisateur::get_by_pseudo($_GET['pseudo']);
