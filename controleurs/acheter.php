@@ -157,7 +157,7 @@ class Controller_acheter {
         }
     }
 
-    public function service() {
+    public function pageservice() {
         $serv = services::get_serv_by_id($_GET['id']);
         $uti = Utilisateur::get_by_id($serv->get_uti());
         if (($uti == NULL) || ($serv == NULL)) {
