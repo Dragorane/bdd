@@ -41,9 +41,7 @@ class evaluations extends Model_Base {
     }
 
     public static function create($titre, $comm, $note, $idcrea, $iduti, $idserv, $idbien) {
-        echo "<p>" . $titre . " " . $comm . " " . $note . " " . $idcrea . " " . $iduti . " " . $idserv . " " . $idbien . "</p>";
-        if ((is_numeric($idcrea)) && (is_numeric($note))) {
-            //   if ((is_numeric($iduti)) || (is_numeric($idserv)) || (is_numeric($idbien))) {
+        if ((is_numeric($idcrea)) && (is_numeric($note)) && ((is_numeric($iduti)) || (is_numeric($idserv)) || (is_numeric($idbien)))) {
             $query = "INSERT INTO Evaluation VALUES (Evaluation_seq.nextval,:titreEval,:commEval,:note,:idUtiCrea,:idUtiEva,:idServ,:idBien)";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion utilisateur" . oci_error($conn));
 //formatage des variables et sécurité
@@ -66,15 +64,15 @@ class evaluations extends Model_Base {
     }
 
     public static function nouvelle_eval_uti($titre, $comm, $note, $idcrea, $iduti) {
-        $eval = evaluations::create($titre, $comm, $note, $idcrea, $iduti, NULL, NULL);
+        $eval = evaluations::create($titre, $comm, $note, $idcrea, $iduti, -1, -1);
     }
 
     public static function nouvelle_eval_bien($titre, $comm, $note, $idcrea, $idserv) {
-        $eval = evaluations::create($titre, $comm, $note, $idcrea, NULL, $idserv, NULL);
+        $eval = evaluations::create($titre, $comm, $note, $idcrea, -1, $idserv, -1);
     }
 
     public static function nouvelle_eval_service($titre, $comm, $note, $idcrea, $idbien) {
-        $eval = evaluations::create($titre, $comm, $note, $idcrea, NULL, NULL, $idbien);
+        $eval = evaluations::create($titre, $comm, $note, $idcrea, -1, -1, $idbien);
     }
 
     public static function moy_eval_uti($pseudo) {
