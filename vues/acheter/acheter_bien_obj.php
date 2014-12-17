@@ -14,7 +14,7 @@
         echo "</optgroup>";
         echo "  <optgroup label='Vos biens'>";
         for ($j = 0; $j < count($tabserv); $j++) {
-            echo "<option value='serv:" . $tabserv[$j]->get_id() . "'>" . $tabserv[$i]->get_titre() . "</option>";
+            echo "<option value='serv:" . $tabserv[$j]->get_id() . "'>" . $tabserv[$j]->get_titre() . "</option>";
         }
         echo "</optgroup>";
         ?>
