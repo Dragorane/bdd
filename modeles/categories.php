@@ -57,6 +57,7 @@ class categories extends Model_Base {
             oci_bind_by_name($stmt, ":id", $id_verif);
             oci_execute($stmt);
             $row = oci_fetch_assoc($stmt);
+            echo $row['IDCAT'] . $row['LIBCAT'] . $row['TYPE'] . $row['CAT_PERE'];
             $cat = new categories($row['IDCAT'], $row['LIBCAT'], $row['TYPE'], $row['CAT_PERE']);
         } else {
             echo "<div class='warning'><p>Erreur, la catégorie a été mal séléctionnée...</p></div>";

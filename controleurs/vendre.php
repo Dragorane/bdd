@@ -35,7 +35,6 @@ class Controller_vendre {
                 echo "<h3>Etape 1 :</h3><p class='center'> Merci de selectionner la catégorie de votre bien dans le menu à droite.</p>";
             } else {
                 $cat = categories::recupCat($_GET['idcat']);
-                echo $cat->getlib();
                 if ($cat != null) {
                     echo "<h3>Vous avez sélectionnez la catégorie : " . $cat->getlib() . "</h3>";
                     $tabetat = Etat::lesEtats();
