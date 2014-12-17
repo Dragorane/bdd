@@ -26,17 +26,17 @@ class biens extends Model_Base {
 
     public static function create($lib, $desc, $prix, $iduti, $categ, $etat) {
         if ((is_numeric($iduti)) && (is_numeric($categ)) && (is_numeric($etat)) && (is_float(floatval($prix)))) {
-            $query = "INSERT INTO Biens VALUES (Biens_seq.nextval,:lib,:desc,:prix,0,:iduti,:etat,:categ)";
+            $query = "INSERT INTO Biens VALUES (Biens_seq.nextval,:lib_v,:desc_v,:prix_v,0,:iduti_v,:etat_v,:categ_v)";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion bien" . oci_error($conn));
             //formatage des variables et sécurité
             $lib_verif = stripslashes(htmlspecialchars($lib));
             $desc_verif = stripslashes(htmlspecialchars($desc));
-            oci_bind_by_name($stmt, ":lib", $lib_verif);
-            oci_bind_by_name($stmt, ":desc", $desc_verif);
-            oci_bind_by_name($stmt, ":prix", $prix);
-            oci_bind_by_name($stmt, ":iduti", $iduti);
-            oci_bind_by_name($stmt, ":etat", $etat);
-            oci_bind_by_name($stmt, ":categ", $categ);
+            oci_bind_by_name($stmt, ":lib_v", $lib_verif);
+            oci_bind_by_name($stmt, ":desc_v", $desc_verif);
+            oci_bind_by_name($stmt, ":prix_v", $prix);
+            oci_bind_by_name($stmt, ":iduti_v", $iduti);
+            oci_bind_by_name($stmt, ":etat_v", $etat);
+            oci_bind_by_name($stmt, ":categ_v", $categ);
             oci_execute($stmt);
         } else {
             echo "<div class='warning'><p>Erreur, données corrompues.</p></div>";
