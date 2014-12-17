@@ -183,13 +183,16 @@ class propositions extends Model_Base {
         oci_execute($stmt);
         $tabprop = null;
         $i = 0;
-        while ($row = oci_fetch_assoc($stmt)) {
-            $query = "INSERT INTO proposition_biens_archive VALUES (:arch,:bien)";
-            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
-            //formatage des variables et sécurité
-            oci_bind_by_name($stmt, ":arch", $arch);
-            oci_bind_by_name($stmt, ":bien", $row['IDBIEN']);
-            oci_execute($stmt);
+        $nb = oci_num_rows($stmt);
+        if ($nb != 0) {
+            while ($row = oci_fetch_assoc($stmt)) {
+                $query = "INSERT INTO proposition_biens_archive VALUES (:arch,:bien)";
+                $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
+                //formatage des variables et sécurité
+                oci_bind_by_name($stmt, ":arch", $arch);
+                oci_bind_by_name($stmt, ":bien", $row['IDBIEN']);
+                oci_execute($stmt);
+            }
         }
     }
 
@@ -200,13 +203,16 @@ class propositions extends Model_Base {
         oci_execute($stmt);
         $tabprop = null;
         $i = 0;
-        while ($row = oci_fetch_assoc($stmt)) {
-            $query = "INSERT INTO proposition_services_archive VALUES (:arch,:serv)";
-            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
-            //formatage des variables et sécurité
-            oci_bind_by_name($stmt, ":arch", $arch);
-            oci_bind_by_name($stmt, ":serv", $row['IDSERV']);
-            oci_execute($stmt);
+        $nb = oci_num_rows($stmt);
+        if ($nb != 0) {
+            while ($row = oci_fetch_assoc($stmt)) {
+                $query = "INSERT INTO proposition_services_archive VALUES (:arch,:serv)";
+                $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
+                //formatage des variables et sécurité
+                oci_bind_by_name($stmt, ":arch", $arch);
+                oci_bind_by_name($stmt, ":serv", $row['IDSERV']);
+                oci_execute($stmt);
+            }
         }
     }
 
