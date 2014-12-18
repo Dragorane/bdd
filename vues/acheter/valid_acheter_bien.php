@@ -1,4 +1,4 @@
-<h2 class='center'>Acheter un bien avec vos Points trocs</h2>
+<h2 class='center'>Acheter un bien</h2>
 
 <div class='success'><p>Votre achat a été validé. </p></div>
 <p> Le propriétaire de l'objet a reçu votre proposition.

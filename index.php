@@ -137,6 +137,9 @@ switch ($args[1]) {
     case 'acheter_biens_bienserv' :
         $ca->acheter_biens_bienserv();
         break;
+    case 'acheter_service_bienserv' :
+        $ca->acheter_service_bienserv();
+        break;
     case 'valid_acheter_bien_obj' :
         $ca->valid_acheter_bien_obj();
         break;
