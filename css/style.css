@@ -52,7 +52,7 @@ footer{
 /* menu */
 #menu { width:500px;}
 #menu ul { list-style:none; background:url(../images/menu.gif) repeat-x top;}
-#menu ul li { text-align:center; width:7em ; font-size: 1em; margin-left:25px; margin-top:-0.2em; float:left;}
+#menu ul li { text-align:center; width:85px; font-size: 1em; margin-left:25px; margin-top:-0.2em; float:left;}
 #menu ul li a {  display:block; margin:0; padding:0.3em 0.3em; color:black; text-decoration:none; background-color:#A3DB59; min-height:55px;}
 /*#menu ul li a { border-radius:8px; -moz-border-radius:8px; -webkit-border-radius:8px;}*/
 #menu ul li a:hover, .menu ul li.active a { width:8em;color:black; font-weight:bold;}
@@ -83,7 +83,7 @@ footer{
     font-size:1.5em;
     color:white;
     font-style:bold;
-    font-family:initial;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 .nb_troc{
@@ -96,13 +96,14 @@ footer{
     font-size:1.5em;
     font-weight: bold;
     font-family:initial;
+    border-radius:8px; -moz-border-radius:8px; -webkit-border-radius:8px;
 }
 
 #BarreUti ul { list-style:none; background:url(images/menu.gif) repeat-x top; margin-right:8%; float:right;}
 #BarreUti ul li { width:10em ; text-align:center;margin-left:0.4em; margin-top:-0.2em; float:right;}
-#BarreUti ul li a { display:block; margin:0; padding:0.3em 0.3em; color:#fff; text-decoration:none; background-color:#81bb35;}
+#BarreUti ul li a { display:block; margin:0; padding:0.3em 0.3em; color:black; text-decoration:none; background-color:#D3E0C1;}
 #BarreUti ul li a { border-radius:8px; -moz-border-radius:8px; -webkit-border-radius:8px;}
-#BarreUti ul li a:hover, .menu ul li.active a { background-color:#8fd533;}
+#BarreUti ul li a:hover, .menu ul li.active a { font-weight: bold;}
 #BarreUti h4 .connexion{font-size: 100%;}
 
 div.div_form_co{
