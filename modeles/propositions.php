@@ -145,9 +145,13 @@ class propositions extends Model_Base {
 
     public static function proposition_accepte($id) {
         $prop = propositions::get_prop_by_id($id);
+        $utiacheteur = Utilisateur::get_by_id($prop->get_iduti());
+        $utivendeur = Utilisateur::get_by_id($prop->get_idv());
         if ($prop == NULL) {
             echo "<div class='warnign'><p>Erreur, la proposition n'a pas été acceptée.</div>";
         } else {
+            $utiacheteur->retire_pt($prop->get_prix());
+            $utivendeur->ajout_pt($prop->get_prix());
             $archive = propositions::copie_proposition_archive($prop, 1);
             propositions::copie_prop_bien_accepte($prop, $archive);
             propositions::copie_prop_serv_accepte($prop, $archive);
