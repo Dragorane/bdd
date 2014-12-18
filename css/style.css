@@ -211,3 +211,9 @@ div.success{
     font-weight: bold;
     background: #DFF2BF url('images/success.png')  no-repeat;
 }
+
+.tab_visible{
+    margin:auto;
+    border: 1px solid black;
+    border-collapse: collapse;
+}

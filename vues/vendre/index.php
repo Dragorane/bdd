@@ -3,7 +3,7 @@
 <h3 class='center'><a href='<?= BASEURL ?>/index.php/vendreservice'>Je veux vendre un Service</a></h3>
 
 <h3 class='center'>Liste de vos Biens en vente</h3>
-<table class='biens'>
+<table class='tab_visible'>
     <tr><th>titre bien</th><th>categorie bien</th><th>prix</th></tr>
     <?php
     for ($i = 0; $i < count($tabbien); $i++) {
@@ -32,7 +32,7 @@
 </table>
 
 <h3 class='center'>Liste de vos Services en vente</h3>
-<table class='biens'>
+<table class='tab_visible'>
     <tr><th>titre service</th><th>categorie service</th><th>prix</th><th></th></tr>
     <?php
     for ($i = 0; $i < count($tabserv); $i++) {
