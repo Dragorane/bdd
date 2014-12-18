@@ -115,7 +115,9 @@ table.gestion td{
 }
 .logo{
     display:block;
-    margin:auto;
+    margin-top:10px;
+    margin-right:auto;
+    margin-left:auto;
     width:150px;
 }
 .avatar_gestion{
