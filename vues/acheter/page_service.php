@@ -34,4 +34,4 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_bienserv?id=" . $se
         echo "</div>";
     }
     ?>
-</div>
+</div></div>
