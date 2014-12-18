@@ -217,3 +217,8 @@ table.tab_visible, td, th, tr{
     border: 1px solid black;
     border-collapse: collapse;
 }
+td.tab_nonvisible{
+    margin:auto;
+    border: 0;
+    border-collapse: collapse;
+}

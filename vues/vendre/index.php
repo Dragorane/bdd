@@ -48,7 +48,7 @@
 //        . "<input type='submit' value='Modifier la vente' name='modif_vente'/>"
 //        . "</form>";
 //        echo "</td>";
-        echo "<td>";
+        echo "<td class='tab_nonvisible'>";
         echo "<form name='supprimervente' method='POST' action='" . BASEURL . "/index.php/sup_vente'>"
         . "<input type='hidden' name='id' value='" . $tabserv[$i]->get_id() . "'/>"
         . "<input type='hidden' name='type' value='2'/>"
