@@ -314,7 +314,7 @@ class Utilisateur extends Model_Base {
 		public function set_inactive() {
 			$query = "UPDATE Utilisateurs SET desactive=0 where idUti=:id";
 			$stmt = @oci_parse(Model_Base::$_db, $query) or die("Compte utilisateur toujours actif " . oci_error($conn));
-			oci_bind_by_name($stmt, ":id", $this->id);
+			oci_bind_by_name($stmt, ":id", $this->_id);
 			oci_execute($stmt);
 		}
 
