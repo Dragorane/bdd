@@ -23,5 +23,5 @@
     <input type='text' name='adr' id='adr'/><br/><br/>
     <label for='date'>Date de l'échange (format dd/mm/aaaa)</label><br/>
     <input type='text' name='date' id='adr'/><br/><br/>
-    <center><input type='submit' name='valid_acheter_bien_pts' value='Acheter le bien'/></center>
+    <center><input type='submit' name='valid_acheter_bien_pts' value='Acheter le service'/></center>
 </form>
