@@ -28,7 +28,7 @@ a { color:#81b436; text-decoration:underline;}
            width: 1100px;
            padding:13px;
            margin: auto;
-           min-height: 350px;}
+           min-height: 800px;}
 
 header{
     width: 1100px;
@@ -109,6 +109,14 @@ footer{
 div.div_form_co{
     width:30%;
     margin-left:40%;
+}
+/*les biens*/
+.lesbiens{
+    margin-top:175px;
+    margin-left:300px;
+}
+.unbien{
+    border-bottom: 1px solid black;
 }
 /*Gestion utilisateur*/
 table.gestion{
