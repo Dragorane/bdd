@@ -310,7 +310,7 @@ class Controller_acheter {
                     if ($laprop == null) {
                         echo "<div class='warning'><p>Erreur, la proposition n'a pas été enregistrée</p></div>";
                     } else {
-                        $laprop->ajout_service_proposition($serv);
+                        $laprop->ajout_service_proposition($serv, $_POST['date']);
                         $type = explode(':', $_POST['obj']);
                         if ($type[0] == "bien") {
                             $bien2 = biens::get_bien_by_id($type[1]);
