@@ -99,7 +99,10 @@ switch ($args[1]) {
         break;
     case 'form_sup_cpt':
         $cu->gestion_sup_cpt();
-        break;
+		break;
+	case 'valid_form_sup_cpt':
+		$cu->gestion_valid_sup_cpt();
+		break;
     case 'valid_ajout_monnaie':
         $cu->gestion_valid_ajout_monnaie();
         break;
