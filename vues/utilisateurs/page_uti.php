@@ -9,7 +9,8 @@
     if ($_SESSION['pseudo'] != $uti->pseudo()) {
         ?>
         <h3 class='center'>Evaluer l'utilisateur :</h3>
-        <div class="div_separer">
+        <div class="div_page_bien_serv">
+            <hr/>
             <form method='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_uti'>
                 <input type='hidden' name='uti_eval' value='<?php echo $uti->id(); ?>'>
                 <label for='titre'>Titre de votre évaluation</label><br/>
@@ -26,7 +27,8 @@
                 <label for='comm'>Commentaire</label><br/>
                 <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
                 <input type='submit' name='valid_eval' value='Envoyer Evaluation'/>
-            </form>
+            </form><br/>
+            <hr/>
         </div>
     <?php } ?>
     <div class="uti_evaluation">
