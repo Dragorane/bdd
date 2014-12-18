@@ -64,7 +64,7 @@ class Utilisateur extends Model_Base {
 
     public static function get_by_pseudo($pseudo) {
         $pseudo_verif = stripslashes(htmlspecialchars($pseudo));
-        $query = "SELECT * FROM Utilisateurs WHERE pseudoUti=:pseudo and desactive != 1";
+        $query = "SELECT * FROM Utilisateurs WHERE pseudoUti=:pseudo and desactive != 0";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur select by id utilisateur " . oci_error($conn));
         oci_bind_by_name($stmt, ":pseudo", $pseudo_verif);
         oci_execute($stmt);
@@ -312,7 +312,7 @@ class Utilisateur extends Model_Base {
 		}
 
 		public function set_inactive() {
-			$query = "UPDATE Utilisateurs SET desactive=1 where idUti=:id";
+			$query = "UPDATE Utilisateurs SET desactive=0 where idUti=:id";
 			$stmt = @oci_parse(Model_Base::$_db, $query) or die("Compte utilisateur toujours actif " . oci_error($conn));
 			oci_bind_by_name($stmt, ":id", $this->id);
 			oci_execute($stmt);
