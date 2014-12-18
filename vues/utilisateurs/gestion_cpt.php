@@ -13,7 +13,7 @@
         <br/>
         <h3 class="center"><a href='<?= BASEURL ?>/index.php/form_modif_avatar'>Modifier l'avatar</a></h3>
         <br/>
-        <table class='gestion'>
+        <table class='tab_visible'>
             <tr><th>Pseudo</th><td><?php echo $uti->pseudo(); ?></td><td><a href='<?= BASEURL ?>/index.php/form_modif_pseudo'>Modifier</a></td></tr>
             <tr><th>Nom</th><td><?php echo $uti->nom(); ?></td><td><a href='<?= BASEURL ?>/index.php/form_modif_nom'>Modifier</a></td></tr>
             <tr><th>Prénom</th><td><?php echo $uti->pnom(); ?></td><td><a href='<?= BASEURL ?>/index.php/form_modif_pnom'>Modifier</a></td></tr>

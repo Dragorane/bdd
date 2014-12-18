@@ -126,7 +126,7 @@ class biens extends Model_Base {
 
     public static function tabbiens_prix() {
         $tabbien = null;
-        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 order by prix";
+        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 order by prixBiens";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
         oci_execute($stmt);
         $i = 0;
@@ -139,7 +139,7 @@ class biens extends Model_Base {
 
     public static function tabbiens_prixdesc() {
         $tabbien = null;
-        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 order by prix DESC";
+        $query = "select idBien, libBien, descBien, prixBiens, venduBien, idUti, idEtat, idCat from Biens where venduBien=0 order by prixBiens DESC";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
         oci_execute($stmt);
         $i = 0;
