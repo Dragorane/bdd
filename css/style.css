@@ -219,6 +219,21 @@ table.tab_visible tr th td{
     border: 1px solid black;
     border-collapse: collapse;
 }
+table.tab_visible tr th{
+    margin:auto;
+    text-align:center;
+    padding:5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table.tab_visible tr{
+    margin:auto;
+    text-align:center;
+    padding:5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
 td.tab_nonvisible{
     margin:auto;
     border: 0;
