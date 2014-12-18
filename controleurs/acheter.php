@@ -245,7 +245,7 @@ class Controller_acheter {
                 } else {
                     $tabbien = biens::get_tabbien_by_uti($_SESSION['pseudo']);
                     $tabserv = services::get_tabserv_by_uti($_SESSION['pseudo']);
-                    include 'vues/acheter/acheter_bien_obj.php';
+                    include 'vues/acheter/acheter_serv_obj.php';
                     include "vues/afficher_bien.php";
                 }
             }
@@ -319,7 +319,7 @@ class Controller_acheter {
                             $serv = services::get_serv_by_id($type[1]);
                             $laprop->ajout_service_proposition($serv, $_POST['date']);
                         }
-                        include "vues/acheter/valid_acheter_bien.php";
+                        include "vues/acheter/valid_acheter_service.php";
                     }
                 }
             }
