@@ -64,7 +64,7 @@ class Utilisateur extends Model_Base {
 
     public static function get_by_pseudo($pseudo) {
         $pseudo_verif = stripslashes(htmlspecialchars($pseudo));
-        $query = "SELECT * FROM Utilisateurs WHERE pseudoUti=:pseudo and desactive != 0";
+        $query = "SELECT * FROM Utilisateurs WHERE pseudoUti=:pseudo and desactive != 1";
         $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur select by id utilisateur " . oci_error($conn));
         oci_bind_by_name($stmt, ":pseudo", $pseudo_verif);
         oci_execute($stmt);
