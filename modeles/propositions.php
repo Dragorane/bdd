@@ -149,8 +149,8 @@ class propositions extends Model_Base {
             echo "<div class='warnign'><p>Erreur, la proposition n'a pas été acceptée.</div>";
         } else {
             $archive = propositions::copie_proposition_archive($prop, 1);
-            propositions::copie_prop_bien($prop, $archive);
-            propositions::copie_prop_serv($prop, $archive);
+            propositions::copie_prop_bien_accepte($prop, $archive);
+            propositions::copie_prop_serv_accepte($prop, $archive);
             propositions::suppression_proposition($prop);
         }
     }
@@ -190,6 +190,48 @@ class propositions extends Model_Base {
                 oci_bind_by_name($stmt, ":arch", $arch);
                 oci_bind_by_name($stmt, ":bien", $row['IDBIEN']);
                 oci_execute($stmt);
+            }
+        }
+    }
+
+    public static function copie_prop_serv_accepte($prop, $arch) {
+        $query = "select * from proposition_services where idPro=:idpro";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
+        oci_bind_by_name($stmt, ":idpro", $prop->get_id());
+        oci_execute($stmt);
+        $tabprop = null;
+        $i = 0;
+        $nb = oci_num_rows($stmt);
+        if ($nb != 0) {
+            while ($row = oci_fetch_assoc($stmt)) {
+                $query = "INSERT INTO proposition_services_archive VALUES (:arch,:serv)";
+                $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
+                //formatage des variables et sécurité
+                oci_bind_by_name($stmt, ":arch", $arch);
+                oci_bind_by_name($stmt, ":serv", $row['IDSERV']);
+                oci_execute($stmt);
+                services::sup_service_by_id($row['IDSERV']);
+            }
+        }
+    }
+
+    public static function copie_prop_bien_accepte($prop, $arch) {
+        $query = "select * from proposition_biens where idPro=:idpro";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
+        oci_bind_by_name($stmt, ":idpro", $prop->get_id());
+        oci_execute($stmt);
+        $tabprop = null;
+        $i = 0;
+        $nb = oci_num_rows($stmt);
+        if ($nb != 0) {
+            while ($row = oci_fetch_assoc($stmt)) {
+                $query = "INSERT INTO proposition_biens_archive VALUES (:arch,:bien)";
+                $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion proposition" . oci_error($conn));
+                //formatage des variables et sécurité
+                oci_bind_by_name($stmt, ":arch", $arch);
+                oci_bind_by_name($stmt, ":bien", $row['IDBIEN']);
+                oci_execute($stmt);
+                biens::sup_bien_by_id($row['IDBIEN']);
             }
         }
     }

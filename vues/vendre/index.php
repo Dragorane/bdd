@@ -52,7 +52,7 @@
         echo "<form name='supprimervente' method='POST' action='" . BASEURL . "/index.php/sup_vente'>"
         . "<input type='hidden' name='id' value='" . $tabserv[$i]->get_id() . "'/>"
         . "<input type='hidden' name='type' value='2'/>"
-        . "<input type='submit' value='Supprimer la vente' name='modif_vente'/>"
+        . "<input type='submit' value='Supprimer la vente' name='valid_sup_vente'/>"
         . "</form>";
         echo "</td>";
         echo "</tr>";
