@@ -88,7 +88,7 @@ footer{
 
 .nb_troc{
     padding:5px;
-    background-color: white;
+    background-color: #D3E0C1;
     color:black;
     float: right;
     margin-top: 9px;
@@ -214,6 +214,8 @@ div.success{
 
 table.tab_visible, td, th, tr{
     margin:auto;
+    text-align:center;
+    padding:5px;
     border: 1px solid black;
     border-collapse: collapse;
 }
