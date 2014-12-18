@@ -246,7 +246,7 @@ class Controller_acheter {
                     $tabbien = biens::get_tabbien_by_uti($_SESSION['pseudo']);
                     $tabserv = services::get_tabserv_by_uti($_SESSION['pseudo']);
                     include 'vues/acheter/acheter_serv_obj.php';
-                    include "vues/afficher_bien.php";
+                    include "vues/afficher_service.php";
                 }
             }
         }
