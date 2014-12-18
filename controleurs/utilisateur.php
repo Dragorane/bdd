@@ -56,7 +56,11 @@ class Controller_Utilisateur {
                                             echo "<div class='warning'><p>Erreur, les mots de passes saisient ne correspondent pas.</p></div>";
                                         } else {
                                             //on ajoute l'utilisateur à la base de donnée
-                                            $photo = Controller_Utilisateur::path_img($_FILES['photo']);
+                                            if ($_FILES['photo']['error'] == 4) {
+                                                $photo = null;
+                                            } else {
+                                                $photo = Controller_Utilisateur::path_img($_FILES['photo']);
+                                            }
                                             $verif = 1;
                                             $uti = Utilisateur::create($_POST['nom'], $_POST['pnom'], $_POST['pseudo'], $_POST['mdp'], $_POST['adr'], $_POST['mail'], $_POST['tel'], 0, 0, $photo);
                                         }
@@ -373,22 +377,21 @@ class Controller_Utilisateur {
     /* Accès au formulaire de suppression de compte */
 
     public function gestion_sup_cpt() {
-			include 'vues/utilisateurs/form_sup_cpt.php';
+        include 'vues/utilisateurs/form_sup_cpt.php';
     }
-    
+
     /* Suppression effective du compte */
-    
+
     public function gestion_valid_sup_cpt() {
-		if (isset($_POST['Oui'])) {
-			$uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
-			$uti->set_inactive();
-			$this->deconnexion();
-		}
-		else {
-			$lien = "Location: ".BASEURL."/index.php";
-			header($lien);
-		}
-	}
+        if (isset($_POST['Oui'])) {
+            $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+            $uti->set_inactive();
+            $this->deconnexion();
+        } else {
+            $lien = "Location: " . BASEURL . "/index.php";
+            header($lien);
+        }
+    }
 
     /* Accès au formulaire de modification */
 
