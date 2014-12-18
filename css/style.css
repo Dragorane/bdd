@@ -212,14 +212,14 @@ div.success{
     background: #DFF2BF url('images/success.png')  no-repeat;
 }
 
-table.tab_visible tr th td{
+table.tab_visible td{
     margin:auto;
     text-align:center;
     padding:5px;
     border: 1px solid black;
     border-collapse: collapse;
 }
-table.tab_visible tr th{
+table.tab_visible th{
     margin:auto;
     text-align:center;
     padding:5px;
