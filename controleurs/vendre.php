@@ -116,6 +116,7 @@ class Controller_vendre {
             } else {//service
                 services::sup_service_by_id($_POST['id']);
             }
+            echo "<div class='success'><p>Votre bien/service a bien été supprimé.</p></div>";
         } else {
             echo "<div class='warning'><p>Erreur, vous n'avez pas l'autorisation</p></div>";
         }
