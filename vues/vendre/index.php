@@ -12,17 +12,18 @@
         echo "<td>" . $tabbien[$i]->get_titre() . "</td>";
         echo "<td>" . $cat->getlib() . "</td>";
         echo "<td>" . $tabbien[$i]->get_prix() . "</td>";
+//        echo "<td>";
+//        echo "<form name='modifiervente' method='POST' action='" . BASEURL . "/index.php/modif_vente'>"
+//        . "<input type='hidden' name='id' value='" . $tabbien[$i]->get_id() . "'/>"
+//        . "<input type='hidden' name='type' value='1'/>"
+//        . "<input type='submit' value='Modifier la vente' name='modif_vente'/>"
+//        . "</form>";
+//        echo "</td>";
         echo "<td>";
-        echo "<form name='modifiervente' method='POST' action='" . BASEURL . "/index.php/modif_vente'>"
-        . "<input type='hidden' name='id' value='" . $tabbien[$i]->get_id() . "'/>"
-        . "<input type='hidden' name='type' value='1'/>"
-        . "<input type='submit' value='Modifier la vente' name='modif_vente'/>"
-        . "</form>";
-        echo "</td><td>";
         echo "<form name='supprimervente' method='POST' action='" . BASEURL . "/index.php/sup_vente'>"
         . "<input type='hidden' name='id' value='" . $tabbien[$i]->get_id() . "'/>"
         . "<input type='hidden' name='type' value='1'/>"
-        . "<input type='submit' value='Supprimer la vente' name='modif_vente'/>"
+        . "<input type='submit' value='Supprimer la vente' name='valid_sup_vente'/>"
         . "</form>";
         echo "</td>";
         echo "</tr>";
@@ -40,13 +41,14 @@
         echo "<td>" . $tabserv[$i]->get_titre() . "</td>";
         echo "<td>" . $cat->getlib() . "</td>";
         echo "<td>" . $tabserv[$i]->get_prix() . "</td>";
+        //       echo "<td>";
+//        echo "<form name='modifiervente' method='POST' action='" . BASEURL . "/index.php/modif_vente'>"
+//        . "<input type='hidden' name='id' value='" . $tabserv[$i]->get_id() . "'/>"
+//        . "<input type='hidden' name='type' value='2'/>"
+//        . "<input type='submit' value='Modifier la vente' name='modif_vente'/>"
+//        . "</form>";
+//        echo "</td>";
         echo "<td>";
-        echo "<form name='modifiervente' method='POST' action='" . BASEURL . "/index.php/modif_vente'>"
-        . "<input type='hidden' name='id' value='" . $tabserv[$i]->get_id() . "'/>"
-        . "<input type='hidden' name='type' value='2'/>"
-        . "<input type='submit' value='Modifier la vente' name='modif_vente'/>"
-        . "</form>";
-        echo "</td><td>";
         echo "<form name='supprimervente' method='POST' action='" . BASEURL . "/index.php/sup_vente'>"
         . "<input type='hidden' name='id' value='" . $tabserv[$i]->get_id() . "'/>"
         . "<input type='hidden' name='type' value='2'/>"

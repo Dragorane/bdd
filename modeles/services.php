@@ -72,6 +72,14 @@ class services extends Model_Base {
         }
     }
 
+    public static function sup_service_by_id($id) {
+        if (is_numeric($id)) {
+            $query = "update Services set venduServ=0 where idServ=" . $id;
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            oci_execute($stmt);
+        }
+    }
+
     public static function get_tabserv_by_uti($pseudo) {
         $uti = Utilisateur::get_by_pseudo($pseudo);
         $tabserv = null;
