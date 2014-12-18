@@ -1,5 +1,5 @@
 <header>
-    <h1 class="center">Site de troc</h1>
+    <img src="<?= BASEURL ?>/images/logo.jpg" alt='Votre avatar' class='avatar_gestion'/>
     <?php
     include 'nav.php';
     ?>
