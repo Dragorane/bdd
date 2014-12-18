@@ -374,7 +374,6 @@ class Controller_Utilisateur {
 
     public function gestion_sup_cpt() {
 			include 'vues/utilisateurs/form_sup_cpt.php';
-			//$uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
     }
     
     /* Suppression effective du compte */
