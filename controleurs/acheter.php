@@ -194,7 +194,9 @@ class Controller_acheter {
                 } else {
                     $verif = $this->verifpts($uti, $bien);
                     include 'vues/acheter/acheter_bien_pts.php';
+                    echo "<div class='div_page_bien_serv'>";
                     include "vues/afficher_bien.php";
+                    echo "</div>";
                 }
             }
         }
@@ -212,7 +214,9 @@ class Controller_acheter {
                 } else {
                     $verif = $this->verifpts($uti, $serv);
                     include 'vues/acheter/acheter_service_pts.php';
+                    echo "<div class='div_page_bien_serv'>";
                     include "vues/afficher_service.php";
+                    echo "</div>";
                 }
             }
         }
@@ -231,7 +235,9 @@ class Controller_acheter {
                     $tabbien = biens::get_tabbien_by_uti($_SESSION['pseudo']);
                     $tabserv = services::get_tabserv_by_uti($_SESSION['pseudo']);
                     include 'vues/acheter/acheter_bien_obj.php';
+                    echo "<div class='div_page_bien_serv'>";
                     include "vues/afficher_bien.php";
+                    echo "</div>";
                 }
             }
         }
@@ -250,7 +256,9 @@ class Controller_acheter {
                     $tabbien = biens::get_tabbien_by_uti($_SESSION['pseudo']);
                     $tabserv = services::get_tabserv_by_uti($_SESSION['pseudo']);
                     include 'vues/acheter/acheter_serv_obj.php';
+                    echo "<div class='div_page_bien_serv'>";
                     include "vues/afficher_service.php";
+                    echo "</div>";
                 }
             }
         }
