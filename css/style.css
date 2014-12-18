@@ -156,7 +156,7 @@ table.gestion td{
 }
 .gestion_historique{
     width:100%;
-    margin-top:500px;
+    margin-top:550px;
     min-height: 100px;
 }
 .div_form_incripstion{
@@ -234,6 +234,11 @@ div.div_separer{
 div.div_page_bien_serv{
     margin:auto;
     width:500px;
+    margin-top:50px;
+}
+div.petit_form{
+    width:200px;
+    margin:auto;
     margin-top:50px;
 }
 table.tab_visible {
