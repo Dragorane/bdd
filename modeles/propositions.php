@@ -214,7 +214,6 @@ class propositions extends Model_Base {
                 oci_bind_by_name($stmt, ":arch", $arch);
                 oci_bind_by_name($stmt, ":serv", $row['IDSERV']);
                 oci_execute($stmt);
-                services::sup_service_by_id($row['IDSERV']);
             }
         }
     }
