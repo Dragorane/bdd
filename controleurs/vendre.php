@@ -109,4 +109,16 @@ class Controller_vendre {
         }
     }
 
+    public function sup_vente() {
+        if (isset($_POST['valid_sup_vente'])) {
+            if ($_POST['type'] == 1) {//bien
+                biens::sup_bien_by_id($_POST['id']);
+            } else {//service
+                services::sup_service_by_id($_POST['id']);
+            }
+        } else {
+            echo "<div class='warning'><p>Erreur, vous n'avez pas l'autorisation</p></div>";
+        }
+    }
+
 }

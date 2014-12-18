@@ -91,6 +91,14 @@ class biens extends Model_Base {
         }
     }
 
+    public static function sup_bien_by_id($id) {
+        if (is_numeric($id)) {
+            $query = "update Biens set venduBien=1 where idBien=" . $id;
+            $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur insertion categrie" . oci_error($conn));
+            oci_execute($stmt);
+        }
+    }
+
     public static function get_bien_by_id($id) {
         $bien = null;
         if ((is_int($id)) || (is_numeric($id))) {

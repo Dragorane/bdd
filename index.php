@@ -174,6 +174,9 @@ switch ($args[1]) {
     case 'valid_form_vendre_service':
         $cv->valide_vendreservice();
         break;
+    case 'sup_vente':
+        $cv->sup_vente();
+        break;
     //proposition
     case 'propositions':
         $cp->index();
