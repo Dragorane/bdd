@@ -28,12 +28,12 @@ a { color:#81b436; text-decoration:underline;}
            width: 1100px;
            padding:13px;
            margin: auto;
-           min-height: 800px;}
+           min-height: 350px;}
 
 header{
     width: 1100px;
     height: 131px;
-    background-color: grey;
+    background-color: #08AC55;
     margin-top: 50px;
     margin-right: auto;
     margin-left: auto;
@@ -63,7 +63,7 @@ footer{
 
 /*Barre de l'utilisateur'*/
 #BarreUti {
-    background-color: #08AC55;
+    background-color: black;
     margin-bottom: 1px;
     position: fixed;
     width: 100%;
