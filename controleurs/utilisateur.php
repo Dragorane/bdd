@@ -373,7 +373,8 @@ class Controller_Utilisateur {
     /* Accès au formulaire de suppression de compte */
 
     public function gestion_sup_cpt() {
-        include 'vues/utilisateurs/form_sup_cpt.php';
+			include 'vues/utilisateurs/form_sup_cpt.php';
+			//$uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
     }
 
     /* Accès au formulaire de modification */
