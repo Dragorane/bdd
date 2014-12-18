@@ -13,9 +13,9 @@ require_once 'controleurs/acheter.php';
 require_once 'controleurs/proposition.php';
 
 if (isset($_SERVER['PATH_INFO'])) {
-    $args = explode('/', $_SERVER['PATH_INFO']);
+	$args = explode('/', $_SERVER['PATH_INFO']);
 } else {
-    $args = array("/", "/");
+	$args = array("/", "/");
 }
 
 define('BASEURL', dirname($_SERVER['SCRIPT_NAME']));
