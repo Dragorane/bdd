@@ -143,6 +143,9 @@ switch ($args[1]) {
     case 'valid_acheter_bien_obj' :
         $ca->valid_acheter_bien_obj();
         break;
+    case 'valid_acheter_service_obj' :
+        $ca->valid_acheter_service_obj();
+        break;
     case 'valid_acheter_bien_pts' :
         $ca->valid_acheter_bien_pts();
         break;
