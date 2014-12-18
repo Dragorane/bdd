@@ -212,6 +212,11 @@ div.success{
     background: #DFF2BF url('images/success.png')  no-repeat;
 }
 
+div.div_separer{
+    margin-left:200px;
+    margin-top:30px;
+}
+
 table.tab_visible {
     margin:auto;
     text-align:center;
