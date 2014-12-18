@@ -381,7 +381,9 @@ class Controller_Utilisateur {
     
     public function gestion_valid_sup_cpt() {
 		if (isset($_POST['Oui'])) {
-			include 'vues/utilisateurs/form_sup_cpt.php';
+			$uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
+			$uti->set_inactive();
+			$this->deconnexion();
 		}
 		else {
 			$lien = "Location: ".BASEURL."/index.php";
