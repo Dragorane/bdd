@@ -306,7 +306,6 @@ class Controller_acheter {
                 if ($verif == 0) {
                     echo "<div class='warning'><p>Erreur, la date saisie n'est pas correcte.</p></div>";
                 } else {
-                    echo "<p>" . $_POST['adr'] . " " . $_POST['date'] . " " . $serv->get_prix() . " " . $utiacheter->id() . " " . $serv->get_uti() . "</p>";
                     $laprop = propositions::create($_POST['adr'], $_POST['date'], $serv->get_prix(), $utiacheter->id(), $serv->get_uti());
                     if ($laprop == null) {
                         echo "<div class='warning'><p>Erreur, la proposition n'a pas été enregistrée</p></div>";
@@ -320,7 +319,7 @@ class Controller_acheter {
                             $serv = services::get_serv_by_id($type[1]);
                             $laprop->ajout_service_proposition($serv, $_POST['date']);
                         }
-                        include "vues/acheter/valid_acheter_service.php";
+                        include "vues/acheter/valid_acheter_serv.php";
                     }
                 }
             }
