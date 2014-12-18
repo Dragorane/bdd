@@ -12,7 +12,7 @@
         <form method='POST' action='<?= BASEURL ?>/index.php/valider_prop'>
             <input type='hidden' name='idprop' value='<?php echo $prop->get_id(); ?>'>
             <input type='submit' name='valid_prop' value='Accepter la proposition' class='submit'>
-        </form>
+        </form><br/><br/>
         <form method='POST' action='<?= BASEURL ?>/index.php/annuler_prop'>
             <input type='hidden' name='idprop' value='<?php echo $prop->get_id(); ?>'>
             <input type='submit' name='sup_prop' value='Refuser/Annuler la proposition' class='submit'>
