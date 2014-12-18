@@ -15,7 +15,7 @@
                 <input type='hidden' name='uti_eval' value='<?php echo $uti->id(); ?>'>
                 <label for='titre'>Titre de votre évaluation</label><br/>
                 <input type='text' name='titre' id='titre'/><br/><br/>
-                <label for='note'>Note d'évaluation /5</label><br/>
+                <label for='note'>Note d'évaluation (/5)  </label>
                 <select name='note'>
                     <option value='0'>0</option>
                     <option value='1'>1</option>
@@ -26,7 +26,7 @@
                 </select><br/><br/>
                 <label for='comm'>Commentaire</label><br/>
                 <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
-                <input type='submit' name='valid_eval' value='Envoyer Evaluation'/>
+                <center><input type='submit' name='valid_eval' value='Envoyer Evaluation' class='submit'/></center>
             </form><br/>
             <hr/>
         </div>

@@ -434,6 +434,7 @@ class Controller_Utilisateur {
             $uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
             evaluations::nouvelle_eval_uti($_POST['titre'], $_POST['comm'], $_POST['note'], $uti->id(), $_POST['uti_eval']);
             echo "<div class='success'><p>Votre évaliation a bien été ajoutée.</p></div>";
+            echo "<br/><a href='javascript:history.back()'><h3 class='center'>Retour à la page de l'utilisateur...</h3></a>";
         } else {
             echo "<div class='warning'><p>Erreur, vous n'avez pas accès à cette page.</p></div>";
         }
