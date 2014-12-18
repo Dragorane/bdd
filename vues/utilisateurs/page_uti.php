@@ -6,7 +6,9 @@
     } else {
         echo "<img src='" . BASEURL . "/images/avatar_default.png' alt='Votre avatar' class='avatar_gestion'/>";
     }
-    ?>
+    if ($_SESSION['pseudo'] != $uti->pseudo()){
+        
+        ?>
     <h3>Evaluer l'utilisateur :</h3>
     <form method='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_uti'>
         <input type='hidden' name='uti_eval' value='<?php echo $uti->id(); ?>'>
@@ -25,7 +27,7 @@
         <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
         <input type='submit' name='valid_eval' value='Envoyer Evaluation'/>
     </form>
-
+    <?php } ?>
     <div class="uti_evaluation">
         <h3 class='center'>Les évaluations de l'utilisateur (<?php echo $moyeval; ?>/5)</h3>
         <?php
