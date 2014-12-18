@@ -110,6 +110,7 @@ div.div_form_co{
     width:30%;
     margin-left:40%;
 }
+
 /*les biens*/
 .lesbiens{
     margin-top:175px;
@@ -220,7 +221,9 @@ div.div_separer{
     width:500px;
     margin-top:30px;
 }
+div.div_page_bien_serv{
 
+}
 table.tab_visible {
     margin:auto;
     text-align:center;

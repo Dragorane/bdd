@@ -2,12 +2,13 @@
 echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_pts?id=" . $serv->get_id() . "'>Acheter ce service avec vos points trocs</a></h4>";
 echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_bienserv?id=" . $serv->get_id() . "'>Acheter ce service avec vos biens/services</a></h4>";
 ?>
-<h3>Evaluer le service </h3>
+<hr/>
+<h3 class="center">Evaluer le service </h3>
 <form method='POST' name='eval_service' action='<?= BASEURL ?>/index.php/valid_eval_service'>
     <input type='hidden' name='id' value='<?php echo $serv->get_id(); ?>'>
     <label for='titre'>Titre de votre évaluation</label><br/>
     <input type='text' name='titre' id='titre'/><br/><br/><br/>
-    <label for='note'>Note d'évaluation /5</label><br/>
+    <label for='note'>Note d'évaluation (/5)   </label>
     <select name='note'>
         <option value='0'>0</option>
         <option value='1'>1</option>
@@ -18,7 +19,7 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_bienserv?id=" . $se
     </select><br/><br/>
     <label for='comm'>Commentaire</label><br/>
     <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
-    <input type='submit' name='valid_eval' value='Envoyer Evaluation'/>
+    <center><input type='submit' name='valid_eval' value='Envoyer Evaluation' class="submit"/></center>
 </form>
 </div>
 <div class="uti_evaluation">
