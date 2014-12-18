@@ -6,27 +6,28 @@
     } else {
         echo "<img src='" . BASEURL . "/images/avatar_default.png' alt='Votre avatar' class='avatar_gestion'/>";
     }
-    if ($_SESSION['pseudo'] != $uti->pseudo()){
-        
+    if ($_SESSION['pseudo'] != $uti->pseudo()) {
         ?>
-    <h3>Evaluer l'utilisateur :</h3>
-    <form method='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_uti'>
-        <input type='hidden' name='uti_eval' value='<?php echo $uti->id(); ?>'>
-        <label for='titre'>Titre de votre évaluation</label><br/>
-        <input type='text' name='titre' id='titre'/><br/><br/>
-        <label for='note'>Note d'évaluation /5</label><br/>
-        <select name='note'>
-            <option value='0'>0</option>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-            <option value='5'>5</option>
-        </select><br/><br/>
-        <label for='comm'>Commentaire</label><br/>
-        <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
-        <input type='submit' name='valid_eval' value='Envoyer Evaluation'/>
-    </form>
+        <h3 class='center'>Evaluer l'utilisateur :</h3>
+        <div class="div_separer">
+            <form method='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_uti'>
+                <input type='hidden' name='uti_eval' value='<?php echo $uti->id(); ?>'>
+                <label for='titre'>Titre de votre évaluation</label><br/>
+                <input type='text' name='titre' id='titre'/><br/><br/>
+                <label for='note'>Note d'évaluation /5</label><br/>
+                <select name='note'>
+                    <option value='0'>0</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                </select><br/><br/>
+                <label for='comm'>Commentaire</label><br/>
+                <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
+                <input type='submit' name='valid_eval' value='Envoyer Evaluation'/>
+            </form>
+        </div>
     <?php } ?>
     <div class="uti_evaluation">
         <h3 class='center'>Les évaluations de l'utilisateur (<?php echo $moyeval; ?>/5)</h3>
