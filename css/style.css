@@ -212,6 +212,9 @@ div.success{
     background: #DFF2BF url('images/success.png')  no-repeat;
 }
 
+.submit{
+    padding:8px;
+}
 div.div_separer{
     margin-left:480px;
     width:500px;

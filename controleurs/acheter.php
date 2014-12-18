@@ -33,7 +33,7 @@ class Controller_acheter {
             if ($uti != NULL) {
                 echo "<div class='unbien'>";
                 include "vues/afficher_bien.php";
-                echo "<h4 class='center'><a href='pagebien?id=" . $bien->get_id() . "'>Acheter / En savoir plus ...</h4>";
+                echo "<h4 class='center'><a href='pagebien?id=" . $bien->get_id() . "'>Acheter / En savoir plus ...</a></h4>";
                 echo "</div>";
             } else {
                 echo "<div class='warning'><p>erreur pas d'utilisateur " . $tabbiens->get_uti() . "</p></div>";
@@ -55,7 +55,7 @@ class Controller_acheter {
             if ($uti != NULL) {
                 echo "<div class='unservice'>";
                 include "vues/afficher_service.php";
-                echo "<h4 class='center'><a href='pageservice?id=" . $serv->get_id() . "'>Acheter / En savoir plus ...</h4>";
+                echo "<h4 class='center'><a href='pageservice?id=" . $serv->get_id() . "'>Acheter / En savoir plus ...</a></h4>";
                 echo "</div>";
             } else {
                 echo "<div class='warning'><p>erreur pas d'utilisateur " . $serv->get_uti() . "</p></div>";

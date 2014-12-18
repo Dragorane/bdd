@@ -17,6 +17,6 @@
         </select><br/><br/>
         <label for="prix">Prix (en Pts)</label><br/>
         <input type="text" name="prix" id="prix"/><br/><br/>
-        <center><input type="submit" value="Vendre" name="valid_bien"></center>
+        <center><input type="submit" value="Vendre" name="valid_bien" class="submit"></center>
     </form>
 </div>

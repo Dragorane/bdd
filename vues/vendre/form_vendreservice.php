@@ -13,7 +13,7 @@
         <input type="text" name="nbplace" id="prix"/><br/><br/>
         <label for="prix">Prix (en Pts)</label><br/>
         <input type="text" name="prix" id="prix"/><br/><br/>
-        <center><input type="submit" value="Vendre" name="valid_serv"></center>
+        <center><input type="submit" value="Vendre" name="valid_serv" class="submit"></center>
     </form>
 </div>
 
