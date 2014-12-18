@@ -1,4 +1,4 @@
-<h2 class='center'>Suppression de votre compte utilisateur</h2>
+<h2 class='center'>Suppression de votre bite</h2>
 
 <div class='div_form_sup_cpt'>
 		<form action="<?= BASEURL ?>/index.php/valid_form_sup_cpt" method="post">
