@@ -383,7 +383,7 @@ class Controller_Utilisateur {
 		if (isset($_POST['Oui'])) {
 			$uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
 			$uti->set_inactive();
-			deconnexion();
+			$this->deconnexion();
 		}
 		else {
 			$lien = "Location: ".BASEURL."/index.php";
