@@ -222,7 +222,9 @@ div.div_separer{
     margin-top:30px;
 }
 div.div_page_bien_serv{
-
+    margin:auto;
+    width:500px;
+    margin-top:50px;
 }
 table.tab_visible {
     margin:auto;
