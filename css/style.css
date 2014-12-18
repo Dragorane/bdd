@@ -212,6 +212,13 @@ div.success{
     background: #DFF2BF url('images/success.png')  no-repeat;
 }
 
+table.tab_visible {
+    margin:auto;
+    text-align:center;
+    padding:5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
 table.tab_visible td{
     margin:auto;
     text-align:center;
@@ -224,7 +231,6 @@ table.tab_visible th{
     text-align:center;
     padding:5px;
     border: 1px solid black;
-    border-collapse: collapse;
 }
 
 table.tab_visible tr{
@@ -232,7 +238,6 @@ table.tab_visible tr{
     text-align:center;
     padding:5px;
     border: 1px solid black;
-    border-collapse: collapse;
 }
 td.tab_nonvisible{
     margin:auto;
