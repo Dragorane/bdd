@@ -119,6 +119,9 @@ div.div_form_co{
 .unbien{
     border-bottom: 1px solid black;
 }
+.unservice{
+    border-bottom: 1px solid black;
+}
 /*Gestion utilisateur*/
 table.gestion{
     margin:auto;

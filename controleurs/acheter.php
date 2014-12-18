@@ -195,6 +195,7 @@ class Controller_acheter {
                     $verif = $this->verifpts($uti, $bien);
                     include 'vues/acheter/acheter_bien_pts.php';
                     echo "<div class='div_page_bien_serv'>";
+                    echo "<h4 class='center'>Rappel du bien séléctionné</h4>";
                     include "vues/afficher_bien.php";
                     echo "</div>";
                 }
@@ -215,6 +216,7 @@ class Controller_acheter {
                     $verif = $this->verifpts($uti, $serv);
                     include 'vues/acheter/acheter_service_pts.php';
                     echo "<div class='div_page_bien_serv'>";
+                    echo "<h4 class='center'>Rappel du service séléctionné</h4>";
                     include "vues/afficher_service.php";
                     echo "</div>";
                 }
@@ -236,6 +238,7 @@ class Controller_acheter {
                     $tabserv = services::get_tabserv_by_uti($_SESSION['pseudo']);
                     include 'vues/acheter/acheter_bien_obj.php';
                     echo "<div class='div_page_bien_serv'>";
+                    echo "<h4 class='center'>Rappel du bien séléctionné</h4>";
                     include "vues/afficher_bien.php";
                     echo "</div>";
                 }
@@ -257,6 +260,7 @@ class Controller_acheter {
                     $tabserv = services::get_tabserv_by_uti($_SESSION['pseudo']);
                     include 'vues/acheter/acheter_serv_obj.php';
                     echo "<div class='div_page_bien_serv'>";
+                    echo "<h4 class='center'>Rappel du service séléctionné</h4>";
                     include "vues/afficher_service.php";
                     echo "</div>";
                 }
