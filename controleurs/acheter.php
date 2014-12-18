@@ -306,7 +306,7 @@ class Controller_acheter {
                 if ($verif == 0) {
                     echo "<div class='warning'><p>Erreur, la date saisie n'est pas correcte.</p></div>";
                 } else {
-                    echo $_POST['adr'] . " " . $_POST['date'] . " " . $serv->get_prix() . " " . $utiacheter->id() . " " . $serv->get_uti();
+                    echo "<p>" . $_POST['adr'] . " " . $_POST['date'] . " " . $serv->get_prix() . " " . $utiacheter->id() . " " . $serv->get_uti() . "</p>";
                     $laprop = propositions::create($_POST['adr'], $_POST['date'], $serv->get_prix(), $utiacheter->id(), $serv->get_uti());
                     if ($laprop == null) {
                         echo "<div class='warning'><p>Erreur, la proposition n'a pas été enregistrée</p></div>";

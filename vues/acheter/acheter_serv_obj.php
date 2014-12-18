@@ -2,7 +2,7 @@
 <p>Vous souhaitez acheter le bien ci-dessous avec un de vos biens/services<br/>
     Merci de proposez au vendeur une date et un lieu où vous pourrez effectuer l'échange ainsi que l'objet ou le service</p>
 
-<form method='POST' name='form_acheter_bien_pts' action='<?= BASEURL ?>/index.php/valid_acheter_bien_obj'>
+<form method='POST' name='form_acheter_bien_pts' action='<?= BASEURL ?>/index.php/valid_acheter_service_obj'>
     <input type='hidden' name='bien' value='<?php echo $serv->get_id(); ?>'>
     <label for='obj'>Bien ou service à échanger</label><br/>
     <select name='obj'>
