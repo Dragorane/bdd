@@ -212,7 +212,7 @@ div.success{
     background: #DFF2BF url('images/success.png')  no-repeat;
 }
 
-.tab_visible{
+.tab_visible .td th tr{
     margin:auto;
     border: 1px solid black;
     border-collapse: collapse;
