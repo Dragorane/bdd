@@ -8,40 +8,43 @@
     }
     if ($_SESSION['pseudo'] != $uti->pseudo()) {
         ?>
-        <h3 class='center'>Evaluer l'utilisateur :</h3>
-        <div class="div_page_bien_serv">
-            <hr/>
-            <form method='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_uti'>
-                <input type='hidden' name='uti_eval' value='<?php echo $uti->id(); ?>'>
-                <label for='titre'>Titre de votre évaluation</label><br/>
-                <input type='text' name='titre' id='titre'/><br/><br/>
-                <label for='note'>Note d'évaluation (/5)  </label>
-                <select name='note'>
-                    <option value='0'>0</option>
-                    <option value='1'>1</option>
-                    <option value='2'>2</option>
-                    <option value='3'>3</option>
-                    <option value='4'>4</option>
-                    <option value='5'>5</option>
-                </select><br/><br/>
-                <label for='comm'>Commentaire</label><br/>
-                <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
-                <center><input type='submit' name='valid_eval' value='Envoyer Evaluation' class='submit'/></center>
-            </form><br/>
-            <hr/>
+        <div class='div_page_bien_serv'>
+
+            <h3 class='center'>Evaluer l'utilisateur :</h3>
+            <div class="div_page_bien_serv">
+                <hr/>
+                <form method='POST' name='eval_uti' action='<?= BASEURL ?>/index.php/valid_eval_uti'>
+                    <input type='hidden' name='uti_eval' value='<?php echo $uti->id(); ?>'>
+                    <label for='titre'>Titre de votre évaluation</label><br/>
+                    <input type='text' name='titre' id='titre'/><br/><br/>
+                    <label for='note'>Note d'évaluation (/5)  </label>
+                    <select name='note'>
+                        <option value='0'>0</option>
+                        <option value='1'>1</option>
+                        <option value='2'>2</option>
+                        <option value='3'>3</option>
+                        <option value='4'>4</option>
+                        <option value='5'>5</option>
+                    </select><br/><br/>
+                    <label for='comm'>Commentaire</label><br/>
+                    <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
+                    <center><input type='submit' name='valid_eval' value='Envoyer Evaluation' class='submit'/></center>
+                </form><br/>
+                <hr/>
+            </div>
+        <?php } ?>
+        <div class="uti_evaluation">
+            <h3 class='center'>Les évaluations de l'utilisateur (<?php echo $moyeval; ?>/5)</h3>
+            <?php
+            for ($i = 0; $i < count($tabeval); $i++) {
+                $uti = Utilisateur::get_by_id($tabeval[$i]->get_iduti());
+                echo "<div class='uneeval'>";
+                echo "<h4>" . $tabeval[$i]->get_titre() . " (note : " . $tabeval[$i]->get_note() . "/5)</h4>";
+                echo "<p>" . $tabeval[$i]->get_comm() . "</p>";
+                echo "Evaluation postée par l'utilisateur <a href='" . BASEURL . "/index.php/pageuti?pseudo=" . $uti->pseudo() . "'>'" . $uti->pseudo() . "'</a>";
+                echo "</div>";
+            }
+            ?>
         </div>
-    <?php } ?>
-    <div class="uti_evaluation">
-        <h3 class='center'>Les évaluations de l'utilisateur (<?php echo $moyeval; ?>/5)</h3>
-        <?php
-        for ($i = 0; $i < count($tabeval); $i++) {
-            $uti = Utilisateur::get_by_id($tabeval[$i]->get_iduti());
-            echo "<div class='uneeval'>";
-            echo "<h4>" . $tabeval[$i]->get_titre() . " (note : " . $tabeval[$i]->get_note() . "/5)</h4>";
-            echo "<p>" . $tabeval[$i]->get_comm() . "</p>";
-            echo "Evaluation postée par l'utilisateur <a href='" . BASEURL . "/index.php/pageuti?pseudo=" . $uti->pseudo() . "'>'" . $uti->pseudo() . "'</a>";
-            echo "</div>";
-        }
-        ?>
     </div>
 </div>
