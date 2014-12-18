@@ -1,7 +1,7 @@
 <h2 class='center'>Liste des propositions en cours</h2>
 
-<h3>Proposition où vous vendez</h3>
-<table>
+<h3 class='center'> Proposition où vous vendez</h3>
+<table class='tab_visible'>
     <tr><th>Acheteur</th><th>prix</th><th>date</th><th>lieux</th></tr>
     <?php
     for ($i = 0; $i < count($prop_vendeur); $i++) {
@@ -15,7 +15,7 @@
             echo "<form name='voir_prop' method='POST' action='" . BASEURL . "/index.php/laproposition'>"
             . "<input type='hidden' name='laprop' value='" . $prop_vendeur[$i]->get_id() . "'/>"
             . "<input type='hidden' name='vendeur'/>"
-            . "<input type='submit' value='Plus de détail' name='detail_prop'/>"
+            . "<input type='submit' value='Plus de détail' name='detail_prop' class='submit'/>"
             . "</form>";
             echo "</td>";
             echo "</tr>";
