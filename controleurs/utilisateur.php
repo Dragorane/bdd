@@ -376,6 +376,18 @@ class Controller_Utilisateur {
 			include 'vues/utilisateurs/form_sup_cpt.php';
 			//$uti = Utilisateur::get_by_pseudo($_SESSION['pseudo']);
     }
+    
+    /* Suppression effective du compte */
+    
+    public function gestion_valid_sup_cpt() {
+		if (isset($_POST['Oui'])) {
+			include 'vues/utilisateurs/form_sup_cpt.php';
+		}
+		else {
+			$lien = "Location : ".BASEURL."/index.php";
+			header($lien);
+		}
+	}
 
     /* Accès au formulaire de modification */
 
