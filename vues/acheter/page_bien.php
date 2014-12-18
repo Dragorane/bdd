@@ -35,4 +35,4 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_biens_bienserv?id=" . $bien
     }
     ?>
 </div>
-
+</div>

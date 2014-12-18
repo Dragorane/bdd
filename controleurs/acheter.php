@@ -155,6 +155,7 @@ class Controller_acheter {
             } else {
                 $tabeval = evaluations::tabeval_bien($bien->get_id());
                 $moyeval = evaluations::moy_eval_bien($bien->get_id());
+                echo "<div class='div_separer'>";
                 include "vues/afficher_bien.php";
                 include 'vues/acheter/page_bien.php';
             }
@@ -172,6 +173,7 @@ class Controller_acheter {
             } else {
                 $tabeval = evaluations::tabeval_service($serv->get_id());
                 $moyeval = evaluations::moy_eval_serv($serv->get_id());
+                echo "<div class='div_separer'>";
                 include "vues/afficher_service.php";
                 include 'vues/acheter/page_service.php';
             }

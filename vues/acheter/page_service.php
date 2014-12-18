@@ -4,7 +4,7 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_bienserv?id=" . $se
 ?>
 <h3>Evaluer le service </h3>
 <form method='POST' name='eval_service' action='<?= BASEURL ?>/index.php/valid_eval_service'>
-    <input type='hidden' name='id' value='<?php echo $serv->get_id();?>'>
+    <input type='hidden' name='id' value='<?php echo $serv->get_id(); ?>'>
     <label for='titre'>Titre de votre évaluation</label><br/>
     <input type='text' name='titre' id='titre'/><br/><br/><br/>
     <label for='note'>Note d'évaluation /5</label><br/>
@@ -20,7 +20,7 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_bienserv?id=" . $se
     <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
     <input type='submit' name='valid_eval' value='Envoyer Evaluation'/>
 </form>
-
+</div>
 <div class="uti_evaluation">
     <h3 class='center'>Les évaluations du service (<?php echo $moyeval; ?>/5)</h3>
     <?php
@@ -34,4 +34,3 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_bienserv?id=" . $se
     }
     ?>
 </div>
-
