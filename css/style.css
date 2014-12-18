@@ -158,6 +158,12 @@ table.gestion td{
     margin-top:500px;
     min-height: 100px;
 }
+.div_form_incripstion{
+    width:300px;
+    margin:auto;
+    margin-top:50px;
+    margin-bottom: 50px;
+}
 
 /*Menu categorie biens/services*/
 .menu_categorie{
