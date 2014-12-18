@@ -71,7 +71,7 @@ class Controller_Utilisateur {
         if ($verif == 0) {
             echo "<a href='javascript:history.back()'><h2 class='center'>Retour au formulaire d'inscription</h2></a>";
         } else {
-            echo "<div class='success'><p>L'utilisateur a bien été ajouté, vous pouvez vous conneter.</p></div>";
+            echo "<div class='success'><p>L'utilisateur a bien été ajouté, vous pouvez vous connecter.</p></div>";
         }
     }
 
