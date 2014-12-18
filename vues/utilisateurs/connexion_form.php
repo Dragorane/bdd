@@ -6,6 +6,6 @@
         <input type="text" name="pseudo" id="pseudo" /><br/><br/>
         <label for="user_pass">Mot de passe </label><br/>
         <input type="password" name="password" id="user_pass" /><br/><br/>
-        <input type="submit" value="Envoyer" class='submit'>
+        <center><input type="submit" value="Envoyer" class='submit'></center>
     </form>
 </div>

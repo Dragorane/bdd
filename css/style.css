@@ -107,8 +107,9 @@ footer{
 #BarreUti h4 .connexion{font-size: 100%;}
 
 div.div_form_co{
-    width:30%;
-    margin-left:40%;
+    width:200px;
+    margin:auto;
+    margin-top:40px;
 }
 
 /*les biens*/
