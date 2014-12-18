@@ -283,7 +283,7 @@ class Utilisateur extends Model_Base {
     }
 
     public function ajout_pt($nb) {
-        if (is_float(floatval($nb))) {
+        if ((is_float(floatval($nb))) || (is_numeric($nb))) {
             $this->_point_troc = $this->_point_troc + $nb;
             $query = "UPDATE Utilisateurs SET pointTroc=:pt where idUti=:id";
             $stmt = @oci_parse(Model_Base::$_db, $query) or die("erreur maj utilisateur.point troc " . oci_error($conn));
@@ -296,7 +296,7 @@ class Utilisateur extends Model_Base {
     }
 
     public function retire_pt($nb) {
-        if (is_float($nb) == true) {
+        if ((is_float(floatval($nb))) || (is_numeric($nb))) {
             $this->_point_troc = $this->_point_troc - $nb;
             if ($this->_point_troc < 0) {
                 $this->_point_troc = 0;
@@ -309,14 +309,15 @@ class Utilisateur extends Model_Base {
         } else {
             echo "<div class='warning'><p>Erreur, mauvaise saisie du nombre de point troc ...</p></div>";
         }
-		}
+    }
 
-	public function set_inactive() {
-		$query = "UPDATE Utilisateurs SET desactive=0 where idUti=:id";
-		$stmt = @oci_parse(Model_Base::$_db, $query) or die("Compte utilisateur toujours actif " . oci_error($conn));
-		oci_bind_by_name($stmt, ":id", $this->_id);
-		oci_execute($stmt);
-	}
+    public
+            function set_inactive() {
+        $query = "UPDATE Utilisateurs SET desactive=0 where idUti=:id";
+        $stmt = @oci_parse(Model_Base::$_db, $query) or die("Compte utilisateur toujours actif " . oci_error($conn));
+        oci_bind_by_name($stmt, ":id", $this->_id);
+        oci_execute($stmt);
+    }
 
 }
 
