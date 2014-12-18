@@ -384,7 +384,7 @@ class Controller_Utilisateur {
 			include 'vues/utilisateurs/form_sup_cpt.php';
 		}
 		else {
-			$lien = "Location : ".BASEURL."/index.php";
+			$lien = "Location: ".BASEURL."/index.php";
 			header($lien);
 		}
 	}
