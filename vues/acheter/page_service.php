@@ -21,7 +21,6 @@ echo "<h4><a href='" . BASEURL . "/index.php/acheter_service_bienserv?id=" . $se
     <textarea rows="5" cols="50" name='comm'></textarea><br/><br/>
     <center><input type='submit' name='valid_eval' value='Envoyer Evaluation' class="submit"/></center>
 </form>
-</div>
 <div class="uti_evaluation">
     <h3 class='center'>Les évaluations du service (<?php echo $moyeval; ?>/5)</h3>
     <?php
